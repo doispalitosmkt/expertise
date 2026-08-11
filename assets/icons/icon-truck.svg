@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48.23 34">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ffea00;
+      }
+    </style>
+  </defs>
+  <g id="Camada_1" data-name="Camada 1">
+    <g>
+      <rect class="cls-1" x="19.91" y="12.28" width="3.21" height="11.72" transform="translate(39.65 -3.37) rotate(90)"/>
+      <rect class="cls-1" x="23.76" y=".11" width="3.62" height="19.46" transform="translate(51.14 19.69) rotate(-180)"/>
+      <rect class="cls-1" y=".11" width="4.28" height="13.43" transform="translate(4.28 13.65) rotate(-180)"/>
+      <rect class="cls-1" x="12.08" y="-12.08" width="3.21" height="27.37" transform="translate(15.29 -12.08) rotate(90)"/>
+      <g>
+        <path class="cls-1" d="M9.35,26.25l1.81-.05c1.47-.02,2.84-.8,3.64-2.09l4.55-7.57h-1.52s-2.1,0-2.1,0c-.22,0-.43.12-.55.32l-5.82,9.39h0Z"/>
+        <path class="cls-1" d="M4.57,23c.8,1.29,2.17,2.07,3.64,2.09l1.81.05h0s-5.15-8.27-5.15-8.27c-.12-.2-.32-.32-.55-.32h-2.1s-1.78.01-1.78.01l1.02,1.56,3.1,4.89Z"/>
+      </g>
+      <rect class="cls-1" x="25.11" y="20.03" width="3.21" height="11.72" transform="translate(52.61 -.83) rotate(90)"/>
+      <rect class="cls-1" x="20.85" y="18.73" width="3.62" height="8.59"/>
+      <rect class="cls-1" x="43.95" y="7.86" width="4.28" height="13.43"/>
+      <rect class="cls-1" x="35.5" y="-1.77" width="3.21" height="22.25" transform="translate(46.46 -27.75) rotate(90)"/>
+      <g>
+        <path class="cls-1" d="M38.88,34l-1.81-.05c-1.47-.02-2.84-.8-3.64-2.09l-4.55-7.57h1.52s2.1,0,2.1,0c.22,0,.43.12.55.32l5.82,9.39h0Z"/>
+        <path class="cls-1" d="M43.66,30.75c-.8,1.29-2.17,2.07-3.64,2.09l-1.81.05h0s5.15-8.27,5.15-8.27c.12-.2.32-.32.55-.32h2.1s1.78.01,1.78.01l-1.02,1.56-3.1,4.89Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

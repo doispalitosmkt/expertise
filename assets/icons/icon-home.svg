@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37.17 37.97">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ffea00;
+      }
+    </style>
+  </defs>
+  <g id="Camada_1" data-name="Camada 1">
+    <g>
+      <rect class="cls-1" x="2.73" y="23.8" width="5.22" height="14.15"/>
+      <rect class="cls-1" x="2.83" y="33.32" width="32.02" height="4.64"/>
+      <rect class="cls-1" x="16.35" y="23.8" width="5.22" height="14.15"/>
+      <rect class="cls-1" x="29.64" y="23.8" width="5.22" height="14.15"/>
+      <g>
+        <path class="cls-1" d="M19.65,0l-3.56.09c-2.9.03-5.58,1.58-7.16,4.11L0,19.08h3s4.13,0,4.13,0c.44,0,.85-.24,1.08-.63L19.65,0h0Z"/>
+        <path class="cls-1" d="M29.06,6.39c-1.57-2.53-4.26-4.07-7.16-4.11l-3.56-.09h0s10.12,16.26,10.12,16.26c.23.39.64.63,1.08.63l4.13-.02h3.5l-2.01-3.07-6.1-9.61Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

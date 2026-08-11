@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.93 37.63">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ffea00;
+      }
+    </style>
+  </defs>
+  <g id="Camada_1" data-name="Camada 1">
+    <g>
+      <g>
+        <path class="cls-1" d="M17.19,21.68l-2.97.07c-2.42.03-4.67,1.32-5.98,3.43L.77,37.62h2.5s3.45,0,3.45,0c.37,0,.71-.2.9-.53l9.56-15.42h0Z"/>
+        <path class="cls-1" d="M25.05,27.02c-1.31-2.11-3.56-3.4-5.98-3.43l-2.97-.07h0s8.45,13.59,8.45,13.59c.19.32.53.52.9.53l3.45-.02h2.92l-1.68-2.57-5.1-8.03Z"/>
+      </g>
+      <rect class="cls-1" x="26.74" y=".01" width="5.19" height="37.59"/>
+      <rect class="cls-1" x=".18" width="31.48" height="4.71"/>
+      <rect class="cls-1" y=".01" width="5.19" height="37.59"/>
+    </g>
+  </g>
+</svg>
