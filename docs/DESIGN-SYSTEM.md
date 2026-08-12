@@ -1,356 +1,280 @@
 # Design System — Expertise
 
-> Referência completa de tokens, tipografia, componentes e padrões visuais.
-> Sempre consulte este arquivo antes de criar ou editar qualquer seção.
+Este documento descreve o sistema visual que está implementado. A fonte de verdade executável é formada por [`tokens.css`](../assets/css/tokens.css), [`site.css`](../assets/css/site.css) e pelos estilos em [`assets/css/pages/`](../assets/css/pages/).
 
----
+## Arquivos e precedência
 
-## 1. Paleta de Cores
-
-```css
-/* CSS Custom Properties — definidas em :root no index.html */
-
---yellow:      #ffea00;   /* Amarelo primário — Brand 01 */
---yellow-soft: #fff292;   /* Amarelo suave    — Brand 02 */
---yellow-deep: #e6d000;   /* Amarelo escuro (hover/detalhe) */
---ink:         #000000;   /* Preto puro       — Brand 03 */
---dark:        #212121;   /* Cinza muito escuro — Brand 04 */
---paper:       #e2e2e2;   /* Cinza claro      — Brand 05 */
---white:       #ffffff;   /* Branco           — Brand 06 */
---surface:     #212121;   /* Fundo de seção escura */
---surface-2:   #2a2a2a;   /* Variação de fundo escuro */
---muted:       #888888;   /* Texto secundário */
-```
-
-### Regras de uso
-
-| Contexto | Fundo | Texto | Destaque |
-|---|---|---|---|
-| Hero | `--yellow` | `--ink` | `--ink` (botão) |
-| Seções escuras (Quem Somos, Cases, Blog, FAQ) | `--dark` / `--surface` | `--white` | `--yellow` |
-| Seções claras (Expertises) | `--yellow-soft` / `--paper` | `--ink` | `--yellow` |
-| CTA | `--yellow` | `--ink` | `--ink` (botão) |
-| Footer | `--yellow` | `--ink` | — |
-| Proof strip (barra de números) | `#0e0e0e` | `--yellow` (números) / `--white` (labels) | — |
-| Nav (sobre hero/CTA) | `transparent` | `--ink` | `--ink` (botão) |
-| Nav (scrollada) | `--dark` | `--white` | `--yellow` (botão) |
-
----
-
-## 2. Tipografia
-
-### Fontes
+Carregue os estilos nesta ordem:
 
 ```html
-<!-- No <head> — OBRIGATÓRIO em toda página -->
-<link rel="stylesheet" href="https://use.typekit.net/ucv5oiz.css">
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/pages/internal.css">
 ```
 
-```css
-/* @font-face no <style> — OBRIGATÓRIO em toda página */
-@font-face { font-family:"Editor"; src:url("assets/fonts/Editor-Regular.otf") format("opentype"); font-weight:400; font-style:normal; }
-@font-face { font-family:"Editor"; src:url("assets/fonts/Editor-Italic.otf") format("opentype"); font-weight:400; font-style:italic; }
-@font-face { font-family:"Editor"; src:url("assets/fonts/Editor-Bold.otf") format("opentype"); font-weight:700; font-style:normal; }
-@font-face { font-family:"Editor"; src:url("assets/fonts/Editor-BoldItalic.otf") format("opentype"); font-weight:700; font-style:italic; }
-```
+Na homepage, substitua `internal.css` por `home.css`. Em Serviços, carregue `services.css` depois de `internal.css`. Em Contato e Faça Parte, carregue `forms.css` depois de `internal.css`.
 
-### Famílias disponíveis
+| Arquivo | Responsabilidade |
+|---|---|
+| [`tokens.css`](../assets/css/tokens.css) | Fontes locais, cores, tipografia, medidas, raios, sombras, duração e easing |
+| [`site.css`](../assets/css/site.css) | Fundação global, acessibilidade, navegação, botões, reveal e footer |
+| [`pages/home.css`](../assets/css/pages/home.css) | Composição aprovada da homepage |
+| [`pages/internal.css`](../assets/css/pages/internal.css) | Hero, seções, cards e layouts reutilizados nas páginas internas |
+| [`pages/services.css`](../assets/css/pages/services.css) | Navegação, capítulos e agrupamentos do catálogo de Serviços |
+| [`pages/forms.css`](../assets/css/pages/forms.css) | Campos, consentimento, status e responsividade dos formulários |
 
-| font-family | Uso | Pesos disponíveis |
-|---|---|---|
-| `"degular", sans-serif` | Corpo de texto, UI geral | 400, 700 |
-| `"degular-display", sans-serif` | Títulos grandes (section-title, hero) | 400, 700 |
-| `"degular-text", sans-serif` | Texto corrido longo | 400, 700 |
-| `"Editor", Georgia, serif` | Itálicos editoriais em títulos | 400 italic, 700 italic |
+## Tipografia
 
-> ⚠️ Não usar `font-weight: 800` ou `font-weight: 600` — Typekit Degular só tem 400 e 700.
+As fontes são locais e declaradas em `tokens.css`:
 
-### Escala Tipográfica
+- `var(--font-sans)`: **Plus Jakarta Sans**, fonte principal de texto, navegação, interface e títulos.
+- `var(--font-editorial)`: **Editor**, usada para ênfase editorial, normalmente em `<em>`.
+- `var(--font-brand-credit)`: **VT323**, reservada à assinatura “2P Growth Lab” no rodapé.
 
-```css
-/* Título de seção */
-.section-title {
-  font-family: "degular-display", sans-serif;
-  font-weight: 700;
-  font-size: clamp(38px, 5.5vw, 82px);
-  line-height: 0.92;
-  letter-spacing: -0.025em;
-}
+Plus Jakarta Sans está disponível no intervalo de peso 400–700. Editor possui 400 e 700, normal e itálico. VT323 possui peso 400. Use os tokens de família, sem repetir listas de fallback em componentes.
 
-/* Itálico editorial dentro de títulos */
-.section-title em,
-.hero-title em {
-  font-family: "Editor", Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-}
+Use `--font-weight-regular` (400) e `--font-weight-bold` (700) nos componentes. A Editor não possui peso intermediário nativo; não sintetize 500 ou 600.
 
-/* Wordmark hero */
-.hero-wordmark {
-  width: clamp(340px, 76vw, 960px);
-}
-
-/* Eyebrow (tag acima do título) */
-.eyebrow {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-/* Lead / subtítulo */
-.lead {
-  font-size: clamp(16px, 1.5vw, 19px);
-  line-height: 1.65;
-}
-```
-
----
-
-## 3. Espaçamento e Layout
-
-```css
---max: 1240px;       /* largura máxima do container */
---radius: 10px;      /* border-radius padrão */
---radius-lg: 18px;   /* border-radius cards grandes */
-```
-
-```css
-/* Container padrão */
-.container {
-  width: min(var(--max), calc(100% - 40px));
-  margin-inline: auto;
-}
-
-/* Padding de seções */
-.section { padding-block: 112px; }  /* desktop */
-/* mobile (640px): padding-block: 86px */
-```
-
----
-
-## 4. Componentes
-
-### Botão
+Padrão de título editorial:
 
 ```html
-<!-- Primário (amarelo/preto) -->
-<a class="button" href="#link">Label</a>
-
-<!-- Secundário (outline) -->
-<a class="button secondary" href="#link">Label</a>
-
-<!-- Pill (arredondado — usado no hero) -->
-<a class="button" style="border-radius:100px; padding:14px 36px;">Label ↗</a>
-```
-
-```css
-/* Cores do botão mudam conforme o fundo da seção:
-   - Seção escura: background=--yellow, color=--ink
-   - Seção amarela (hero/CTA): background=--ink, color=--yellow
-   Isso é controlado por seletores específicos de seção. */
-```
-
-### Eyebrow
-
-```html
-<span class="eyebrow">Tag da seção</span>
-```
-
-### Section Title
-
-```html
-<h2 class="section-title" data-reveal="up">
-  Título da seção <em>com itálico editorial.</em>
+<h2 class="section-title">
+  Estratégia que se transforma em <em>presença.</em>
 </h2>
 ```
 
-### Card de Case / Projeto
+`internal.css` aplica Editor itálica aos `<em>` de `.page-hero__title` e `.section-title`.
+
+VT323 é um detalhe de marca da 2P e não deve ser aplicada a outros textos do site. No footer, mantenha “Desenvolvido por” na fonte principal e envolva somente “2P Growth Lab” em `.legal-credit__brand`.
+
+## Paleta
+
+| Token | Valor | Uso principal |
+|---|---:|---|
+| `--color-black` | `#000000` | Preto absoluto para sobreposições e máscaras visuais |
+| `--color-ink` | `#0a0a0a` | Fundo principal e texto sobre áreas claras |
+| `--color-ink-deep` a `--color-ink-hover` | `#0b0b0b` a `#1c1c1c` | Tons preservados de painéis e estados da homepage |
+| `--color-ink-soft` | `#181818` | Cards escuros |
+| `--color-surface` | `#212121` | Superfície escura secundária |
+| `--color-surface-raised` | `#2a2a2a` | Superfície elevada |
+| `--color-paper` | `#e2e2e2` | Seção clara institucional |
+| `--color-white` | `#ffffff` | Texto e superfícies claras |
+| `--color-muted` | `#a5a5a5` | Texto secundário |
+| `--color-yellow` | `#ffea00` | Cor primária da marca e foco |
+| `--color-yellow-soft` | `#fff292` | Variação clara da marca |
+| `--color-yellow-deep` | `#d9c700` | Contraste e detalhes |
+| `--color-danger` | `#c72f2f` | Erros de formulário |
+| `--color-danger-ink` | `#8c1818` | Texto de erro sobre superfície clara |
+| `--color-success` | `#147a4b` | Confirmação de formulário |
+| `--color-success-ink` | `#0b5834` | Texto de sucesso sobre superfície clara |
+
+Para linhas, use `--line-light` em superfícies escuras e `--line-dark` em superfícies claras. Cores opacas usam os tokens `--color-*`; transparências contextuais usam `rgb(var(--rgb-*) / alpha)`, preservando a mesma cor-base sem criar um token para cada opacidade. `transparent`, `currentColor` e preto em máscaras continuam valores funcionais legítimos.
+
+## Layout, espaçamento e movimento
+
+| Token | Valor ou função |
+|---|---|
+| `--container` | `77.5rem` |
+| `--gutter` | `clamp(1.25rem, 4vw, 3rem)` |
+| `--header-height` | `5rem`; `4.5rem` em telas pequenas |
+| `--section-space` | `clamp(5rem, 10vw, 9rem)` |
+| `--radius-sm` | `0.625rem` |
+| `--radius-md` | `1.125rem` |
+| `--radius-lg` | `1.125rem` |
+| `--radius-pill` | `62.4375rem` |
+| `--icon-size-sm` | `1rem` |
+| `--shadow-soft` | Sombra ampla para superfícies elevadas |
+| `--duration-fast` | `180ms` |
+| `--duration-base` | `320ms` |
+| `--ease-standard` | Curva padrão |
+| `--ease-out` | Entrada e deslocamento |
+
+O container compartilhado é:
 
 ```html
-<article class="project-card" data-reveal="up">
-  <img src="assets/images/projeto.jpg" alt="Nome do projeto" loading="lazy">
-  <div class="project-info">
-    <span class="project-tag">Categoria</span>
-    <h3 class="project-name">Nome do Projeto</h3>
-  </div>
-</article>
+<div class="container">...</div>
 ```
 
-### Unit Card (Expertise)
+Ele considera `--gutter` dos dois lados e limita o conteúdo a `--container`.
+
+## Temas de seção
+
+Páginas internas usam `.site-section` com um modificador de fundo:
+
+- `.site-section--paper`
+- `.site-section--white`
+- `.site-section--dark`
+- `.site-section--surface`
+- `.site-section--yellow`
+
+Use `.site-section--rounded-top` quando a seção precisa sobrepor visualmente a anterior com cantos superiores arredondados.
 
 ```html
-<div class="unit-card" data-reveal="up">
-  <div class="unit-num">01</div>
-  <div class="unit-body">
-    <img class="unit-icon" src="assets/icons/icon-clock.svg" alt="">
-    <h3 class="unit-name">Nome da Expertise</h3>
-    <p class="unit-desc">Descrição da expertise.</p>
-    <div class="unit-tags">
-      <span class="tag">Tag 1</span>
-      <span class="tag">Tag 2</span>
+<section class="site-section site-section--paper site-section--rounded-top"
+         aria-labelledby="secao-title">
+  <div class="container">...</div>
+</section>
+```
+
+## Motivos visuais da marca
+
+`internal.css` traduz três detalhes gráficos da homepage em primitivas reutilizáveis. Eles são decoração, não conteúdo, e por isso são desenhados em pseudo-elementos sem interação:
+
+- `.motif-lines`: linhas amarelas do universo de Quem Somos; use em fundos escuros para comunicar conexão, cultura ou processo;
+- `.motif-stripes`: faixas diagonais amarelas; use em superfícies claras associadas a expertises, serviços ou organização de um catálogo;
+- `.motif-blob`: forma orgânica do CTA da homepage; use em faixas amarelas de conversão ou fechamento.
+
+Modificadores disponíveis:
+
+- `.motif-lines--aside`: concentra as linhas na lateral do hero;
+- `.motif-lines--404`: recorte ampliado e mais sutil para a página de erro;
+- `.motif-stripes--band`: limita as faixas à parte inferior da seção.
+
+Exemplo:
+
+```html
+<section class="site-section site-section--dark motif-lines"
+         aria-labelledby="principios-title">
+  <div class="container">...</div>
+</section>
+```
+
+Use no máximo um motivo novo por página e associe-o à função semântica acima. Preserve áreas extensas sem decoração, não coloque padrões atrás de texto longo ou campos de formulário e não adicione movimento a esses elementos. A Política de Privacidade permanece intencionalmente neutra. Opacidade, máscara, recorte responsivo, isolamento e ordem de camadas já são definidos pelo componente compartilhado.
+
+## Header e navegação
+
+O componente canônico está em [`quem-somos/index.html`](../quem-somos/index.html). Sua estrutura trabalha em conjunto com `site.css` e `site.js`.
+
+- `.nav`: header fixo sobre fundo escuro.
+- `.nav.nav--light`: estado inicial sobre fundo claro ou amarelo.
+- `.nav.scrolled`: estado aplicado por JavaScript após o scroll.
+- `.nav-links` e `.mobile-nav`: recebem `aria-current="page"` automaticamente.
+- `.mobile-menu`: painel controlado por `.open`, `aria-hidden` e `inert`.
+- `.brand-logo--dark`: versão escura do logo em fundos claros.
+
+Não altere IDs ou atributos ARIA do menu em uma página isolada.
+
+A troca entre `.nav--light` e `.scrolled` é deliberadamente imediata para fundo, texto, logo e botão do menu. Não anime essas propriedades entre os dois temas: durante a interpolação, o contraste pode cair abaixo de AA sobre seções brancas ou amarelas. Sombra e borda podem continuar animadas.
+
+## Botões
+
+```html
+<a class="button" href="/contato/">Conversar ↗</a>
+<a class="button button--secondary" href="/cases/">Ver cases</a>
+<a class="button button--dark" href="/contato/">Enviar briefing</a>
+```
+
+- `.button`: fundo amarelo, texto escuro.
+- `.button--secondary` ou `.button.secondary`: contorno usando a cor corrente.
+- `.button--dark`: fundo escuro, indicado para superfícies amarelas ou claras.
+
+Os estados de hover, foco e transição já são compartilhados. Não replique essas regras em CSS de página.
+
+## Hero e cabeçalho de seção
+
+O hero atual das páginas internas usa:
+
+```html
+<section class="page-hero page-hero--yellow" aria-labelledby="page-title">
+  <div class="container page-hero__layout">
+    <div>
+      <p class="page-hero__kicker" data-reveal>Rótulo</p>
+      <h1 class="page-hero__title" id="page-title" data-reveal data-delay="1">
+        Título com <em>ênfase.</em>
+      </h1>
+    </div>
+    <div class="page-hero__aside" data-reveal data-delay="2">
+      <p class="page-hero__lead">Resumo da página.</p>
     </div>
   </div>
-  <a class="unit-cta" href="#cases">Ver casos →</a>
-</div>
-```
-
-### Brand X Decoration
-
-```html
-<!-- Elemento decorativo de fundo (X da marca) — seções CTA e Footer -->
-<img class="brand-x-deco" src="assets/x-mark.svg" aria-hidden="true" alt="">
-
-<!-- Customizações inline se necessário: -->
-<img class="brand-x-deco" src="assets/x-mark.svg" aria-hidden="true" alt=""
-     style="right:-40px; bottom:40px; opacity:0.07;">
-```
-
-```css
-/* Posição padrão (canto inferior direito) */
-.brand-x-deco {
-  position: absolute;
-  width: 560px;
-  right: 4%;
-  bottom: 60px;
-  opacity: 0.14;
-}
-```
-
----
-
-## 5. Sistema de Reveal (animação de entrada ao scroll)
-
-Qualquer elemento pode ter animação de entrada adicionando `data-reveal`:
-
-```html
-data-reveal="up"    ← sobe de baixo (padrão — usar na maioria dos casos)
-data-reveal="left"  ← entra da esquerda
-data-reveal="right" ← entra da direita
-data-reveal="fade"  ← só opacidade, sem movimento
-```
-
-O JS de reveal já está no `index.html` e usa `IntersectionObserver`. Não precisa escrever JS extra.
-
-```html
-<!-- Exemplo de seção completa com reveal -->
-<h2 class="section-title" data-reveal="up">Título</h2>
-<p class="lead" data-reveal="up">Subtítulo.</p>
-<div class="card-grid" data-reveal="fade">
-  ...
-</div>
-```
-
----
-
-## 6. Logos e SVG
-
-### Logotipo principal
-
-```html
-<!-- Branco (nav sobre fundo escuro) -->
-<img src="assets/logo.svg" alt="Expertise" class="brand-logo">
-<!-- CSS: filter: brightness(0) invert(1) -->
-
-<!-- Preto (nav sobre fundo claro/amarelo, footer) -->
-<img src="assets/logo.svg" alt="Expertise" class="brand-logo brand-logo--dark">
-<!-- CSS: filter: brightness(0) -->
-```
-
-```css
-.brand-logo            { filter: brightness(0) invert(1); } /* branco */
-.brand-logo--dark      { filter: brightness(0); }           /* preto */
-.nav.nav--light .brand-logo { filter: brightness(0); }      /* auto: sobre amarelo */
-.footer .brand-logo    { filter: brightness(0); }           /* footer amarelo */
-```
-
-### Ícones da marca
-
-```html
-<!-- Ícone branco sobre fundo escuro -->
-<img src="assets/icons/icon-clock.svg" alt="" style="filter:brightness(0) invert(1);">
-
-<!-- Ícone amarelo -->
-<img src="assets/icons/icon-clock.svg" alt=""
-     style="filter:brightness(0) saturate(100%) invert(95%) sepia(100%) saturate(400%) hue-rotate(2deg);">
-
-<!-- Ícone preto (padrão — nenhum filtro necessário) -->
-<img src="assets/icons/icon-clock.svg" alt="">
-```
-
----
-
-## 7. Padrões de Seção
-
-### Seção escura (padrão)
-
-```html
-<section class="section" id="nome-secao">
-  <div class="container">
-    <span class="eyebrow" data-reveal="up">Tag da seção</span>
-    <h2 class="section-title" data-reveal="up">
-      Título <em>em itálico.</em>
-    </h2>
-    <p class="lead" data-reveal="up">Subtítulo descritivo.</p>
-    <!-- Conteúdo -->
-  </div>
 </section>
 ```
 
-### Seção amarela/clara
+Remova `.page-hero--yellow` para a versão escura. Cabeçalhos de seções de conteúdo combinam `.section-heading`, `.section-kicker`, `.section-title` e `.section-lead`.
+
+## Componentes internos disponíveis
+
+`internal.css` oferece composições reutilizáveis:
+
+- `.story-grid` e `.story-mark`: narrativa institucional;
+- `.principles-grid` e `.principle-card`: princípios ou pilares;
+- `.stats-grid` e `.stat-item`: indicadores, somente quando o conteúdo estiver aprovado;
+- `.client-grid` e `.client-tile`: marcas;
+- `.expertise-list` e `.expertise-panel`: unidades e serviços;
+- `.tag-list` e `.tag`: etiquetas;
+- `.integration-grid` e `.integration-orbit`: operação integrada;
+- `.case-listing` e `.listing-card`: cases;
+- `.article-listing` e `.article-card`: artigos;
+- `.contact-cards` e `.contact-card`: canais de contato;
+- `.content-stack`: pilha simples de conteúdo;
+- `.cta-band` e `.cta-band__layout`: CTA de fechamento;
+- `.legal-layout`, `.legal-toc` e `.legal-content`: conteúdo legal;
+- `.not-found`: página 404;
+- `.button-row`: grupo responsivo de ações.
+
+Reutilize esses componentes antes de criar uma variação. Se a nova regra for útil a várias páginas internas, ela pertence a `internal.css`; se for exclusiva, crie um stylesheet específico em `assets/css/pages/`.
+
+### Catálogo de Serviços
+
+`services.css` complementa a base interna exclusivamente em `/servicos/`:
+
+- `.service-jump` e `.service-jump__item`: atalhos para as quatro frentes;
+- `.service-chapter`: capítulo temático de cada frente;
+- `.service-groups` e `.service-group`: agrupamentos de entregas;
+- `.service-groups--two`: variante para capítulos com dois grupos;
+- `.service-cases__action`: espaçamento da ação após a grade compartilhada de cases.
+
+Os blocos de competências e provas reais reutilizam, respectivamente, `.principles-grid` e `.case-listing` de `internal.css`. Essas classes não substituem `.expertise-panel`: Expertises apresenta as unidades de negócio; Serviços cataloga entregas concretas e mostra aplicações em projetos publicados.
+
+## Reveal e redução de movimento
+
+Elementos com `data-reveal` começam ocultos e recebem `.visible` por `site.js`.
 
 ```html
-<section class="section nome-secao-light" id="nome-secao">
-  <!-- Adicionar CSS: background: var(--yellow-soft) ou var(--yellow) -->
-  <img class="brand-x-deco" src="assets/x-mark.svg" aria-hidden="true" alt="">
-  <div class="container">
-    <!-- Conteúdo — textos usam var(--ink) -->
-  </div>
-</section>
+<article data-reveal>...</article>
+<article data-reveal="left" data-delay="1">...</article>
+<article data-reveal="scale" data-delay="2">...</article>
 ```
 
----
+Valores implementados: padrão vertical, `left` e `scale`; atrasos disponíveis: `1`, `2` e `3`. O CSS e o JavaScript respeitam `prefers-reduced-motion`. Conteúdo essencial nunca deve depender da animação para ficar acessível.
 
-## 8. Hero Canvas (Partículas Interativas)
+## Formulários
 
-O hero usa um `<canvas>` com rede de partículas. Parâmetros no JS:
+`forms.css` define:
 
-```javascript
-const TOTAL     = 95;    // quantidade de nós
-const LINK_DIST = 230;   // distância máxima para conectar (px)
-const SPEED     = 0.55;  // velocidade base (px/frame)
-const DRIFT     = 0.008; // taxa de mudança de direção
-const MOUSE_R   = 240;   // raio de influência do mouse
-```
+- `.form-layout` e `.form-intro`;
+- `.preview-form`;
+- `.form-field` e `.form-field--full`;
+- `.field-hint` e `.field-error`;
+- `.form-consent` e `.form-actions`;
+- `.form-preview-note`;
+- `.form-status`, `.form-status--success` e `.form-status--error`.
 
-Para ajustar o visual:
-- **Mais denso**: aumentar `TOTAL` (100–120) e `LINK_DIST` (250+)
-- **Mais lento**: diminuir `SPEED` (0.3–0.4)
-- **Mais agitado com mouse**: aumentar o multiplicador `* 14` na linha `activeDrift`
-- **Cor das partículas**: mudar `rgba(0,0,0,...)` — para fundo escuro usar `rgba(255,255,255,...)`
+Cada campo obrigatório precisa de `label`, `required`, `aria-describedby` e um elemento `.field-error` com `aria-live="polite"`. O status geral usa `role="status"` e `data-form-status`.
 
----
+## Imagens, logos e ícones
 
-## 9. Animações CSS
+- Use `/assets/logo.svg` para a assinatura principal.
+- Use `/assets/x-mark.svg` para o símbolo da marca e elementos decorativos.
+- Os SVGs de decoração compartilhados ficam em `/assets/images/decor/`; não duplique o arquivo para variar apenas posição ou opacidade.
+- Imagens de conteúdo precisam de `alt` significativo e `loading="lazy"`, exceto quando forem candidatas claras a LCP.
+- Elementos puramente decorativos usam `alt=""` e `aria-hidden="true"`.
+- Preserve proporção com `object-fit: cover` quando o componente definir uma área de mídia.
 
-```css
-/* Ease padrão da marca */
---ease:     cubic-bezier(0.4, 0, 0.2, 1);
---ease-out: cubic-bezier(0, 0, 0.2, 1);
+## Responsividade e acessibilidade
 
-/* Animação de entrada (hero) */
-@keyframes hero-up {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+O sistema começa em desktop e reduz grids nos breakpoints definidos em cada stylesheet. Toda mudança deve ser conferida, no mínimo, em 1920 px e 390 px.
 
-/* Uso: animation: hero-up 0.8s ease Xs both; (X = delay) */
-/* Delays cascateados: 0.1s, 0.22s, 0.38s, 0.52s... */
-```
+Requisitos compartilhados:
 
-```css
-/* Transições padrão */
-transition: all 0.3s var(--ease);      /* hover geral */
-transition: background 0.3s ease;     /* hover de cor */
-transition: opacity 0.3s ease;        /* hover de opacidade */
-```
+- foco visível;
+- skip link funcional;
+- headings em ordem lógica;
+- um único `h1`;
+- contraste adequado ao tema da seção;
+- controles com nome acessível;
+- navegação mobile operável por teclado e Escape;
+- ausência de overflow horizontal;
+- suporte a redução de movimento.
+
+Não use estilos inline para contornar o sistema; ajuste a camada correta e preserve os tokens existentes.

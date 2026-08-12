@@ -1,0 +1,107 @@
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Editor";
+  src: url("/assets/fonts/Editor-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Editor";
+  src: url("/assets/fonts/Editor-Italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Editor";
+  src: url("/assets/fonts/Editor-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Editor";
+  src: url("/assets/fonts/Editor-BoldItalic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "VT323";
+  src: url("/assets/fonts/VT323-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  /* Canais RGB permitem variar opacidade sem repetir cores-base nos componentes. */
+  --rgb-black: 0 0 0;
+  --rgb-ink: 10 10 10;
+  --rgb-white: 255 255 255;
+  --rgb-yellow: 255 234 0;
+  --rgb-yellow-home: 255 230 0;
+  --rgb-yellow-warm: 255 220 0;
+  --rgb-yellow-rich: 255 210 0;
+  --rgb-success: 20 122 75;
+  --rgb-danger: 199 47 47;
+
+  --color-black: #000000;
+  --color-ink: #0a0a0a;
+  --color-ink-deep: #0b0b0b;
+  --color-ink-elevated: #0e0e0e;
+  --color-ink-highlight: #141414;
+  --color-ink-hover-soft: #1a1a1a;
+  --color-ink-hover: #1c1c1c;
+  --color-ink-soft: #181818;
+  --color-surface: #212121;
+  --color-surface-raised: #2a2a2a;
+  --color-paper: #e2e2e2;
+  --color-white: #ffffff;
+  --color-muted: #a5a5a5;
+  --color-yellow: #ffea00;
+  --color-yellow-soft: #fff292;
+  --color-yellow-deep: #d9c700;
+  --color-danger: #c72f2f;
+  --color-danger-ink: #8c1818;
+  --color-success: #147a4b;
+  --color-success-ink: #0b5834;
+  --line-light: rgb(var(--rgb-white) / 0.14);
+  --line-dark: rgb(var(--rgb-black) / 0.12);
+
+  --font-sans: "Plus Jakarta Sans", Arial, sans-serif;
+  --font-editorial: "Editor", Georgia, serif;
+  --font-brand-credit: "VT323", monospace;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  --container: 77.5rem;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --header-height: 5rem;
+  --section-space: clamp(5rem, 10vw, 9rem);
+
+  --radius-sm: 0.625rem;
+  --radius-md: 1.125rem;
+  --radius-lg: var(--radius-md);
+  --radius-pill: 62.4375rem;
+  --icon-size-sm: 1rem;
+
+  --shadow-soft: 0 1.5rem 5rem rgb(var(--rgb-black) / 0.16);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --duration-fast: 180ms;
+  --duration-base: 320ms;
+
+}

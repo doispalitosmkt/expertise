@@ -1,212 +1,213 @@
-# Guia para o Codex — Expertise
+# Guia de Manutenção e Expansão — Expertise
 
-> Como usar o Codex (ou qualquer AI de código) para criar novas páginas e editar seções
-> mantendo o padrão visual da Expertise.
+Este guia orienta alterações e criação de páginas sem quebrar o sistema compartilhado. Leia também [`ESTRUTURA.md`](ESTRUTURA.md) e [`DESIGN-SYSTEM.md`](DESIGN-SYSTEM.md) antes de editar.
 
----
+## Princípios do projeto
 
-## Regras Absolutas (nunca violar)
+1. O site é HTML, CSS e JavaScript nativos, servido diretamente como arquivos estáticos.
+2. Não há build. Uma alteração só deve depender de arquivos versionados no repositório.
+3. Reutilize tokens, componentes, header, menu e footer existentes.
+4. Separe estilos e comportamentos compartilhados dos específicos de uma página.
+5. Não publique fatos herdados sem validação.
+6. Preserve acessibilidade, SEO, responsividade e redução de movimento.
+7. Não faça hotlink de mídia do site anterior.
 
-1. **Nunca usar `font-weight: 800` ou `600`** — Typekit Degular só tem 400 e 700
-2. **Nunca usar cores fora da paleta** — sempre via `var(--yellow)`, `var(--ink)`, etc.
-3. **Nunca usar font-family "Degular" (maiúsculo)** — usar `"degular"` (minúsculo)
-4. **Nunca criar font-face local para Degular** — vem do Typekit `ucv5oiz`
-5. **Nunca usar `font-weight: 800` em itálicos** — usar `font-family: "Editor"` + `font-style: italic`
-6. **Prototype é single-file** — todo CSS e JS fica dentro do `index.html`
-7. **Nunca usar React/Vue/etc** — HTML/CSS/JS vanilla puro
+## Antes de alterar
 
----
+- Confirme a rota e o arquivo em [`ESTRUTURA.md`](ESTRUTURA.md).
+- Leia o HTML inteiro da página afetada.
+- Confira quais folhas de estilo e scripts ela carrega.
+- Consulte [`docs/content-source/`](content-source/README.md) quando a tarefa envolver conteúdo legado.
+- Consulte [`redirect-map.csv`](redirect-map.csv) quando criar, remover ou renomear uma rota ou âncora.
+- Verifique o estado do Git e preserve alterações não relacionadas.
 
-## Prompt Base para Criar uma Nova Página
+## Referência canônica
 
-Use este prompt como ponto de partida ao pedir ao Codex para criar uma nova página:
+Para páginas internas, use [`quem-somos/index.html`](../quem-somos/index.html) como referência do:
 
-```
-Crie uma página HTML single-file para a Expertise Agência de Live Marketing.
+- `<head>` e sua ordem de recursos;
+- skip link;
+- header e navegação desktop;
+- menu mobile;
+- footer;
+- atributos de acessibilidade e dados estruturados.
 
-REGRAS DE DESIGN OBRIGATÓRIAS:
-- Fonte Degular via Typekit: <link rel="stylesheet" href="https://use.typekit.net/ucv5oiz.css">
-  font-family: "degular" (texto), "degular-display" (títulos grandes)
-  Apenas font-weight: 400 e 700. NUNCA 800 ou 600.
-- Fonte Editor para itálicos editoriais: @font-face local de assets/fonts/Editor-*.otf
-  Usar em: .section-title em { font-family:"Editor"; font-style:italic; }
-- Paleta: --yellow:#ffea00 | --ink:#000000 | --dark:#212121 | --paper:#e2e2e2 | --white:#ffffff | --yellow-soft:#fff292
-- Container: width: min(1240px, calc(100% - 40px)); margin-inline: auto
-- Seções escuras: background var(--dark), texto var(--white), destaque var(--yellow)
-- Seções amarelas: background var(--yellow), texto var(--ink)
-- Logo: <img src="assets/logo.svg"> com filter:brightness(0) invert(1) no escuro / filter:brightness(0) no claro
-- X decorativo de fundo: <img class="brand-x-deco" src="assets/x-mark.svg" aria-hidden="true" alt="">
-- Animações de entrada: data-reveal="up|left|right|fade" com IntersectionObserver
-- Itálico de títulos: <em> dentro de .section-title → font-family:"Editor", font-style:italic
+Copie o shell atual e substitua apenas o conteúdo específico da página e os metadados necessários. Não use uma página antiga ou a homepage como base do header/footer.
 
-ESTRUTURA DO <HEAD>:
-<link rel="stylesheet" href="https://use.typekit.net/ucv5oiz.css">
-+ @font-face para Editor Regular/Italic/Bold/BoldItalic
+## Checklist para uma nova página
 
-Consulte docs/DESIGN-SYSTEM.md para tokens e componentes completos.
+### 1. Criar a rota
+
+Para a rota `/nova-pagina/`, crie:
+
+```text
+nova-pagina/index.html
 ```
 
----
+Use caminhos de assets absolutos a partir da raiz, como `/assets/css/tokens.css`.
 
-## Prompt para Adicionar uma Nova Seção
+### 2. Ajustar o head
 
+- [ ] `lang="pt-BR"`, charset e viewport presentes.
+- [ ] `<title>` exclusivo e descritivo.
+- [ ] Meta description exclusiva.
+- [ ] Canonical absoluto com a rota final.
+- [ ] Open Graph com título, descrição, URL e imagem coerentes.
+- [ ] Favicon e preload da fonte preservados.
+- [ ] JSON-LD mantido ou adaptado somente quando os dados forem verdadeiros.
+- [ ] CSS carregado na ordem `tokens.css`, `site.css`, stylesheet da página.
+- [ ] Scripts carregados com `defer`.
+
+### 3. Preservar o shell compartilhado
+
+- [ ] Header, menu mobile e footer copiados de `quem-somos/index.html`.
+- [ ] Skip link aponta para `#conteudo`.
+- [ ] `<body data-page="nova-pagina">`.
+- [ ] `<main id="conteudo">`.
+- [ ] IDs `nav`, `menu-btn`, `mobile-menu` e `menu-close` intactos.
+- [ ] Navegações mantêm `data-site-nav`.
+
+### 4. Montar o conteúdo
+
+- [ ] Um único `h1`, associado ao hero por `aria-labelledby`.
+- [ ] Seções com heading identificável.
+- [ ] Componentes de `internal.css` reutilizados antes de criar CSS novo.
+- [ ] Quando houver motivo visual, usar no máximo uma família entre `.motif-lines`, `.motif-stripes` e `.motif-blob`, conforme o papel documentado no Design System.
+- [ ] CTA final aponta para uma rota existente.
+- [ ] IDs de âncora são únicos, estáveis e compatíveis com `redirect-map.csv`.
+- [ ] Links externos usam `rel="noopener noreferrer"` quando abrem nova aba.
+- [ ] Imagens têm dimensões/composição adequadas, `alt` correto e carregamento apropriado.
+
+### 5. Escolher CSS e JavaScript
+
+| Tipo de página | CSS | JavaScript |
+|---|---|---|
+| Homepage | `tokens.css`, `site.css`, `pages/home.css` | `site.js`, `home.js` |
+| Interna comum | `tokens.css`, `site.css`, `pages/internal.css` | `site.js` |
+| Catálogo de Serviços | anteriores + `pages/services.css` | `site.js` |
+| Interna com formulário | anteriores + `pages/forms.css` | `site.js`, `forms.js` |
+| 404 | `tokens.css`, `site.css`, `pages/internal.css` | `site.js` |
+
+Não carregue `home.js` nem `forms.js` em páginas que não usam seus contratos. Não copie JavaScript para dentro do HTML.
+
+### 6. Atualizar a arquitetura pública
+
+- [ ] Adicionar a rota a [`sitemap.xml`](../sitemap.xml) quando ela for pública e indexável.
+- [ ] Atualizar navegação e footer em todas as páginas somente se a rota entrar nesses componentes.
+- [ ] Registrar redirecionamentos necessários em [`redirect-map.csv`](redirect-map.csv).
+- [ ] Confirmar que links locais e fragmentos possuem destino.
+
+### 7. Validar
+
+- [ ] Abrir a rota diretamente em `http://127.0.0.1:5500/`.
+- [ ] Testar desktop em 1920 px e mobile em 390 px.
+- [ ] Confirmar ausência de overflow horizontal.
+- [ ] Verificar console e falhas de rede.
+- [ ] Navegar por teclado, testar foco, Escape e menu mobile.
+- [ ] Verificar `aria-current="page"`.
+- [ ] Testar fragmentos após o header fixo.
+- [ ] Conferir o comportamento com redução de movimento.
+- [ ] Validar HTML e links locais.
+- [ ] Revisar título, description, canonical, Open Graph e hierarquia de headings.
+
+### Exceções de unidade e cor
+
+- Prefira `rem`, `em`, `%`, `vw` e `clamp()` para apresentação. Hairlines e grids decorativos também usam `0.0625rem`.
+- Preserve `px` quando ele fizer parte de um contrato técnico: recorte `.sr-only`, `IntersectionObserver`, coordenadas ou deslocamentos calculados pelo DOM e dimensões intrínsecas de imagens no HTML.
+- Cores opacas devem vir de `--color-*`. Para transparência contextual, use `rgb(var(--rgb-*) / alpha)`.
+- `theme-color` no HTML permanece hexadecimal porque custom properties CSS não funcionam em atributos `content`.
+
+## Onde colocar uma mudança
+
+- Novo token global ou fonte: [`tokens.css`](../assets/css/tokens.css).
+- Reset, botão, navegação, footer ou utilitário compartilhado: [`site.css`](../assets/css/site.css).
+- Elemento exclusivo da homepage: [`pages/home.css`](../assets/css/pages/home.css) ou [`home.js`](../assets/js/home.js).
+- Componente reutilizado por páginas internas: [`pages/internal.css`](../assets/css/pages/internal.css).
+- Catálogo e capítulos exclusivos de Serviços: [`pages/services.css`](../assets/css/pages/services.css).
+- Apresentação de formulário: [`pages/forms.css`](../assets/css/pages/forms.css).
+- Comportamento global: [`site.js`](../assets/js/site.js).
+- Validação de formulário preview: [`forms.js`](../assets/js/forms.js).
+
+Evite promover uma regra para a camada global sem uso compartilhado real. Evite também duplicar uma regra global apenas para mudar uma página.
+
+Os motivos gráficos da homepage que já foram transformados em componentes pertencem a `internal.css`. Ajuste recorte e intensidade por modificador ou custom property local; não copie a implementação específica de `home.css` para uma página interna.
+
+## Contratos do JavaScript
+
+### `site.js`
+
+Espera a estrutura canônica do menu, links em `[data-site-nav]`, elementos opcionais em `[data-reveal]`, players em `[data-video-id]` e ano em `[data-current-year]`. Todos os seletores opcionais são tolerantes à ausência, mas IDs do menu devem permanecer consistentes.
+
+### `home.js`
+
+Usa `#progress`, `.projects-gallery` e `[data-case-parallax]`. O parallax é desativado em viewports menores e quando a pessoa solicita menos movimento.
+
+### `forms.js`
+
+Atua apenas em `form[data-preview-form]`. Cada campo deve apontar via `aria-describedby` para sua mensagem `.field-error`; o status geral deve usar `[data-form-status]`.
+
+## Formulários: estado de preview
+
+Contato e Faça Parte não enviam nem armazenam dados. O submit atual:
+
+1. impede a submissão nativa;
+2. valida campos no navegador;
+3. marca `aria-invalid`;
+4. move o foco para o primeiro erro ou para a mensagem de sucesso;
+5. informa explicitamente que nada foi enviado.
+
+Até a integração ser aprovada:
+
+- mantenha `data-preview-form`, `novalidate` e o aviso visível;
+- não adicione `action` que aponte para serviço provisório;
+- não simule envio real;
+- não registre conteúdo do formulário no console ou storage.
+
+Antes da produção, devem ser definidos backend, destinatários, proteção contra abuso, segurança de upload, limite e varredura de arquivos, retenção, exclusão, observabilidade, estados de erro e aderência à política de privacidade.
+
+## Uso do conteúdo arquivado
+
+O inventário em [`content-source/`](content-source/README.md) preserva material público do site anterior. Trate cada item como uma pista editorial.
+
+Pode ser usado diretamente quando o documento o classifica como confirmado e a informação continua atual. Exige validação do cliente quando envolver:
+
+- métricas e resultados;
+- prêmios, associações ou certificações;
+- nomes, cargos e fotos de pessoas;
+- produtos e plataformas;
+- endereço, telefone e destinatários;
+- direitos de uso de imagens ou marcas;
+- política de privacidade, cookies e base legal.
+
+Não faça o novo site depender de URLs, scripts, fontes ou imagens do WordPress anterior.
+
+## Preview e verificação
+
+O endereço de trabalho é:
+
+```text
+http://127.0.0.1:5500/
 ```
-Adicione uma seção de [NOME] ao index.html da Expertise seguindo o padrão:
-- Fundo: [escuro (var(--dark)) | amarelo (var(--yellow)) | claro (var(--yellow-soft))]
-- ID da section: [id="nome-secao"]
-- Inclui: eyebrow, section-title com <em> itálico, lead, [descrição do conteúdo]
-- Todos os elementos com data-reveal="up"
-- Se fundo amarelo: adicionar <img class="brand-x-deco" src="assets/x-mark.svg" aria-hidden="true" alt="">
-- Botões: classe .button (primário) ou .button.secondary (outline)
 
-Consulte docs/DESIGN-SYSTEM.md seção "7. Padrões de Seção".
+Inicie um servidor estático na raiz do repositório. O Live Server pode atender essa porta; outra opção é:
+
+```bash
+python3 -m http.server 5500 --bind 127.0.0.1
 ```
 
----
+Faça a inspeção sempre pela URL HTTP. Caminhos absolutos `/assets/...` não funcionam corretamente quando o HTML é aberto diretamente pelo sistema de arquivos.
 
-## Prompt para Adicionar uma Animação
+## Critérios de conclusão
 
-```
-Adicione animação de [DESCRIÇÃO] na seção [NOME] do index.html.
+Uma página só está pronta quando:
 
-REGRAS:
-- Usar CSS @keyframes + transition (sem bibliotecas externas)
-- Usar var(--ease) = cubic-bezier(0.4,0,0.2,1) para eases
-- Trigger via IntersectionObserver (já existe no script, adicionar data-reveal="up")
-  ou via JS na seção do script (entre os comentários de seção existentes)
-- Animações de hover: transition máx 0.3s
-- Animações de entrada: duration 0.7–0.9s com delay cascateado (0.1s, 0.2s, 0.3s...)
-- Não usar requestAnimationFrame a menos que seja animação contínua (ex: canvas)
-- Performance: usar transform e opacity — NUNCA animar width, height, top, left diretamente
-
-Consulte docs/DESIGN-SYSTEM.md seção "9. Animações CSS".
-```
-
----
-
-## Prompt para Editar uma Seção Existente
-
-```
-Edite a seção [ID_DA_SECTION] no index.html da Expertise.
-
-Alterações:
-- [Descreva exatamente o que quer mudar]
-
-MANTER sem alterar:
-- Paleta de cores (vars CSS)
-- Font-families e weights
-- Estrutura de .container
-- Sistema de data-reveal
-- Logo filter behavior
-```
-
----
-
-## Seções da Homepage e seus IDs
-
-| Seção | ID / Classe | Fundo | Localização no HTML |
-|---|---|---|---|
-| Hero | `.hero` | `--yellow` + canvas partículas | ~linha 1730 |
-| Brand Band (marquee) | `.brand-band` | `--dark` | ~linha 1775 |
-| Quem Somos | `#quem-somos` | `--dark` | ~linha 1800 |
-| Expertises | `#expertises` | `--yellow-soft` | ~linha 1870 |
-| Clientes | `#clients` | `--dark` | ~linha 1960 |
-| Cases | `#cases` | `--dark` | ~linha 1990 |
-| Blog | `#blog` | `--dark` | ~linha 2060 |
-| FAQ | `#faq` | `--dark` | ~linha 2130 |
-| CTA / Contato | `#contato` | `--yellow` | ~linha 2190 |
-| Footer | `.footer` | `--yellow` | ~linha 2210 |
-
----
-
-## JS já disponível no index.html (não reescrever)
-
-```javascript
-// Reveal on scroll — ativa classe .visible nos [data-reveal]
-IntersectionObserver → data-reveal="up|left|right|fade"
-
-// Counter animation — anima números ao entrar na tela
-[data-count="26"] [data-suffix="+"]  →  conta de 0 até 26+
-
-// FAQ smooth toggle — details/summary com animação
-document.querySelectorAll('details')
-
-// Nav link active state
-sections → navLinks highlight automático ao scroll
-
-// Nav light mode
-nav.classList.toggle('nav--light', !pastHero)
-// Quando sobre o hero/seções amarelas → logo preto, fundo transparente
-
-// Hero particle canvas
-#hero-canvas → rede de partículas com mouse interaction
-```
-
----
-
-## Checklist ao Criar/Editar
-
-- [ ] `<link>` do Typekit no `<head>`
-- [ ] `@font-face` para Editor no `<style>`
-- [ ] Todos os `font-weight` são 400 ou 700
-- [ ] Cores via `var(--nome)`, não hex direta
-- [ ] Títulos com `class="section-title"` e `data-reveal="up"`
-- [ ] Itálicos em `<em>` dentro do `.section-title` (virará Editor italic automaticamente)
-- [ ] Botões com classe `.button` ou `.button.secondary`
-- [ ] Imagens com `loading="lazy"` (exceto hero)
-- [ ] Ícones SVG com `aria-hidden="true"` e `alt=""`
-- [ ] Logo com filtro CSS correto para o fundo da seção
-- [ ] Seções com `class="section"` + `id` único
-- [ ] Elementos interativos com `transition` adequada
-
----
-
-## Convenções de Nomenclatura
-
-```css
-/* Seções */
-.section.nome-secao { }
-
-/* Elementos internos da seção */
-.nome-secao-title { }
-.nome-secao-grid  { }
-.nome-secao-card  { }
-.nome-secao-cta   { }
-
-/* Modificadores */
-.button.secondary     /* variante outline do botão */
-.brand-logo--dark     /* logo escuro */
-.nav--light           /* nav em modo claro */
-```
-
----
-
-## Como Adicionar uma Nova Página (além de index.html)
-
-Para novas páginas (ex: `cases.html`, `sobre.html`):
-
-1. Copiar o `<head>` completo do `index.html` (fonts, Typekit, tokens CSS, reset)
-2. Copiar o bloco `<nav>` completo
-3. Copiar o bloco `<footer>` completo
-4. Copiar o bloco `<script>` completo (nav, reveal, counters)
-5. Ajustar caminhos de assets: `../assets/` se a página estiver em subpasta
-
-```html
-<!-- Estrutura mínima de nova página -->
-<!doctype html>
-<html lang="pt-BR">
-<head>
-  <!-- [COLAR HEAD DO INDEX.HTML] -->
-</head>
-<body>
-  <!-- [COLAR NAV DO INDEX.HTML] -->
-  <main>
-    <!-- Seções da nova página -->
-  </main>
-  <!-- [COLAR FOOTER DO INDEX.HTML] -->
-  <script>
-    <!-- [COLAR SCRIPT DO INDEX.HTML] -->
-  </script>
-</body>
-</html>
-```
+- conteúdo e fatos foram revisados;
+- aparência está coerente com o sistema atual;
+- shell canônico foi preservado;
+- desktop e mobile foram verificados;
+- HTML, links, assets e fragmentos estão válidos;
+- não há erros de console;
+- navegação por teclado funciona;
+- SEO básico está completo;
+- sitemap e planejamento de redirecionamentos estão coerentes;
+- nenhuma integração de preview foi apresentada como funcional.
