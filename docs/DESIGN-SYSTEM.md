@@ -140,6 +140,17 @@ Exemplo:
 </section>
 ```
 
+## Cards editoriais
+
+A home e o arquivo do Blog compartilham o conjunto `.editorial-*` de `site.css`. O padrão combina:
+
+- `.editorial-heading`, `.editorial-kicker`, `.editorial-title` e `.editorial-intro` no cabeçalho;
+- `.editorial-grid` em três, duas e uma coluna conforme o viewport;
+- `.editorial-card` com foto temática em proporção consistente, badge sobre a mídia e conteúdo ancorado na base;
+- `.editorial-card__link` somente quando existe um destino real.
+
+Cards sem página de detalhe permanecem informativos: não adicione cursor, hover ou CTA que sugira uma leitura inexistente. Datas e tempos de leitura devem vir de conteúdo validado, nunca de estimativa visual.
+
 Use no máximo um motivo novo por página e associe-o à função semântica acima. Preserve áreas extensas sem decoração, não coloque padrões atrás de texto longo ou campos de formulário e não adicione movimento a esses elementos. A Política de Privacidade permanece intencionalmente neutra. Opacidade, máscara, recorte responsivo, isolamento e ordem de camadas já são definidos pelo componente compartilhado.
 
 ## Header e navegação

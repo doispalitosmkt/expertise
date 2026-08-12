@@ -1076,10 +1076,13 @@
 
     /* ── Projects ────────────────────────────── */
     .projects {
+      position: relative;
+      z-index: 2;
       padding: 5.75rem 0 8.875rem;
       background: var(--color-ink-elevated);
-      border-radius: 1.75rem 1.75rem 0 0;
+      border-radius: 1.75rem;
       overflow: hidden;
+      box-shadow: 0 0.125rem 0 var(--color-yellow);
     }
 
     .projects::before {
@@ -1246,7 +1249,10 @@
 
     /* ── Blog ────────────────────────────────── */
     .blog {
-      padding: 7.75rem 0 8.125rem;
+      position: relative;
+      z-index: 1;
+      margin-top: -1.75rem;
+      padding: 9.5rem 0 8.125rem;
       background: var(--color-paper);
       color: var(--color-ink);
     }
@@ -1254,123 +1260,6 @@
     .blog::before { display: none; }
 
     .blog > .container { position: relative; z-index: 1; }
-
-    .blog .eyebrow {
-      background: rgb(var(--rgb-yellow-rich) / 0.3);
-      color: var(--color-ink);
-      border-color: rgb(var(--rgb-black) / 0.1);
-    }
-
-    .blog .eyebrow::before { background: var(--color-ink); animation: none; }
-    .blog .lead { color: rgb(var(--rgb-black) / 0.65); }
-
-    .blog .section-title { color: var(--color-ink); }
-    .blog .section-title em { color: var(--color-ink); }
-
-    .blog-grid {
-      margin-top: 3.25rem;
-      display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 1.125rem;
-      align-items: stretch;
-    }
-
-    .article {
-      background: var(--color-white);
-      border: 0.0625rem solid rgb(var(--rgb-black) / 0.07);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: 0 0.125rem 0.5rem rgb(var(--rgb-black) / 0.04), 0 0.75rem 1.875rem rgb(var(--rgb-black) / 0.06);
-      cursor: default;
-    }
-
-    .article:hover {
-      transform: none;
-    }
-
-    .article-featured {
-      grid-row: 1 / -1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .article-img-wrap {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .article-featured .article-img-wrap {
-      flex: 1;
-    }
-
-    .article-img-wrap img {
-      width: 100%;
-      height: 13.75rem;
-      object-fit: cover;
-      transition: transform 0.55s var(--ease-standard);
-    }
-
-    .article-featured .article-img-wrap img {
-      height: 100%;
-      min-height: 15rem;
-    }
-
-    .article:hover .article-img-wrap img { transform: none; }
-
-    .article-tag {
-      position: absolute;
-      top: 0.875rem; left: 0.875rem;
-      padding: 0.5em 1.1em;
-      background: var(--color-ink);
-      color: var(--color-yellow);
-      font-size: 0.625rem;
-      font-weight: var(--font-weight-bold);
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      border-radius: var(--radius-pill);
-    }
-
-    .article-body {
-      padding: 1.25rem 1.375rem 1.375rem;
-    }
-
-    .article-featured .article-body {
-      padding: 1.375rem 1.625rem 1.625rem;
-    }
-
-    .article-meta {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: rgb(var(--rgb-black) / 0.46);
-      font-size: 0.75rem;
-      font-weight: var(--font-weight-bold);
-      letter-spacing: 0.02em;
-    }
-
-    .article-meta span { color: inherit; }
-    .article-meta .sep { opacity: 0.4; }
-
-    .article h3 {
-      margin: 0.5rem 0 0;
-      font-size: clamp(1.1875rem, 2vw, 1.625rem);
-      line-height: 1.05;
-      letter-spacing: -0.015em;
-      font-weight: var(--font-weight-bold);
-    }
-
-    .article-featured h3 {
-      font-size: clamp(1.375rem, 2.4vw, 2rem);
-      line-height: 1.02;
-    }
-
-    .article p {
-      color: rgb(var(--rgb-black) / 0.6);
-      margin: 0.5625rem 0 0;
-      font-size: 0.9062rem;
-      line-height: 1.5;
-    }
 
     /* ── FAQ ─────────────────────────────────── */
     .faq {
@@ -1645,13 +1534,6 @@
 
       .logo-item { flex-basis: 11rem; }
 
-      .blog-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-      }
-
-      .article-featured { grid-row: auto; }
-
       .about, .projects, .faq {
         background: var(--color-ink);
         color: var(--color-white);
@@ -1768,9 +1650,6 @@
       .logo-carousel-group { gap: 0.75rem; padding-right: 0.75rem; }
       .logo-item { flex-basis: 9rem; height: 4.5rem; padding: 0.875rem 1.25rem; }
       .logo-item img { max-height: 3rem; }
-
-      .blog-grid { grid-template-columns: 1fr; }
-      .article-img-wrap img { height: 13.75rem; }
 
       .footer-grid { gap: 1.75rem; }
       .legal { flex-direction: column; }
