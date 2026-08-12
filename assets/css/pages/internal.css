@@ -567,6 +567,17 @@
   background: var(--color-surface);
 }
 
+.listing-card--link {
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.listing-card--link:focus-visible {
+  outline: 0.1875rem solid var(--color-yellow);
+  outline-offset: 0.25rem;
+}
+
 .listing-card__media,
 .listing-card__media img {
   width: 100%;

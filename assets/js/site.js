@@ -85,7 +85,8 @@
   const currentPath = window.location.pathname.replace(/index\.html$/, "");
   document.querySelectorAll("[data-site-nav] a[href]").forEach((link) => {
     const linkPath = new URL(link.href, window.location.origin).pathname.replace(/index\.html$/, "");
-    if (linkPath === currentPath || (currentPath === "/" && linkPath === "/")) {
+    const isCurrent = linkPath === currentPath || (linkPath !== "/" && currentPath.startsWith(linkPath));
+    if (isCurrent) {
       link.setAttribute("aria-current", "page");
     }
   });

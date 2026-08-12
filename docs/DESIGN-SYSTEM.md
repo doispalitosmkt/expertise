@@ -12,7 +12,7 @@ Carregue os estilos nesta ordem:
 <link rel="stylesheet" href="/assets/css/pages/internal.css">
 ```
 
-Na homepage, substitua `internal.css` por `home.css`. Em Serviços, carregue `services.css` depois de `internal.css`. Em Contato e Faça Parte, carregue `forms.css` depois de `internal.css`.
+Na homepage, substitua `internal.css` por `home.css`. Em Serviços, carregue `services.css` depois de `internal.css`. Em detalhes de case, carregue `case-detail.css` depois de `internal.css`. Em Contato e Faça Parte, carregue `forms.css` depois de `internal.css`.
 
 | Arquivo | Responsabilidade |
 |---|---|
@@ -20,6 +20,7 @@ Na homepage, substitua `internal.css` por `home.css`. Em Serviços, carregue `se
 | [`site.css`](../assets/css/site.css) | Fundação global, acessibilidade, navegação, botões, reveal e footer |
 | [`pages/home.css`](../assets/css/pages/home.css) | Composição aprovada da homepage |
 | [`pages/internal.css`](../assets/css/pages/internal.css) | Hero, seções, cards e layouts reutilizados nas páginas internas |
+| [`pages/case-detail.css`](../assets/css/pages/case-detail.css) | Hero editorial, ficha, narrativa, destaque e vídeo das páginas individuais de case |
 | [`pages/services.css`](../assets/css/pages/services.css) | Navegação, capítulos e agrupamentos do catálogo de Serviços |
 | [`pages/forms.css`](../assets/css/pages/forms.css) | Campos, consentimento, status e responsividade dos formulários |
 
@@ -225,6 +226,20 @@ Reutilize esses componentes antes de criar uma variação. Se a nova regra for �
 - `.service-cases__action`: espaçamento da ação após a grade compartilhada de cases.
 
 Os blocos de competências e provas reais reutilizam, respectivamente, `.principles-grid` e `.case-listing` de `internal.css`. Essas classes não substituem `.expertise-panel`: Expertises apresenta as unidades de negócio; Serviços cataloga entregas concretas e mostra aplicações em projetos publicados.
+
+### Detalhe de case
+
+`case-detail.css` complementa a base interna nas rotas individuais de case. O exemplar canônico está em `/cases/terra-na-parada-lgbtqia/` e organiza:
+
+- `.case-hero`: identificação, título e resumo do projeto;
+- `.case-cover`: imagem principal em proporção panorâmica;
+- `.case-facts` e `.case-overview`: ficha e narrativa verificável;
+- `.case-steps`: frentes da experiência;
+- `.case-highlight`: mídia e resultado ou dimensão operacional confirmada;
+- `.case-video`: player sob demanda pelo contrato global `data-video-id`;
+- `.case-footer-actions`: retorno ao portfólio e CTA de contato.
+
+Não publique métricas, datas, artistas ou resultados sem fonte. A página pode omitir blocos sem conteúdo confiável; o template não exige inventar uma seção para manter sua composição.
 
 ## Reveal e redução de movimento
 

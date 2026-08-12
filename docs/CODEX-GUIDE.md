@@ -84,6 +84,7 @@ Use caminhos de assets absolutos a partir da raiz, como `/assets/css/tokens.css`
 |---|---|---|
 | Homepage | `tokens.css`, `site.css`, `pages/home.css` | `site.js`, `home.js` |
 | Interna comum | `tokens.css`, `site.css`, `pages/internal.css` | `site.js` |
+| Detalhe de case | anteriores + `pages/case-detail.css` | `site.js` |
 | Catálogo de Serviços | anteriores + `pages/services.css` | `site.js` |
 | Interna com formulário | anteriores + `pages/forms.css` | `site.js`, `forms.js` |
 | 404 | `tokens.css`, `site.css`, `pages/internal.css` | `site.js` |
@@ -123,6 +124,7 @@ Não carregue `home.js` nem `forms.js` em páginas que não usam seus contratos.
 - Reset, botão, navegação, footer ou utilitário compartilhado: [`site.css`](../assets/css/site.css).
 - Elemento exclusivo da homepage: [`pages/home.css`](../assets/css/pages/home.css) ou [`home.js`](../assets/js/home.js).
 - Componente reutilizado por páginas internas: [`pages/internal.css`](../assets/css/pages/internal.css).
+- Estrutura exclusiva dos detalhes de case: [`pages/case-detail.css`](../assets/css/pages/case-detail.css).
 - Catálogo e capítulos exclusivos de Serviços: [`pages/services.css`](../assets/css/pages/services.css).
 - Apresentação de formulário: [`pages/forms.css`](../assets/css/pages/forms.css).
 - Comportamento global: [`site.js`](../assets/js/site.js).

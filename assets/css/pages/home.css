@@ -1130,6 +1130,16 @@
       box-shadow: 0 1.75rem 4.375rem rgb(var(--rgb-black) / 0.34);
     }
 
+    .case-card--link {
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .case-card--link:focus-visible {
+      outline: 0.1875rem solid var(--color-yellow);
+      outline-offset: 0.25rem;
+    }
+
     .case-card.is-tall { min-height: 31.25rem; }
     .case-card.is-compact { min-height: 20.625rem; }
 

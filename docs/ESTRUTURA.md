@@ -12,6 +12,7 @@ Este repositório é um site institucional estático e multipágina, feito com H
 ├── nossas-expertises/index.html
 ├── servicos/index.html
 ├── cases/index.html
+├── cases/terra-na-parada-lgbtqia/index.html
 ├── blog/index.html
 ├── faca-parte/index.html
 ├── contato/index.html
@@ -23,6 +24,7 @@ Este repositório é um site institucional estático e multipágina, feito com H
 │   │   └── pages/
 │   │       ├── home.css
 │   │       ├── internal.css
+│   │       ├── case-detail.css
 │   │       ├── services.css
 │   │       └── forms.css
 │   ├── js/
@@ -53,6 +55,7 @@ Este repositório é um site institucional estático e multipágina, feito com H
 | `/nossas-expertises/` | [`nossas-expertises/index.html`](../nossas-expertises/index.html) | Unidades de negócio e atuação integrada |
 | `/servicos/` | [`servicos/index.html`](../servicos/index.html) | Catálogo granular de serviços, competências transversais e aplicações em cases |
 | `/cases/` | [`cases/index.html`](../cases/index.html) | Vitrine de cases |
+| `/cases/terra-na-parada-lgbtqia/` | [`cases/terra-na-parada-lgbtqia/index.html`](../cases/terra-na-parada-lgbtqia/index.html) | Template de detalhe de case preenchido com conteúdo real do projeto Terra |
 | `/blog/` | [`blog/index.html`](../blog/index.html) | Arquivo editorial |
 | `/faca-parte/` | [`faca-parte/index.html`](../faca-parte/index.html) | Candidatura em modo de pré-visualização |
 | `/contato/` | [`contato/index.html`](../contato/index.html) | Contato em modo de pré-visualização |
@@ -70,6 +73,7 @@ A ordem de carregamento é parte do contrato:
 3. Um stylesheet de página em [`assets/css/pages/`](../assets/css/pages/):
    - [`home.css`](../assets/css/pages/home.css) para a homepage;
    - [`internal.css`](../assets/css/pages/internal.css) para páginas internas e 404;
+   - [`case-detail.css`](../assets/css/pages/case-detail.css), depois de `internal.css`, para páginas individuais de case;
    - [`services.css`](../assets/css/pages/services.css), depois de `internal.css`, somente para o catálogo de Serviços;
    - [`forms.css`](../assets/css/pages/forms.css), depois de `internal.css`, somente nas páginas com formulário.
 
