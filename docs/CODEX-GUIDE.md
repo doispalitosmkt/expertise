@@ -5,7 +5,7 @@ Este guia orienta alterações e criação de páginas sem quebrar o sistema com
 ## Princípios do projeto
 
 1. O site é HTML, CSS e JavaScript nativos, servido diretamente como arquivos estáticos.
-2. Não há build. Uma alteração só deve depender de arquivos versionados no repositório.
+2. Não há build obrigatório no desenvolvimento; a publicação apenas empacota os arquivos estáticos para o subcaminho do GitHub Pages.
 3. Reutilize tokens, componentes, header, menu e footer existentes.
 4. Separe estilos e comportamentos compartilhados dos específicos de uma página.
 5. Não publique fatos herdados sem validação.
@@ -17,8 +17,7 @@ Este guia orienta alterações e criação de páginas sem quebrar o sistema com
 - Confirme a rota e o arquivo em [`ESTRUTURA.md`](ESTRUTURA.md).
 - Leia o HTML inteiro da página afetada.
 - Confira quais folhas de estilo e scripts ela carrega.
-- Consulte [`docs/content-source/`](content-source/README.md) quando a tarefa envolver conteúdo legado.
-- Consulte [`redirect-map.csv`](redirect-map.csv) quando criar, remover ou renomear uma rota ou âncora.
+- Ao alterar conteúdo herdado ou URLs, use somente fontes aprovadas pelo responsável do projeto e registre os redirecionamentos na configuração da hospedagem.
 - Verifique o estado do Git e preserve alterações não relacionadas.
 
 ## Referência canônica
@@ -74,7 +73,7 @@ Use caminhos de assets absolutos a partir da raiz, como `/assets/css/tokens.css`
 - [ ] Componentes de `internal.css` reutilizados antes de criar CSS novo.
 - [ ] Quando houver motivo visual, usar no máximo uma família entre `.motif-lines`, `.motif-stripes` e `.motif-blob`, conforme o papel documentado no Design System.
 - [ ] CTA final aponta para uma rota existente.
-- [ ] IDs de âncora são únicos, estáveis e compatíveis com `redirect-map.csv`.
+- [ ] IDs de âncora são únicos, estáveis e preservam âncoras já publicadas.
 - [ ] Links externos usam `rel="noopener noreferrer"` quando abrem nova aba.
 - [ ] Imagens têm dimensões/composição adequadas, `alt` correto e carregamento apropriado.
 
@@ -95,7 +94,7 @@ Não carregue `home.js` nem `forms.js` em páginas que não usam seus contratos.
 
 - [ ] Adicionar a rota a [`sitemap.xml`](../sitemap.xml) quando ela for pública e indexável.
 - [ ] Atualizar navegação e footer em todas as páginas somente se a rota entrar nesses componentes.
-- [ ] Registrar redirecionamentos necessários em [`redirect-map.csv`](redirect-map.csv).
+- [ ] Planejar e configurar no provedor de hospedagem os redirecionamentos necessários antes de remover ou renomear uma URL.
 - [ ] Confirmar que links locais e fragmentos possuem destino.
 
 ### 7. Validar
@@ -167,11 +166,11 @@ Até a integração ser aprovada:
 
 Antes da produção, devem ser definidos backend, destinatários, proteção contra abuso, segurança de upload, limite e varredura de arquivos, retenção, exclusão, observabilidade, estados de erro e aderência à política de privacidade.
 
-## Uso do conteúdo arquivado
+## Uso de conteúdo herdado
 
-O inventário em [`content-source/`](content-source/README.md) preserva material público do site anterior. Trate cada item como uma pista editorial.
+Materiais brutos do site anterior não são versionados neste repositório público. Trate qualquer conteúdo fornecido separadamente como uma pista editorial, nunca como autorização automática de publicação.
 
-Pode ser usado diretamente quando o documento o classifica como confirmado e a informação continua atual. Exige validação do cliente quando envolver:
+Conteúdo explicitamente aprovado pelo responsável do projeto pode ser reutilizado enquanto permanecer atual. Exige validação do cliente quando envolver:
 
 - métricas e resultados;
 - prêmios, associações ou certificações;
@@ -211,5 +210,5 @@ Uma página só está pronta quando:
 - não há erros de console;
 - navegação por teclado funciona;
 - SEO básico está completo;
-- sitemap e planejamento de redirecionamentos estão coerentes;
+- sitemap e redirecionamentos configurados na hospedagem estão coerentes;
 - nenhuma integração de preview foi apresentada como funcional.

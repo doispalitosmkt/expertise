@@ -83,9 +83,11 @@
   }
 
   const currentPath = window.location.pathname.replace(/index\.html$/, "");
+  const siteScript = document.querySelector('script[src$="/assets/js/site.js"]');
+  const siteRootPath = siteScript ? new URL("../../", siteScript.src).pathname : "/";
   document.querySelectorAll("[data-site-nav] a[href]").forEach((link) => {
     const linkPath = new URL(link.href, window.location.origin).pathname.replace(/index\.html$/, "");
-    const isCurrent = linkPath === currentPath || (linkPath !== "/" && currentPath.startsWith(linkPath));
+    const isCurrent = linkPath === currentPath || (linkPath !== siteRootPath && currentPath.startsWith(linkPath));
     if (isCurrent) {
       link.setAttribute("aria-current", "page");
     }

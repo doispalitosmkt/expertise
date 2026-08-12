@@ -5,11 +5,22 @@ node_modules/
 vendor/
 dist/
 build/
+_site/
 .next/
 .nuxt/
 .cache/
 *.log
+.vscode/
+.claude/
 .env
 .env.*
+*.key
+*.pem
+*.p12
+*.pfx
 
 .legacy-site-archive/
+docs/content-source/
+docs/private/
+docs/reference/
+docs/redirect-map.csv

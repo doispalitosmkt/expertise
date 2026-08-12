@@ -1,6 +1,6 @@
 # Estrutura do Projeto — Expertise
 
-Este repositório é um site institucional estático e multipágina, feito com HTML, CSS e JavaScript nativos. Não há etapa de build, bundler, framework, gerenciador de pacotes ou geração de páginas: cada rota pública corresponde a um arquivo HTML versionado.
+Este repositório é um site institucional estático e multipágina, feito com HTML, CSS e JavaScript nativos. Não há build obrigatório no desenvolvimento, bundler, framework, gerenciador de pacotes ou geração de páginas: cada rota pública corresponde a um arquivo HTML versionado. A publicação no GitHub Pages tem apenas uma etapa de empacotamento para adaptar o subcaminho do ambiente de demonstração.
 
 ## Árvore principal
 
@@ -17,6 +17,8 @@ Este repositório é um site institucional estático e multipágina, feito com H
 ├── faca-parte/index.html
 ├── contato/index.html
 ├── politica-de-privacidade/index.html
+├── .github/workflows/pages.yml
+├── scripts/build-pages.mjs
 ├── assets/
 │   ├── css/
 │   │   ├── tokens.css
@@ -37,11 +39,9 @@ Este repositório é um site institucional estático e multipágina, feito com H
 │   ├── logo.svg
 │   └── x-mark.svg
 ├── docs/
-│   ├── content-source/
 │   ├── CODEX-GUIDE.md
 │   ├── DESIGN-SYSTEM.md
-│   ├── ESTRUTURA.md
-│   └── redirect-map.csv
+│   └── ESTRUTURA.md
 ├── robots.txt
 └── sitemap.xml
 ```
@@ -62,7 +62,7 @@ Este repositório é um site institucional estático e multipágina, feito com H
 | `/politica-de-privacidade/` | [`politica-de-privacidade/index.html`](../politica-de-privacidade/index.html) | Política de privacidade |
 | Erro 404 | [`404.html`](../404.html) | Página não encontrada |
 
-As rotas canônicas publicadas também devem permanecer sincronizadas em [`sitemap.xml`](../sitemap.xml). O arquivo [`robots.txt`](../robots.txt) aponta para esse sitemap. Rotas legadas e destinos de migração estão inventariados em [`redirect-map.csv`](redirect-map.csv); esse CSV é planejamento e não implementa redirecionamentos por conta própria.
+As rotas canônicas publicadas também devem permanecer sincronizadas em [`sitemap.xml`](../sitemap.xml). O arquivo [`robots.txt`](../robots.txt) aponta para esse sitemap. Mudanças de URL exigem redirecionamento configurado no provedor de hospedagem antes da publicação.
 
 ## Camadas de CSS
 
@@ -106,7 +106,7 @@ Cada documento deve ter `<body data-page="slug-da-rota">` e `<main id="conteudo"
 
 Os HTMLs usam caminhos absolutos a partir da raiz, como `/assets/logo.svg` e `/assets/css/site.css`. Por isso, o projeto deve ser servido por HTTP com a raiz do repositório como document root; abrir um HTML diretamente com `file://` não reproduz o ambiente correto.
 
-- `assets/fonts/`: Plus Jakarta Sans, Editor e VT323 em formatos locais, com a licença da VT323.
+- `assets/fonts/`: Plus Jakarta Sans, Bodoni Moda e VT323 em WOFF2, acompanhadas das respectivas licenças SIL OFL 1.1.
 - `assets/icons/`: iconografia SVG.
 - `assets/images/`: imagens da homepage, cases, blog, clientes e decoração.
 - `assets/logo.svg`: assinatura principal.
@@ -114,19 +114,26 @@ Os HTMLs usam caminhos absolutos a partir da raiz, como `/assets/logo.svg` e `/a
 
 Imagens novas devem ser otimizadas, ter nome estável e ficar em uma subpasta coerente. Não fazer hotlink do site legado.
 
-## Conteúdo arquivado
+## Publicação no GitHub Pages
 
-O inventário editorial versionado está em [`docs/content-source/`](content-source/README.md):
+O workflow [`.github/workflows/pages.yml`](../.github/workflows/pages.yml) publica automaticamente cada commit da `main`. Como o endereço de projeto do GitHub Pages usa o subcaminho `/expertise/`, [`scripts/build-pages.mjs`](../scripts/build-pages.mjs) monta um artefato em `_site/` e prefixa apenas na cópia publicada os caminhos absolutos de HTML e CSS. O código-fonte continua compatível com a raiz do domínio oficial.
 
-- [`pages.md`](content-source/pages.md): páginas institucionais, expertises e soluções;
-- [`cases.md`](content-source/cases.md): inventário dos cases;
-- [`blog.md`](content-source/blog.md): inventário dos artigos;
-- [`contact-and-legal.md`](content-source/contact-and-legal.md): contatos, formulários e conteúdo legal;
-- [`site-map.md`](content-source/site-map.md): arquitetura pública do site anterior.
+Essa publicação é uma pré-visualização: o workflow acrescenta `noindex, nofollow` aos HTMLs do artefato e mantém o crawl permitido para que os robôs possam ler essa diretiva, sem mudar os arquivos editoriais do projeto. Remova `--noindex` do workflow apenas quando o Pages for configurado com o domínio oficial e a publicação definitiva estiver autorizada.
 
-O snapshot mecânico bruto está em `.legacy-site-archive/`, ignorado pelo Git. Ele guarda HTML/XML para consulta histórica, não é dependência de produção e não contém as mídias originais baixadas.
+O artefato usa uma lista explícita de arquivos e pastas públicas. `docs/`, `.vscode/`, `.legacy-site-archive/`, configurações do Git e arquivos de referência não são enviados ao Pages. `_site/` é saída descartável e permanece ignorado pelo Git. Essa lista protege apenas o artefato publicado; como o repositório é público, nenhum arquivo interno ou sensível pode ser versionado, inclusive no histórico.
 
-Antes de publicar informações herdadas, valide com o cliente números, certificações, equipe, serviços ativos, plataformas, contatos, direitos de imagem e textos legais. O arquivo legado serve como fonte de pesquisa, não como autorização automática de publicação.
+Para testar o empacotamento sem alterar o projeto:
+
+```bash
+destino=$(mktemp -d)
+node scripts/build-pages.mjs --output "$destino" --base-path /expertise --noindex
+```
+
+## Conteúdo herdado
+
+Materiais brutos do site anterior, inventários internos e arquivos de referência são mantidos fora deste repositório público e não são dependências de produção. Ao migrar ou criar conteúdo, use somente fontes aprovadas pelo responsável do projeto.
+
+Antes de publicar informações herdadas, valide com o cliente números, certificações, equipe, serviços ativos, plataformas, contatos, direitos de imagem e textos legais.
 
 ## Formulários em modo de pré-visualização
 

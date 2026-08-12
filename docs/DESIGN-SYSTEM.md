@@ -29,12 +29,12 @@ Na homepage, substitua `internal.css` por `home.css`. Em Serviços, carregue `se
 As fontes são locais e declaradas em `tokens.css`:
 
 - `var(--font-sans)`: **Plus Jakarta Sans**, fonte principal de texto, navegação, interface e títulos.
-- `var(--font-editorial)`: **Editor**, usada para ênfase editorial, normalmente em `<em>`.
+- `var(--font-editorial)`: **Bodoni Moda**, usada para ênfase editorial, normalmente em `<em>`.
 - `var(--font-brand-credit)`: **VT323**, reservada à assinatura “2P Growth Lab” no rodapé.
 
-Plus Jakarta Sans está disponível no intervalo de peso 400–700. Editor possui 400 e 700, normal e itálico. VT323 possui peso 400. Use os tokens de família, sem repetir listas de fallback em componentes.
+Os intervalos de peso carregados estão definidos nos blocos `@font-face` de `tokens.css`. Os componentes atuais usam os tokens 400 e 700; use os tokens de família, sem repetir listas de fallback em componentes.
 
-Use `--font-weight-regular` (400) e `--font-weight-bold` (700) nos componentes. A Editor não possui peso intermediário nativo; não sintetize 500 ou 600.
+Use `--font-weight-regular` (400) e `--font-weight-bold` (700) nos componentes. Se outro peso for necessário, adicione um token explícito e confirme que o arquivo local o oferece; não dependa de síntese do navegador.
 
 Padrão de título editorial:
 
@@ -44,7 +44,7 @@ Padrão de título editorial:
 </h2>
 ```
 
-`internal.css` aplica Editor itálica aos `<em>` de `.page-hero__title` e `.section-title`.
+`internal.css` aplica `var(--font-editorial)` em itálico aos `<em>` de `.page-hero__title` e `.section-title`.
 
 VT323 é um detalhe de marca da 2P e não deve ser aplicada a outros textos do site. No footer, mantenha “Desenvolvido por” na fonte principal e envolva somente “2P Growth Lab” em `.legal-credit__brand`.
 
