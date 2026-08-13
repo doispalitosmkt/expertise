@@ -640,6 +640,7 @@ body[data-page="blog"] .page-hero {
 .contact-card {
   display: flex;
   min-height: 16rem;
+  min-width: 0;
   flex-direction: column;
   justify-content: space-between;
   padding: clamp(1.5rem, 3vw, 2.5rem);
@@ -660,10 +661,11 @@ body[data-page="blog"] .page-hero {
 .contact-card a,
 .contact-card address {
   margin: 0;
-  font-size: clamp(1.2rem, 2vw, 1.75rem);
+  font-size: clamp(0.9375rem, 1.25vw, 1.125rem);
   font-style: normal;
   font-weight: var(--font-weight-bold);
   line-height: 1.25;
+  overflow-wrap: anywhere;
   text-decoration: none;
 }
 
@@ -828,6 +830,14 @@ body[data-page="blog"] .page-hero {
     grid-template-columns: repeat(4, 1fr);
   }
 
+  .contact-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-card:last-child {
+    grid-column: 1 / -1;
+  }
+
 }
 
 @media (max-width: 48rem) {
@@ -838,6 +848,10 @@ body[data-page="blog"] .page-hero {
   .principles-grid,
   .contact-cards {
     grid-template-columns: 1fr;
+  }
+
+  .contact-card:last-child {
+    grid-column: auto;
   }
 
   .principle-card {
