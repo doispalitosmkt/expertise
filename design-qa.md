@@ -33,7 +33,7 @@ Os três comparativos side-by-side foram abertos e inspecionados juntos. O compa
 
 ## Required fidelity surfaces
 
-- Fonts and typography: Plus Jakarta Sans e Bodoni Moda continuam sendo usadas nos papéis originais. Os conteúdos dos cards usam `clamp(0.9375rem, 1.25vw, 1.125rem)`, com peso e entrelinha preservados. Não há truncamento nem overflow.
+- Fonts and typography: Plus Jakarta Sans permanece como fonte principal e a família Editor foi restaurada no token `--font-editorial`, com arquivos próprios para 400/700 normal e itálico. Na galeria, o navegador confirmou `Editor, Georgia, serif`, itálico 400, em “imagens.”, sem fallback ou erro de carregamento. Os conteúdos dos cards usam `clamp(0.9375rem, 1.25vw, 1.125rem)`, com peso e entrelinha preservados. Não há truncamento nem overflow.
 - Spacing and layout rhythm: o arredondamento foi transferido para a seção seguinte em Cases; o grid de Contato responde em 3 → 2 → 1 colunas; a galeria responde em 2 → 1. Não há sobreposição ou overflow horizontal nos viewports testados.
 - Colors and visual tokens: a implementação reutiliza `--color-ink`, `--color-surface`, `--color-yellow`, `--line-light` e os raios existentes, sem introduzir uma paleta paralela.
 - Image quality and asset fidelity: os quatro WebP têm 640 × 360 px e são quadros do vídeo do próprio case. No maior estado testado são renderizados a aproximadamente 602 × 338 px, sem ampliação acima da resolução nativa. Todos carregam, mantêm 16:9 e têm texto alternativo específico.
@@ -55,6 +55,7 @@ Os três comparativos side-by-side foram abertos e inspecionados juntos. O compa
 - Pass 1: identificou a seção redundante em Cases, quebras forçadas e tipografia superdimensionada em Contato, e ausência de galeria no case.
 - Pass 2: removeu o bloco, preservou a curva da transição, criou o grid responsivo e adicionou quatro registros reais. A tipografia de Contato foi inicialmente reduzida a 16 px no desktop e ficou visualmente conservadora.
 - Pass 3: a tipografia desktop foi refinada para 18 px máximos, mantendo e-mail e telefone em uma linha e o endereço sem overflow. Desktop, tablet e mobile não apresentaram P0/P1/P2 após a correção.
+- Pass 4: a fonte editorial provisória foi corrigida de Bodoni Moda para Editor, usando os quatro estilos fornecidos no pacote do cliente. O build, o carregamento do arquivo e a família computada foram validados novamente.
 
 ## Implementation Checklist
 

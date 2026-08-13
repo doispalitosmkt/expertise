@@ -7,18 +7,34 @@
 }
 
 @font-face {
-  font-family: "Bodoni Moda";
-  src: url("/assets/fonts/BodoniModa-latin.woff2") format("woff2");
+  font-family: "Editor";
+  src: url("/assets/fonts/Editor-Regular.otf") format("opentype");
   font-style: normal;
-  font-weight: 400 900;
+  font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Bodoni Moda";
-  src: url("/assets/fonts/BodoniModa-Italic-latin.woff2") format("woff2");
+  font-family: "Editor";
+  src: url("/assets/fonts/Editor-Italic.otf") format("opentype");
   font-style: italic;
-  font-weight: 400 900;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Editor";
+  src: url("/assets/fonts/Editor-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Editor";
+  src: url("/assets/fonts/Editor-BoldItalic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 700;
   font-display: swap;
 }
 
@@ -66,7 +82,7 @@
   --line-dark: rgb(var(--rgb-black) / 0.12);
 
   --font-sans: "Plus Jakarta Sans", Arial, sans-serif;
-  --font-editorial: "Bodoni Moda", Georgia, serif;
+  --font-editorial: "Editor", Georgia, serif;
   --font-brand-credit: "VT323", monospace;
   --font-weight-regular: 400;
   --font-weight-bold: 700;

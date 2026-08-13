@@ -106,7 +106,7 @@ Cada documento deve ter `<body data-page="slug-da-rota">` e `<main id="conteudo"
 
 Os HTMLs usam caminhos absolutos a partir da raiz, como `/assets/logo.svg` e `/assets/css/site.css`. Por isso, o projeto deve ser servido por HTTP com a raiz do repositório como document root; abrir um HTML diretamente com `file://` não reproduz o ambiente correto.
 
-- `assets/fonts/`: Plus Jakarta Sans, Bodoni Moda e VT323 em WOFF2, acompanhadas das respectivas licenças SIL OFL 1.1.
+- `assets/fonts/`: Plus Jakarta Sans e VT323 em WOFF2; Editor em OTF para a prévia do cliente. A licença atual da Editor permite somente uso pessoal e precisa ser substituída por uma licença web antes da publicação comercial.
 - `assets/icons/`: iconografia SVG.
 - `assets/images/`: imagens da homepage, cases, blog, clientes e decoração.
 - `assets/logo.svg`: assinatura principal.

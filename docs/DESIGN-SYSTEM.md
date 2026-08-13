@@ -29,10 +29,12 @@ Na homepage, substitua `internal.css` por `home.css`. Em Serviços, carregue `se
 As fontes são locais e declaradas em `tokens.css`:
 
 - `var(--font-sans)`: **Plus Jakarta Sans**, fonte principal de texto, navegação, interface e títulos.
-- `var(--font-editorial)`: **Bodoni Moda**, usada para ênfase editorial, normalmente em `<em>`.
+- `var(--font-editorial)`: **Editor**, usada para ênfase editorial, normalmente em `<em>`.
 - `var(--font-brand-credit)`: **VT323**, reservada à assinatura “2P Growth Lab” no rodapé.
 
-Os intervalos de peso carregados estão definidos nos blocos `@font-face` de `tokens.css`. Os componentes atuais usam os tokens 400 e 700; use os tokens de família, sem repetir listas de fallback em componentes.
+Editor está disponível nos pesos 400 e 700, em estilo normal e itálico. Use os tokens de família, sem repetir listas de fallback em componentes.
+
+Os arquivos Editor incluídos atualmente têm licença **Personal Use Only** e servem exclusivamente para a prévia privada do cliente. Antes da publicação comercial, substitua-os pelos arquivos fornecidos com uma licença válida para uso web.
 
 Use `--font-weight-regular` (400) e `--font-weight-bold` (700) nos componentes. Se outro peso for necessário, adicione um token explícito e confirme que o arquivo local o oferece; não dependa de síntese do navegador.
 
