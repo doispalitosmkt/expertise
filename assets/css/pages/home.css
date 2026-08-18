@@ -407,6 +407,14 @@
       height: auto;
     }
 
+    .hero .eyebrow {
+      color: var(--color-ink);
+      background: rgb(var(--rgb-black) / 0.1);
+      border-color: rgb(var(--rgb-black) / 0.2);
+      animation: hero-up 0.8s ease 0.08s both;
+    }
+    .hero .eyebrow::before { display: none; }
+
     /* CTA */
     .hero-cta-wrap {
       animation: hero-up 0.8s ease 0.52s both;
