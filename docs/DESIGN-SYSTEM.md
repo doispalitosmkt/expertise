@@ -29,7 +29,7 @@ Na homepage, substitua `internal.css` por `home.css`. Em Serviços, carregue `se
 As fontes são locais e declaradas em `tokens.css`:
 
 - `var(--font-sans)`: **Plus Jakarta Sans**, fonte principal de texto, navegação, interface e títulos.
-- `var(--font-editorial)`: **Bodoni Moda**, usada para ênfase editorial, normalmente em `<em>`.
+- `var(--font-editorial)`: **Editor**, usada para ênfase editorial, normalmente em `<em>`. Fonte estática (não variável); só os pesos 400 e 700 em itálico estão embarcados, pois é o único uso real no CSS. Licença "Personal Use Only" (BeFonts) — ver `assets/fonts/Editor-BeFonts-License.txt`; obter licença comercial antes da publicação definitiva no domínio oficial.
 - `var(--font-brand-credit)`: **VT323**, reservada à assinatura “2P Growth Lab” no rodapé.
 
 Os intervalos de peso carregados estão definidos nos blocos `@font-face` de `tokens.css`. Os componentes atuais usam os tokens 400 e 700; use os tokens de família, sem repetir listas de fallback em componentes.
