@@ -1,68 +1,44 @@
-# Design QA — seção editorial do Blog
+# Design QA — revisão editorial dos cases Expertise
 
-## Comparação
+## Escopo e referências
 
-- Source visual truth path: imagem de referência anexada pelo usuário na solicitação atual (870 × 759 px; o cliente não expõe um caminho local para o anexo).
-- Implementation screenshot paths:
-  - `/tmp/expertise-blog-photos-home-870.png`
-  - `/tmp/expertise-blog-photos-page-870.png`
-  - `/tmp/expertise-blog-audit-photos/home-1920x1080-section.png`
-  - `/tmp/expertise-blog-audit-photos/blog-1920x1080-section.png`
-  - `/tmp/expertise-blog-audit-photos/home-390x844-section.png`
-  - `/tmp/expertise-blog-audit-photos/blog-390x844-section.png`
-  - `/tmp/expertise-blog-audit-photos/home-360x800-section.png`
-  - `/tmp/expertise-blog-audit-photos/blog-360x800-section.png`
-- Reference pixels: 870 × 759.
-- Primary comparison viewport: 870 × 759 CSS px, `deviceScaleFactor: 1`.
-- Additional responsive viewports: 1920 × 1080, 1024 × 900, 768 × 900, 390 × 844 and 360 × 800 CSS px, all at density 1.
-- State: page scrolled to the Cases/Blog transition on the homepage and to the editorial listing on `/blog/`; fonts loaded; reveal animations settled.
+- A identidade visual vem de `material/SITE-20260915T162548Z-1-001/SITE/Proposta Visual Expertise.pdf` e `material/SITE-20260915T162548Z-1-001/SITE/Proposta - New Assets Expertise.pdf`.
+- Os textos e as imagens dos projetos vêm do material fornecido em `material/SITE-20260915T162548Z-1-001/SITE/`.
+- A referência de navegação é a página [Shopper Marketing da Outpromo](https://www.outpromo.com.br/shoppermarketing), registrada em `tmp/design-qa/reference-outpromo-current-loaded.png`: área editorial contida à esquerda e projetos apresentados por imagens à direita.
+- Este passe avalia o redesign dos cases em sobreposição à home. As capturas anteriores da home e do catálogo continuam em `tmp/design-qa/`, mas as antigas imagens `case-overlay-*-final.png` representam o template substituído e não são evidência do resultado atual.
 
-## Full-view comparison evidence
+## Problema observado e correção
 
-The implementation preserves the reference's main composition: a dark section ending with rounded lower corners and a thin yellow seam; a light-gray editorial field; a solid yellow Blog pill; a large sans/editorial title; supporting copy aligned to the right on wide screens; and white cards with restrained shadow, compact black-and-yellow category labels, thematic photography, and content anchored at the bottom.
+O template anterior abria com um painel amarelo de título muito grande e deixava a fotografia principal em outra faixa; o texto de apresentação, os números e o próximo case também usavam escala excessiva. Galerias de três imagens podiam terminar com uma foto isolada em meia coluna, e cases com vídeo repetiam a mesma imagem como capa e cartaz. Isso aparece em `tmp/design-qa/critique-current-adium.png`, `critique-current-adium-below.png`, `critique-current-adium-middle.png` e `critique-current-single-start.png`.
 
-The homepage uses three equal cards at desktop width. The Blog archive uses the same visual system for all seven entries instead of creating a disproportionate featured card. Responsive behavior is deliberately adapted to 3, 2, and 1 columns so card copy remains readable.
+O novo layout usa uma abertura editorial dividida: título, contexto, cliente e local em um painel amarelo estreito; fotografia ou peça do projeto ocupando o campo visual principal. A narrativa entra em papel claro, com corpo de texto controlado e resultados em grade compacta. As galerias têm enquadramento e largura definidos por case, evitando imagens soltas. O filme é acionado sobre a própria imagem de abertura, sem segundo cartaz. O próximo projeto combina miniatura e chamada curta. O X aparece como assinatura de baixa intensidade em superfícies de marca, sem cortar fotografias.
 
-## Focused region comparison evidence
+Os 29 registros de `assets/js/case-catalog.js` têm metadados `presentation`. Eles selecionam imagens de abertura e galeria, `cover` ou `contain`, proporção e posição, incluindo apresentações em par e panorâmicas. A composição usa apenas os arquivos que sustentam a narrativa visual; fotos redundantes não são forçadas à página.
 
-Focused captures were used because typography, card proportions, category pills, lower-corner rounding, and the yellow seam are too small to judge reliably in a full-page image. The 870 × 759 homepage capture verifies the transition and section hierarchy; the Blog capture verifies component parity. The 390 × 844 captures verify wrapping, single-column spacing, and card content without horizontal clipping.
+## Evidências visuais do redesign
 
-## Required fidelity surfaces
+| Amostra | Captura | Verificação |
+| --- | --- | --- |
+| Convenção Adium, abertura | `tmp/design-qa/redesign-adium-start-01.png` | Título e lead têm escala legível; fotografia do evento domina a abertura sem faixa intermediária vazia. |
+| Convenção Adium, galeria e saída | `tmp/design-qa/redesign-adium-end-02.png` | Duas fotos formam um par equilibrado; o próximo case tem imagem e chamada proporcionais. |
+| Portal Leve Mais Nestlé, desktop e mobile | `tmp/design-qa/redesign-pair-start-01.png`, `redesign-pair-mobile-02.png` | Peças verticais são mostradas em par com `contain`, preservando a arte e a leitura no mobile. |
+| Adrenalina Chapada dos Guimarães | `tmp/design-qa/redesign-panorama-start-02.png` | A foto de grupo mantém enquadramento panorâmico; contexto e lead ocupam um cabeçalho horizontal mais compacto. |
+| Lollapalooza | `tmp/design-qa/redesign-single-start-01.png` | Um case com uma única imagem não recebe uma galeria vazia; vídeo permanece integrado à capa. |
+| Missão Possível | `tmp/design-qa/redesign-metrics-start-01.png`, `redesign-metrics-end-01.png` | Arte contida sem corte; seis números em grade 3 × 2, seguidos de um próximo case visual. |
+| Vivo Rio Pro / WSL | `tmp/design-qa/redesign-wsl-start-01.png`, `redesign-wsl-end-01.png` | Abertura com enquadramento próprio e galeria de peças verticais coerente. |
+| Vídeo ativo | `tmp/design-qa/redesign-video-active-01.png` | O player substitui a capa dentro do mesmo campo visual. |
 
-- Fonts and typography: Plus Jakarta Sans and Bodoni Moda reproduce the sans/italic contrast; weights, line height, wrapping, and hierarchy remain legible at every tested viewport.
-- Spacing and layout rhythm: section offsets, two-column heading, card gaps, radii, shadows, consistent media slots, and bottom-aligned content match the reference language. Equal heights were confirmed per row.
-- Colors and visual tokens: the existing tokenized ink, paper, white, and yellow palette maps directly to the reference and preserves contrast.
-- Image quality and asset fidelity: existing topic-specific WebP assets are used in consistent 16:9 media slots, with focal positions adjusted where needed. Intrinsic dimensions, lazy loading, and asynchronous decoding are declared.
-- Copy and content: existing Expertise titles, summaries, categories, original dates, and validated reading times are preserved. Homepage CTAs point to real Blog anchors; archive cards do not imply unavailable article-detail pages.
+As amostras cobrem casos com uma imagem, pares verticais, galerias, fotografia panorâmica, métricas e vídeo. O material mostra uma direção visual mais próxima da referência, mantendo o amarelo e o X próprios da Expertise. Não houve identificação de divergência visual P0, P1 ou P2 nessas amostras.
 
-## Findings
+## Interação e verificação técnica
 
-- No actionable P0, P1, or P2 differences remain.
-- No horizontal overflow, clipped card content, broken asset, failed request, console error, or warning was found across the ten route/viewport scenarios.
-- The desktop anchor offset differs from the fixed navigation edge by less than 0.4 CSS px. This is visually imperceptible and not actionable.
+- O case continua em `<dialog>` modal, com botão de fechar persistente, foco inicial, retorno do foco ao fechar e suporte a `Escape`.
+- URLs compartilháveis usam `/cases/?case=slug`; o histórico controla abertura, navegação entre projetos e fechamento.
+- O vídeo só cria o iframe de `youtube-nocookie.com` depois da ação do usuário.
+- O catálogo permanece agrupado em Eventos, Trade Marketing, Viagens e Logística e Campanhas de Incentivo.
+- `node --check assets/js/case-overlay.js`, `node --check assets/js/case-catalog.js` e `git diff --check` passaram neste passe. `rg` confirmou 29 slugs e 29 blocos `presentation` no catálogo. O `git diff --check` exibiu apenas avisos de conversão LF/CRLF do ambiente Windows.
+- O build para `/expertise/` reescreve os caminhos absolutos das folhas de estilo; a verificação do artefato confirmou as referências dos assets no subdiretório de publicação.
 
-## Open Questions
+## Resultado final
 
-- None for this iteration. Individual “Ler artigo” links should only be introduced when article-detail routes exist.
-
-## Comparison history
-
-- Pass 1: the previous implementation used an asymmetric featured-card layout and image-led cards. It was replaced by equal editorial cards, the shared heading treatment, and the rounded Cases/Blog transition.
-- Pass 2: topic-specific photography was added at the user's request, the artificial blank space was removed, and focal points were adjusted for portrait-oriented source images.
-- Pass 3: post-fix captures at desktop and mobile found no remaining P0/P1/P2 issue. No further visual correction was required.
-
-## Implementation Checklist
-
-- [x] Shared editorial component used on home and `/blog/`.
-- [x] Three equal desktop cards on the homepage.
-- [x] Seven equal archive cards with semantic heading order.
-- [x] Responsive 3 → 2 → 1 grid.
-- [x] Real anchor destinations for homepage CTAs.
-- [x] Reduced-motion behavior preserved.
-- [x] HTML, CSS, JavaScript, internal references, and Pages artifact validated.
-
-## Follow-up Polish
-
-- A small arrow icon can be added to the homepage CTA after a matching approved icon asset is available; it is intentionally omitted rather than approximated with a text glyph.
-
-final result: passed
+passed

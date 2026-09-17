@@ -26,12 +26,15 @@ Este repositório é um site institucional estático e multipágina, feito com H
 │   │   └── pages/
 │   │       ├── home.css
 │   │       ├── internal.css
+│   │       ├── case-overlay.css
 │   │       ├── case-detail.css
 │   │       ├── services.css
 │   │       └── forms.css
 │   ├── js/
 │   │   ├── site.js
 │   │   ├── home.js
+│   │   ├── case-catalog.js
+│   │   ├── case-overlay.js
 │   │   └── forms.js
 │   ├── fonts/
 │   ├── icons/
@@ -54,7 +57,7 @@ Este repositório é um site institucional estático e multipágina, feito com H
 | `/quem-somos/` | [`quem-somos/index.html`](../quem-somos/index.html) | Institucional e template canônico das páginas internas |
 | `/nossas-expertises/` | [`nossas-expertises/index.html`](../nossas-expertises/index.html) | Unidades de negócio e atuação integrada |
 | `/servicos/` | [`servicos/index.html`](../servicos/index.html) | Catálogo granular de serviços, competências transversais e aplicações em cases |
-| `/cases/` | [`cases/index.html`](../cases/index.html) | Vitrine de cases |
+| `/cases/` | [`cases/index.html`](../cases/index.html) | Catálogo de 29 cases em quatro núcleos; aceita `?case=slug` para abrir o detalhe sobreposto |
 | `/cases/terra-na-parada-lgbtqia/` | [`cases/terra-na-parada-lgbtqia/index.html`](../cases/terra-na-parada-lgbtqia/index.html) | Template de detalhe de case preenchido com conteúdo real do projeto Terra |
 | `/blog/` | [`blog/index.html`](../blog/index.html) | Arquivo editorial |
 | `/faca-parte/` | [`faca-parte/index.html`](../faca-parte/index.html) | Candidatura em modo de pré-visualização |
@@ -77,12 +80,16 @@ A ordem de carregamento é parte do contrato:
    - [`services.css`](../assets/css/pages/services.css), depois de `internal.css`, somente para o catálogo de Serviços;
    - [`forms.css`](../assets/css/pages/forms.css), depois de `internal.css`, somente nas páginas com formulário.
 
+4. [`assets/css/pages/case-overlay.css`](../assets/css/pages/case-overlay.css) depois do stylesheet de página nas telas que abrem cases: Home, Cases e Serviços.
+
 Regras compartilhadas pertencem a `site.css`; regras exclusivas de uma família de páginas pertencem ao arquivo correspondente em `pages/`. Não duplicar os estilos globais dentro do HTML.
 
 ## Camadas de JavaScript
 
 - [`assets/js/site.js`](../assets/js/site.js): comportamento compartilhado — estado do header, menu mobile com controle de foco, item de navegação atual, reveal por `IntersectionObserver`, player sob demanda com YouTube sem cookies e ano corrente.
-- [`assets/js/home.js`](../assets/js/home.js): comportamento exclusivo da homepage — barra de progresso e parallax dos cases, respeitando redução de movimento e viewport.
+- [`assets/js/home.js`](../assets/js/home.js): comportamento exclusivo da homepage — barra de progresso `#progress`, abertura breve `.home-intro` uma vez por sessão, título com troca de palavras `[data-hero-words]`, contadores `[data-count]` e controle `[data-motion-toggle]`. Respeita redução de movimento e pausa as trocas quando o título ou a aba deixam de estar visíveis.
+- [`assets/js/case-catalog.js`](../assets/js/case-catalog.js): fonte estruturada dos 29 cases, incluindo textos, métricas verificadas, vídeos e mídia local otimizada.
+- [`assets/js/case-overlay.js`](../assets/js/case-overlay.js): monta o catálogo e abre detalhes em um `<dialog>` de tela cheia. Intercepta somente links `[data-case-overlay]`, preserva links normais como fallback, controla histórico, Escape, foco, rolagem e reprodução de vídeo sob demanda.
 - [`assets/js/forms.js`](../assets/js/forms.js): validação local dos formulários de preview, mensagens acessíveis e regras do arquivo de currículo.
 
 Os scripts são carregados com `defer`. Uma página interna comum usa apenas `site.js`; a homepage adiciona `home.js`; Contato e Faça Parte adicionam `forms.js`.

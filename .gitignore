@@ -24,3 +24,7 @@ docs/content-source/
 docs/private/
 docs/reference/
 docs/redirect-map.csv
+
+# Materiais brutos e artefatos locais de análise/QA não entram no site público.
+/material/
+/tmp/

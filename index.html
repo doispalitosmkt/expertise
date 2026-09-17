@@ -16,17 +16,22 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/assets/x-mark.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/fonts/PlusJakartaSans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/logo.svg" as="image" type="image/svg+xml" fetchpriority="high">
   <link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/site.css">
-  <link rel="stylesheet" href="/assets/css/pages/home.css">
+  <link rel="stylesheet" href="/assets/css/pages/home.css?v=20260914-5">
+  <link rel="stylesheet" href="/assets/css/pages/case-overlay.css?v=20260915-1">
   <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"Organization","name":"Expertise Marketing Promocional","url":"https://www.expertisegroup.com.br/","logo":"https://www.expertisegroup.com.br/assets/logo.svg","email":"contato@expertisegroup.com.br","telephone":"+55 11 3053-5555","address":{"@type":"PostalAddress","streetAddress":"Rua Gomes de Carvalho, 1765, 4º andar","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"},"sameAs":["https://www.instagram.com/expertisegroup/","https://www.facebook.com/aexpertisegroup","https://www.linkedin.com/company/expertise-marketing-promocional"]}
   </script>
 </head>
 <body data-page="home">
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-  <div id="progress"></div>
+  <div id="progress" aria-hidden="true"></div>
+  <div class="home-intro" aria-hidden="true">
+    <img class="home-intro__logo" src="/assets/logo.svg" alt="" width="740" height="166">
+    <span class="home-intro__caption">Estratégia. Criatividade. Execução.</span>
+  </div>
+  <button class="motion-toggle" data-motion-toggle type="button" aria-pressed="false" hidden>Pausar movimento</button>
 
   <!-- Nav -->
   <header class="nav nav--light" id="nav">
@@ -71,46 +76,29 @@
   <main id="conteudo">
     <!-- Hero -->
     <section class="section hero" aria-labelledby="hero-title">
-      <div class="hero-center">
-        <span class="eyebrow" data-reveal="up">#1 n&oacute;s somos a</span>
-        <h1 class="hero-wordmark-wrap" id="hero-title">
-          <span class="sr-only">Expertise — agência de live marketing</span>
-          <img src="/assets/logo.svg" alt="" aria-hidden="true" class="hero-wordmark" width="740" height="166" fetchpriority="high">
-        </h1>
-        <div class="hero-cta-wrap">
-          <a class="button" href="/nossas-expertises/">Explore nossas experi&ecirc;ncias ↗</a>
+      <div class="container hero-content">
+        <div class="hero-topline">
+          <span class="hero-signature"><span>#1 nós somos a</span><img src="/assets/logo.svg" alt="Expertise" width="740" height="166"></span>
+          <span class="hero-discipline">Estratégia. Criatividade. Execução.</span>
         </div>
-        <div class="hero-foot">
-        <div class="hero-social">
-          <a href="https://www.instagram.com/expertisegroup/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5"/>
-              <circle cx="12" cy="12" r="4"/>
-              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
-            </svg>
-          </a>
-          <a href="https://www.linkedin.com/company/expertise-marketing-promocional" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
-              <rect x="2" y="9" width="4" height="12"/>
-              <circle cx="4" cy="4" r="2"/>
-            </svg>
-          </a>
-          <a href="https://www.facebook.com/aexpertisegroup" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v2H6v4h3v6h4v-6h3.2l.8-4h-4V9c0-.7.3-1 1-1Z" fill="currentColor" stroke="none"/>
-            </svg>
-          </a>
+        <div class="hero-stage">
+          <h1 class="hero-title" id="hero-title" aria-label="Expertise — agência de live marketing. Experiências que movem.">
+            <span class="sr-only">Expertise — agência de live marketing</span>
+            <span class="hero-title-first" data-hero-words="EXPERIÊNCIAS|IDEIAS|CONEXÕES" aria-hidden="true">
+              <span class="hero-word-space">EXPERIÊNCIAS</span>
+              <span class="hero-word-layer">EXPERIÊNCIAS</span>
+            </span>
+            <span class="hero-title-second">que <em>movem.</em></span>
+          </h1>
         </div>
-        <div class="hero-statement">
-          <div class="hero-statement-rule"></div>
-          <div class="hero-statement-cols">
-            <p>Somos uma ag&ecirc;ncia criativa</p>
-            <p>Especializada em experi&ecirc;ncias.</p>
-          </div>
+        <div class="hero-bottom">
+          <div class="hero-statement"><p>Somos uma agência criativa</p><p>Especializada em experiências.</p></div>
+          <a class="button button--dark hero-cta" href="/nossas-expertises/">Explore nossas experiências ↗</a>
+          <a class="hero-scroll" href="#cases"><span>Veja o que a gente faz</span><img src="/assets/icons/icon-arrow-down.svg" alt="" width="24" height="24"></a>
         </div>
       </div>
-      </div>
+    </section>
+    <div class="proof-section">
       <div class="proof-strip" role="group" aria-label="N&uacute;meros da Expertise">
         <div class="proof-item">
           <img class="proof-icon" src="assets/icons/icon-clock.svg" alt="" aria-hidden="true" width="40" height="40">
@@ -133,10 +121,68 @@
           <span>Marcas atendidas</span>
         </div>
       </div>
+    </div>
+
+    <!-- Projects -->
+    <section class="section projects motif-x motif-x--yellow" id="cases">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow" data-reveal="up">Projetos</span>
+            <h2 class="section-title" data-reveal="up" data-delay="1">Cases que viram <em>experi&ecirc;ncia.</em></h2>
+          </div>
+          <p class="lead" data-reveal="up" data-delay="2">
+            Experi&ecirc;ncias reais criadas para marcas que precisam transformar eventos, trade, incentivo e ativa&ccedil;&otilde;es em mem&oacute;ria.
+          </p>
+        </div>
+
+        <div class="projects-gallery" role="group" aria-label="Galeria de cases">
+          <a class="case-card case-card--link" data-reveal="up" data-case-overlay href="/cases/?case=convencao-adium" aria-labelledby="home-adium-case-title">
+            <div class="case-card-media"><img src="/assets/images/cases/material/adium/cover.webp" alt="Plenária da Convenção Adium" loading="lazy" decoding="async" width="2400" height="1600"></div>
+            <div class="case-card-meta"><span class="case-category">Eventos</span><h3 class="case-name" id="home-adium-case-title">Convenção Adium</h3></div>
+          </a>
+
+          <a class="case-card case-card--link" data-reveal="up" data-case-overlay href="/cases/?case=portal-leve-mais-nestle" aria-labelledby="home-leve-mais-case-title">
+            <div class="case-card-media"><img src="/assets/images/cases/material/portal-leve-mais/gallery-02.webp" alt="Portal Leve Mais Nestlé no ponto de venda" loading="lazy" decoding="async" width="899" height="1220"></div>
+            <div class="case-card-meta"><span class="case-category">Trade</span><h3 class="case-name" id="home-leve-mais-case-title">Portal Leve Mais Nestlé</h3></div>
+          </a>
+
+          <a class="case-card case-card--link" data-reveal="up" data-case-overlay href="/cases/?case=vivo-rio-pro-wsl" aria-labelledby="home-wsl-case-title">
+            <div class="case-card-media"><img src="/assets/images/cases/material/vivo-rio-pro-wsl/gallery-03.webp" alt="Ativação Vivo com o público no Rio Pro" loading="lazy" decoding="async" width="1769" height="2400"></div>
+            <div class="case-card-meta"><span class="case-category">Ativação esportiva</span><h3 class="case-name" id="home-wsl-case-title">Vivo Rio Pro</h3></div>
+          </a>
+
+          <a class="case-card case-card--link" data-reveal="up" data-case-overlay href="/cases/?case=adrenalina-amazonia" aria-labelledby="home-amazonia-case-title">
+            <div class="case-card-media"><img src="/assets/images/cases/material/amazonia/cover.webp" alt="Viagem de incentivo Volkswagen pela Amazônia" loading="lazy" decoding="async" width="2400" height="1456"></div>
+            <div class="case-card-meta"><span class="case-category">Viagem de incentivo</span><h3 class="case-name" id="home-amazonia-case-title">VW Adrenalina Amazônia</h3></div>
+          </a>
+
+          <a class="case-card case-card--link" data-reveal="up" data-case-overlay href="/cases/?case=terra-verao" aria-labelledby="home-terra-verao-case-title">
+            <div class="case-card-media"><img src="/assets/images/cases/material/terra-verao/cover.webp" alt="Circuito Terra Verão no Parque Villa-Lobos" loading="lazy" decoding="async" width="2048" height="1365"></div>
+            <div class="case-card-meta"><span class="case-category">Ativação de marca</span><h3 class="case-name" id="home-terra-verao-case-title">Terra Verão</h3></div>
+          </a>
+
+          <a class="case-card case-card--link" data-reveal="up" data-case-overlay href="/cases/?case=missao-possivel-bradesco" aria-labelledby="home-missao-case-title">
+            <div class="case-card-media"><img src="/assets/images/cases/material/missao-possivel/cover.webp" alt="Campanha de incentivo Missão Possível" loading="lazy" decoding="async" width="1479" height="870"></div>
+            <div class="case-card-meta"><span class="case-category">Incentivo</span><h3 class="case-name" id="home-missao-case-title">Missão Possível</h3></div>
+          </a>
+
+          <a class="case-card case-card--link" data-reveal="up" data-case-overlay href="/cases/?case=tuk-tuk-maggi" aria-labelledby="home-tuktuk-case-title">
+            <div class="case-card-media"><img src="/assets/images/cases/material/tuk-tuk-maggi/gallery-02.webp" alt="Ativação itinerante Tuk Tuk Maggi" loading="lazy" decoding="async" width="1100" height="900"></div>
+            <div class="case-card-meta"><span class="case-category">Trade</span><h3 class="case-name" id="home-tuktuk-case-title">Tuk Tuk Maggi</h3></div>
+          </a>
+
+          <a class="case-card case-card--link" data-reveal="up" data-case-overlay href="/cases/?case=amizade-que-vale" aria-labelledby="home-amizade-case-title">
+            <div class="case-card-media"><img src="/assets/images/cases/material/amizade-que-vale/cover.webp" alt="Campanha Volkswagen Amizade que Vale Mais" loading="lazy" decoding="async" width="1697" height="2400"></div>
+            <div class="case-card-meta"><span class="case-category">Promoção</span><h3 class="case-name" id="home-amizade-case-title">Amizade que Vale Mais</h3></div>
+          </a>
+        </div>
+        <div class="projects-action"><span>Da ideia à experiência. Do começo ao fim.</span><a class="button button--secondary" href="/cases/">Todos os cases ↗</a></div>
+      </div>
     </section>
 
     <!-- About -->
-    <section class="section about" id="quem-somos">
+    <section class="section about motif-x motif-x--left motif-x--bottom" id="quem-somos">
       <div class="about-lines-wrap">
         <img class="about-lines-deco" src="assets/images/decor/decor-about-lines.svg" aria-hidden="true" alt="" width="1440" height="1969">
       </div>
@@ -150,8 +196,30 @@
         <div class="about-head">
           <div class="about-copy">
             <span class="eyebrow" data-reveal="up" data-delay="1">Conhe&ccedil;a-nos</span>
-            <h2 class="section-title" data-reveal="up" data-delay="2">QUEM SOMOS</h2>
+            <h2 class="section-title" data-reveal="up" data-delay="2">QUEM<br> <em>SOMOS</em></h2>
             <a class="button" href="/quem-somos/" data-reveal="up" data-delay="3">Conheça nossa história</a>
+        <div class="hero-social">
+          <a href="https://www.instagram.com/expertisegroup/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/company/expertise-marketing-promocional" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/aexpertisegroup" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v2H6v4h3v6h4v-6h3.2l.8-4h-4V9c0-.7.3-1 1-1Z" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+
           </div>
           <p class="lead" data-reveal="up" data-delay="2">
             Somos uma ag&ecirc;ncia de live marketing com mais de 26 anos de hist&oacute;ria. Ao longo de nossa trajet&oacute;ria, constru&iacute;mos conex&otilde;es entre marcas e pessoas atrav&eacute;s de eventos, conven&ccedil;&otilde;es, ativa&ccedil;&otilde;es, promo&ccedil;&otilde;es, gerenciamento de equipes de trade, viagens de incentivo e campanhas de incentivo que unem estrat&eacute;gia, criatividade e execu&ccedil;&atilde;o impec&aacute;vel.
@@ -161,30 +229,19 @@
     </section>
 
     <!-- Business -->
-    <section class="section business" id="expertises">
+    <section class="section business motif-x motif-x--bottom" id="expertises">
       <div class="business-intro">
         <div class="container">
           <div>
             <span class="eyebrow" data-reveal="up">Estrutura</span>
-            <h2 class="section-title" data-reveal="up" data-delay="1">4 unidades de <em>neg&oacute;cios</em> independentes.</h2>
+            <h2 class="section-title" data-reveal="up" data-delay="1"><span class="business-four">4</span> unidades de <em>negócios</em> independentes.</h2>
             <p class="lead" data-reveal="up" data-delay="2">
               Na Expertise, acreditamos que grandes resultados nascem de uma estrat&eacute;gia criativa diferenciada. Para tornar essa vis&atilde;o realidade, nossa opera&ccedil;&atilde;o est&aacute; estruturada em 4 Unidades de Neg&oacute;cios independentes, cada uma com head pr&oacute;prio e equipes altamente especializadas.
             </p>
           </div>
-          <div class="business-diagram" data-reveal="scale" data-delay="3" aria-hidden="true">
-            <p class="business-diagram-label business-diagram-label--travel">Viagem de Incentivo &amp; Log&iacute;stica</p>
-            <p class="business-diagram-label business-diagram-label--events">Eventos</p>
-            <p class="business-diagram-label business-diagram-label--incentive">Incentivo</p>
-            <p class="business-diagram-label business-diagram-label--trade">Trade</p>
-            <svg class="business-diagram-line" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <line x1="41" y1="41.1" x2="76.8" y2="63"></line>
-            </svg>
-            <span class="business-diagram-dot business-diagram-dot--origin"></span>
-            <span class="business-diagram-dot business-diagram-dot--target"></span>
-            <div class="business-diagram-callout business-diagram-callout--positioned">
-              <strong>diferencial</strong>
-              <p>Unidades de neg&oacute;cios independentes, mas que podem atuar de forma integrada potencializando resultados.</p>
-            </div>
+          <div class="business-callout" data-reveal="up">
+            <img src="/assets/x-mark.svg" alt="" aria-hidden="true" width="100" height="100">
+            <div><strong>Diferencial</strong><p>Unidades de negócios independentes, mas que podem atuar de forma integrada potencializando resultados.</p></div>
           </div>
         </div>
       </div>
@@ -193,87 +250,47 @@
         <div class="container">
         <div class="unit-list">
           <article class="unit-card" data-reveal="up">
-            <div class="unit-card-accent"></div>
-            <div class="unit-number-wrap">
-              <div class="unit-number">01</div>
-            </div>
-            <div>
-              <div class="unit-title-row">
-                <img src="assets/icons/icon-sun.svg" alt="" aria-hidden="true" width="58" height="52">
-                <h3>Eventos</h3>
-              </div>
-              <p>Da concep&ccedil;&atilde;o criativa &agrave; execu&ccedil;&atilde;o impec&aacute;vel, criamos projetos estrat&eacute;gicos, inovadores e com excel&ecirc;ncia operacional.</p>
-              <div class="unit-tags">
+            <span class="unit-number">01</span>
+            <div class="unit-heading"><img src="assets/icons/icon-sun.svg" alt="" aria-hidden="true" width="58" height="52"><h3>Eventos</h3></div>
+            <div class="unit-description"><p>Da concep&ccedil;&atilde;o criativa &agrave; execu&ccedil;&atilde;o impec&aacute;vel, criamos projetos estrat&eacute;gicos, inovadores e com excel&ecirc;ncia operacional.</p><div class="unit-tags">
                 <span>Conven&ccedil;&otilde;es</span>
                 <span>Lan&ccedil;amentos</span>
                 <span>Brand experience</span>
                 <span>Estandes</span>
-              </div>
-            </div>
-            <a class="button secondary" href="/nossas-expertises/#eventos">Ver expertise</a>
+              </div><a class="button secondary" href="/nossas-expertises/#eventos">Ver expertise</a></div>
           </article>
 
           <article class="unit-card" data-reveal="up" data-delay="1">
-            <div class="unit-card-accent"></div>
-            <div class="unit-number-wrap">
-              <div class="unit-number">02</div>
-            </div>
-            <div>
-              <div class="unit-title-row">
-                <img src="assets/icons/icon-cart.svg" alt="" aria-hidden="true" width="49" height="40">
-                <h3>Trade</h3>
-              </div>
-              <p>Criamos e ativamos estrat&eacute;gias de trade marketing para aumentar convers&atilde;o, garantir visibilidade e aproximar marcas do consumidor.</p>
-              <div class="unit-tags">
+            <span class="unit-number">02</span>
+            <div class="unit-heading"><img src="assets/icons/icon-cart.svg" alt="" aria-hidden="true" width="49" height="40"><h3>Trade</h3></div>
+            <div class="unit-description"><p>Criamos e ativamos estrat&eacute;gias de trade marketing para aumentar convers&atilde;o, garantir visibilidade e aproximar marcas do consumidor.</p><div class="unit-tags">
                 <span>PDV</span>
                 <span>Merchandising</span>
                 <span>Degusta&ccedil;&atilde;o</span>
                 <span>Promo&ccedil;&otilde;es</span>
-              </div>
-            </div>
-            <a class="button secondary" href="/nossas-expertises/#trade">Ver expertise</a>
+              </div><a class="button secondary" href="/nossas-expertises/#trade">Ver expertise</a></div>
           </article>
 
           <article class="unit-card" data-reveal="up" data-delay="2">
-            <div class="unit-card-accent"></div>
-            <div class="unit-number-wrap">
-              <div class="unit-number">03</div>
-            </div>
-            <div>
-              <div class="unit-title-row">
-                <img src="assets/icons/icon-truck.svg" alt="" aria-hidden="true" width="48" height="34">
-                <h3>Viagens de Incentivo &amp; Log&iacute;stica</h3>
-              </div>
-              <p>Elaboramos roteiros nacionais e internacionais, cuidando da experi&ecirc;ncia, da economia e da log&iacute;stica em cada etapa.</p>
-              <div class="unit-tags">
+            <span class="unit-number">03</span>
+            <div class="unit-heading"><img src="assets/icons/icon-truck.svg" alt="" aria-hidden="true" width="48" height="34"><h3>Viagens de Incentivo &amp; Log&iacute;stica</h3></div>
+            <div class="unit-description"><p>Elaboramos roteiros nacionais e internacionais, cuidando da experi&ecirc;ncia, da economia e da log&iacute;stica em cada etapa.</p><div class="unit-tags">
                 <span>Roteiros</span>
                 <span>Hospedagem</span>
                 <span>ESG</span>
                 <span>Opera&ccedil;&atilde;o</span>
-              </div>
-            </div>
-            <a class="button secondary" href="/nossas-expertises/#viagens-e-logistica">Ver expertise</a>
+              </div><a class="button secondary" href="/nossas-expertises/#viagens-e-logistica">Ver expertise</a></div>
           </article>
 
           <article class="unit-card" data-reveal="up" data-delay="3">
-            <div class="unit-card-accent"></div>
-            <div class="unit-number-wrap">
-              <div class="unit-number">04</div>
-            </div>
-            <div>
-              <div class="unit-title-row">
-                <img src="assets/icons/icon-gift.svg" alt="" aria-hidden="true" width="33" height="34">
-                <h3>Incentivo</h3>
-              </div>
-              <p>Planejamos campanhas de incentivo com jornadas de engajamento, premia&ccedil;&atilde;o e gest&atilde;o de performance do in&iacute;cio ao fim.</p>
-              <div class="unit-tags">
+            <span class="unit-number">04</span>
+            <div class="unit-heading"><img src="assets/icons/icon-gift.svg" alt="" aria-hidden="true" width="33" height="34"><h3>Incentivo</h3></div>
+            <div class="unit-description"><p>Planejamos campanhas de incentivo com jornadas de engajamento, premia&ccedil;&atilde;o e gest&atilde;o de performance do in&iacute;cio ao fim.</p><div class="unit-tags">
                 <span>Campanhas</span>
                 <span>Engajamento</span>
                 <span>Premia&ccedil;&atilde;o</span>
                 <span>Performance</span>
-              </div>
-            </div>
-            <a class="button secondary" href="/nossas-expertises/#incentivo">Ver expertise</a>
+              </div><a class="button secondary" href="/nossas-expertises/#incentivo">Ver expertise</a></div>
           </article>
         </div>
         </div>
@@ -281,10 +298,10 @@
     </section>
 
     <!-- Clients -->
-    <section class="clients" aria-label="Clientes atendidos">
+    <section class="clients motif-x motif-x--bottom" aria-label="Clientes atendidos">
       <div class="container">
         <p class="clients-kicker" data-reveal="up">Clientes</p>
-        <h2 class="clients-title" data-reveal="up" data-delay="1">Confian&ccedil;a de marcas que voc&ecirc; conhece</h2>
+        <h2 class="clients-title" data-reveal="up" data-delay="1">Confiança de marcas<br> <em>que você conhece</em></h2>
         <div class="logo-carousel-stack" data-reveal="up" data-delay="2">
           <div class="logo-carousel" role="group" aria-label="Primeira sele&ccedil;&atilde;o de marcas atendidas">
             <div class="logo-carousel-track">
@@ -340,109 +357,6 @@
                 <div class="logo-item"><img src="assets/images/client-logos/xp-investimentos.webp" alt="" loading="lazy" width="352" height="216"></div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section class="section projects" id="cases">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="eyebrow" data-reveal="up">Projetos</span>
-            <h2 class="section-title" data-reveal="up" data-delay="1">Cases que viram experi&ecirc;ncia.</h2>
-          </div>
-          <p class="lead" data-reveal="up" data-delay="2">
-            Experi&ecirc;ncias reais criadas para marcas que precisam transformar eventos, trade, incentivo e ativa&ccedil;&otilde;es em mem&oacute;ria.
-          </p>
-        </div>
-
-        <div class="projects-gallery" data-reveal="up" data-delay="3" role="group" aria-label="Galeria de cases">
-          <div class="case-column" data-case-parallax data-speed="-28">
-            <a class="case-card case-card--link" href="/cases/terra-na-parada-lgbtqia/" aria-labelledby="home-terra-case-title">
-              <div class="case-card-media">
-                <img src="assets/images/cases/terra-parada-lgbtqia.jpg" alt="Ativa&ccedil;&atilde;o Terra na Parada LGBTQIAPN+" loading="lazy" width="1919" height="554">
-              </div>
-              <div class="case-card-meta">
-                <span class="case-category">Ativa&ccedil;&atilde;o</span>
-                <h3 class="case-name" id="home-terra-case-title">Terra na Parada LGBTQIAPN+</h3>
-              </div>
-            </a>
-
-            <article class="case-card">
-              <div class="case-card-media">
-                <img src="assets/images/cases/black-princess.jpg" alt="Promo Black Princess em ambiente de marca" loading="lazy" width="1919" height="554">
-              </div>
-              <div class="case-card-meta">
-                <span class="case-category">Promo&ccedil;&atilde;o</span>
-                <h3 class="case-name">Promo Black Princess</h3>
-              </div>
-            </article>
-
-            <article class="case-card is-compact">
-              <div class="case-card-media">
-                <img src="assets/images/cases/estande-roche.jpg" alt="Estande Roche em feira de neg&oacute;cios" loading="lazy" width="1919" height="554">
-              </div>
-              <div class="case-card-meta">
-                <span class="case-category">Estandes</span>
-                <h3 class="case-name">Estande Roche</h3>
-              </div>
-            </article>
-          </div>
-
-          <div class="case-column" data-case-parallax data-speed="22">
-            <article class="case-card">
-              <div class="case-card-media">
-                <img src="assets/images/cases/vw-oasis-de-campeoes.png" alt="Viagem de incentivo Volkswagen no Egito" loading="lazy" width="1919" height="554">
-              </div>
-              <div class="case-card-meta">
-                <span class="case-category">Incentivo</span>
-                <h3 class="case-name">VW O&aacute;sis de campe&otilde;es</h3>
-              </div>
-            </article>
-
-            <article class="case-card is-tall">
-              <div class="case-card-media">
-                <img src="assets/images/cases/caravana-maggi.jpg" alt="Caravana Maggi com ativa&ccedil;&atilde;o itinerante" loading="lazy" width="1919" height="554">
-              </div>
-              <div class="case-card-meta">
-                <span class="case-category">Roadshow</span>
-                <h3 class="case-name">Caravana Maggi</h3>
-              </div>
-            </article>
-
-            <article class="case-card is-compact">
-              <div class="case-card-media">
-                <img src="assets/images/cases/encontro-vivo.jpg" alt="Encontro Vivo com palco e conte&uacute;do institucional" loading="lazy" width="1919" height="554">
-              </div>
-              <div class="case-card-meta">
-                <span class="case-category">Eventos</span>
-                <h3 class="case-name">Encontro VIVO</h3>
-              </div>
-            </article>
-          </div>
-
-          <div class="case-column" data-case-parallax data-speed="-18">
-            <article class="case-card is-compact">
-              <div class="case-card-media">
-                <img src="assets/images/cases/itaipava-premium.jpg" alt="Lan&ccedil;amento Itaipava Premium" loading="lazy" width="1919" height="554">
-              </div>
-              <div class="case-card-meta">
-                <span class="case-category">Lan&ccedil;amento</span>
-                <h3 class="case-name">Itaipava Premium</h3>
-              </div>
-            </article>
-
-            <article class="case-card is-tall">
-              <div class="case-card-media">
-                <img src="assets/images/cases/vivo-lollapalooza.jpg" alt="VIVO no Lollapalooza" loading="lazy" width="1919" height="554">
-              </div>
-              <div class="case-card-meta">
-                <span class="case-category">Experi&ecirc;ncia</span>
-                <h3 class="case-name">VIVO no Lollapalooza</h3>
-              </div>
-            </article>
           </div>
         </div>
       </div>
@@ -563,12 +477,12 @@
     </section>
 
     <!-- CTA -->
-    <section class="section cta" id="contato">
+    <section class="section cta motif-x motif-x--bottom" id="contato">
       <img class="organic-deco" src="assets/images/decor/decor-cta-blob.svg" alt="" aria-hidden="true" width="804" height="701">
       <div class="container">
         <div class="cta-panel">
           <span class="eyebrow" data-reveal="up">Vamos sair do comum?</span>
-          <h2 class="section-title" data-reveal="up" data-delay="1">Vamos criar a pr&oacute;xima experi&ecirc;ncia da sua marca?</h2>
+          <h2 class="section-title" data-reveal="up" data-delay="1">Vamos criar a próxima <em>experiência</em> da sua marca?</h2>
           <p class="lead" data-reveal="up" data-delay="2">
             Nossa equipe est&aacute; pronta para transformar ideias em experi&ecirc;ncias reais, do conceito &agrave; execu&ccedil;&atilde;o.
           </p>
@@ -637,6 +551,8 @@
   </footer>
 
   <script src="/assets/js/site.js" defer></script>
-  <script src="/assets/js/home.js" defer></script>
+  <script src="/assets/js/home.js?v=20260914-4" defer></script>
+  <script src="/assets/js/case-catalog.js?v=20260915-1" defer></script>
+  <script src="/assets/js/case-overlay.js?v=20260915-1" defer></script>
 </body>
 </html>

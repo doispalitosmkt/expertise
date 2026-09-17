@@ -95,6 +95,67 @@ a {
   margin-inline: auto;
 }
 
+/* The brand X can sit behind a section without cutting or masking its photography. */
+.motif-x {
+  --motif-x-color: var(--color-ink);
+  --motif-x-opacity: 0.075;
+  --motif-x-size: min(78vw, 68rem);
+  --motif-x-x: 18%;
+  --motif-x-y: -18%;
+  --motif-x-rotate: -8deg;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.motif-x > * {
+  position: relative;
+  z-index: 1;
+}
+
+.motif-x::after {
+  position: absolute;
+  z-index: 0;
+  top: var(--motif-x-y);
+  right: var(--motif-x-x);
+  width: var(--motif-x-size);
+  aspect-ratio: 1.08;
+  content: "";
+  background: var(--motif-x-color);
+  opacity: var(--motif-x-opacity);
+  pointer-events: none;
+  transform: rotate(var(--motif-x-rotate));
+  transform-origin: center;
+  -webkit-mask: url("/assets/x-mark.svg") center / contain no-repeat;
+  mask: url("/assets/x-mark.svg") center / contain no-repeat;
+}
+
+.motif-x--yellow {
+  --motif-x-color: var(--color-yellow);
+}
+
+.motif-x--white {
+  --motif-x-color: var(--color-white);
+}
+
+.motif-x--left {
+  --motif-x-x: auto;
+}
+
+.motif-x--left::after {
+  right: auto;
+  left: -18%;
+}
+
+.motif-x--bottom {
+  --motif-x-y: auto;
+}
+
+.motif-x--bottom::after {
+  top: auto;
+  bottom: -28%;
+}
+
 .button {
   display: inline-flex;
   min-height: 3rem;

@@ -84,6 +84,7 @@ Use caminhos de assets absolutos a partir da raiz, como `/assets/css/tokens.css`
 | Homepage | `tokens.css`, `site.css`, `pages/home.css` | `site.js`, `home.js` |
 | Interna comum | `tokens.css`, `site.css`, `pages/internal.css` | `site.js` |
 | Detalhe de case | anteriores + `pages/case-detail.css` | `site.js` |
+| Página que abre cases em camada | stylesheet da página + `pages/case-overlay.css` | `site.js`, `case-catalog.js`, `case-overlay.js` |
 | Catálogo de Serviços | anteriores + `pages/services.css` | `site.js` |
 | Interna com formulário | anteriores + `pages/forms.css` | `site.js`, `forms.js` |
 | 404 | `tokens.css`, `site.css`, `pages/internal.css` | `site.js` |
@@ -141,11 +142,21 @@ Espera a estrutura canônica do menu, links em `[data-site-nav]`, elementos opci
 
 ### `home.js`
 
-Usa `#progress`, `.projects-gallery` e `[data-case-parallax]`. O parallax é desativado em viewports menores e quando a pessoa solicita menos movimento.
+Atualiza a barra `#progress` e exibe `.home-intro` por cerca de 1,1 segundo, uma vez por sessão, ao entrar no topo da home sem fragmento de URL. Os indicadores `[data-count]` animam uma vez ao entrar na tela, usam `[data-suffix]` e preservam o texto final declarado no HTML.
+
+O título `[data-hero-words]` alterna as palavras separadas por `|`, começando por EXPERIÊNCIAS. As letras entram de baixo para cima com um pequeno atraso entre elas, seguido de 3,6 segundos de leitura. `.hero-word-space` reserva o espaço da palavra original; `.hero-word-layer` contém as letras animadas. O `aria-label` do `h1` mantém a mensagem acessível estável. A troca pausa quando o título ou a aba deixam de estar visíveis.
+
+O botão `[data-motion-toggle]` pausa ou retoma o movimento por meio de `.motion-paused`; a pausa encerra a abertura, conclui os contadores e deixa uma palavra inteira no título. `prefers-reduced-motion` desativa abertura, troca de palavras e contagem animada, e tem prioridade sobre esse botão. O título volta a EXPERIÊNCIAS com movimento reduzido. A classe `.home-motion-ready` habilita as entradas de `[data-reveal]` quando há suporte a `IntersectionObserver` e movimento permitido; o conteúdo permanece visível sem JavaScript.
 
 ### `forms.js`
 
 Atua apenas em `form[data-preview-form]`. Cada campo deve apontar via `aria-describedby` para sua mensagem `.field-error`; o status geral deve usar `[data-form-status]`.
+
+### `case-catalog.js` e `case-overlay.js`
+
+Os cards com `data-case-overlay` devem apontar para `/cases/?case=slug`. O catálogo usa o mesmo slug presente em `window.EXPERTISE_CASES`; assim, o link continua utilizável sem JavaScript e pode ser compartilhado. A camada usa `<dialog>`, atualiza o histórico sem recarregar a página, fecha com Escape ou pelo botão, restaura o foco e troca os cases seguintes sem empilhar etapas no botão Voltar.
+
+Cada mídia publicada fica em `assets/images/cases/material/slug/`, em WebP, sem metadados e com no máximo 2400 px no maior lado. Use fotografias em sangria quando a resolução permitir. Artes verticais entram inteiras sobre fundo tonal com o X, sem máscaras que dividam a imagem.
 
 ## Formulários: estado de preview
 

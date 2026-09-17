@@ -20,7 +20,10 @@
   <link rel="stylesheet" href="/assets/css/site.css">
   <link rel="stylesheet" href="/assets/css/pages/internal.css">
   <link rel="stylesheet" href="/assets/css/pages/services.css">
+  <link rel="stylesheet" href="/assets/css/pages/case-overlay.css?v=20260915-1">
   <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/case-catalog.js?v=20260915-1" defer></script>
+  <script src="/assets/js/case-overlay.js?v=20260915-1" defer></script>
   <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"Organization","name":"Expertise Marketing Promocional","url":"https://www.expertisegroup.com.br/","logo":"https://www.expertisegroup.com.br/assets/logo.svg","email":"contato@expertisegroup.com.br","telephone":"+55 11 3053-5555","address":{"@type":"PostalAddress","streetAddress":"Rua Gomes de Carvalho, 1765, 4º andar","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"},"sameAs":["https://www.instagram.com/expertisegroup/","https://www.facebook.com/aexpertisegroup","https://www.linkedin.com/company/expertise-marketing-promocional"]}
   </script>
@@ -69,7 +72,7 @@
   </div>
 
   <main class="page-main" id="conteudo">
-    <section class="page-hero page-hero--yellow" aria-labelledby="page-title">
+    <section class="page-hero page-hero--yellow motif-x motif-x--bottom" aria-labelledby="page-title">
       <div class="container page-hero__layout">
         <div>
           <p class="page-hero__kicker" data-reveal>Serviços</p>
@@ -82,7 +85,7 @@
       </div>
     </section>
 
-    <section class="site-section site-section--paper site-section--rounded-top motif-stripes motif-stripes--band" aria-labelledby="atalhos-title">
+    <section class="site-section site-section--paper site-section--rounded-top motif-x motif-x--left motif-x--bottom" aria-labelledby="atalhos-title">
       <div class="container">
         <div class="section-heading">
           <div>
@@ -117,7 +120,7 @@
       </div>
     </section>
 
-    <section class="site-section site-section--dark service-chapter" id="eventos" aria-labelledby="eventos-title">
+    <section class="site-section site-section--dark service-chapter motif-x motif-x--yellow" id="eventos" aria-labelledby="eventos-title">
       <div class="container">
         <header class="service-chapter__header">
           <span class="service-chapter__number" aria-hidden="true" data-reveal>01</span>
@@ -151,7 +154,7 @@
       </div>
     </section>
 
-    <section class="site-section site-section--yellow service-chapter service-chapter--light" id="trade" aria-labelledby="trade-title">
+    <section class="site-section site-section--yellow service-chapter service-chapter--light motif-x motif-x--bottom" id="trade" aria-labelledby="trade-title">
       <div class="container">
         <header class="service-chapter__header">
           <span class="service-chapter__number" aria-hidden="true" data-reveal>02</span>
@@ -185,7 +188,7 @@
       </div>
     </section>
 
-    <section class="site-section site-section--paper service-chapter service-chapter--light" id="viagens-e-logistica" aria-labelledby="viagens-title">
+    <section class="site-section site-section--paper service-chapter service-chapter--light motif-x motif-x--left motif-x--bottom" id="viagens-e-logistica" aria-labelledby="viagens-title">
       <div class="container">
         <header class="service-chapter__header">
           <span class="service-chapter__number" aria-hidden="true" data-reveal>03</span>
@@ -214,7 +217,7 @@
       </div>
     </section>
 
-    <section class="site-section site-section--surface service-chapter" id="incentivo" aria-labelledby="incentivo-title">
+    <section class="site-section site-section--surface service-chapter motif-x motif-x--yellow" id="incentivo" aria-labelledby="incentivo-title">
       <div class="container">
         <header class="service-chapter__header">
           <span class="service-chapter__number" aria-hidden="true" data-reveal>04</span>
@@ -270,16 +273,16 @@
           <p class="section-lead" data-reveal data-delay="2">Quatro projetos reais mostram como diferentes serviços ganham forma para marcas, públicos e contextos distintos.</p>
         </div>
         <div class="case-listing">
-          <article class="listing-card" data-reveal><div class="listing-card__media"><img src="/assets/images/cases/encontro-vivo.jpg" alt="Encontro Vivo com palco e conteúdo institucional" loading="lazy" decoding="async" width="1919" height="554"></div><div class="listing-card__body"><span class="listing-card__category">Eventos</span><h3>Encontro VIVO</h3></div></article>
-          <article class="listing-card" data-reveal data-delay="1"><div class="listing-card__media"><img src="/assets/images/cases/caravana-maggi.jpg" alt="Caravana Maggi com ativação itinerante" loading="lazy" decoding="async" width="1919" height="554"></div><div class="listing-card__body"><span class="listing-card__category">Roadshow</span><h3>Caravana Maggi</h3></div></article>
-          <article class="listing-card" data-reveal><div class="listing-card__media"><img src="/assets/images/cases/vw-oasis-de-campeoes.png" alt="Viagem de incentivo Volkswagen no Egito" loading="lazy" decoding="async" width="1919" height="554"></div><div class="listing-card__body"><span class="listing-card__category">Incentivo</span><h3>VW Oásis de campeões</h3></div></article>
-          <article class="listing-card" data-reveal data-delay="1"><div class="listing-card__media"><img src="/assets/images/cases/estande-roche.jpg" alt="Estande Roche em feira de negócios" loading="lazy" decoding="async" width="1919" height="554"></div><div class="listing-card__body"><span class="listing-card__category">Estandes</span><h3>Estande Roche</h3></div></article>
+          <a class="listing-card listing-card--link" data-reveal data-case-overlay href="/cases/?case=convencao-adium"><div class="listing-card__media"><img src="/assets/images/cases/material/adium/cover.webp" alt="Plenária da Convenção Adium" loading="lazy" decoding="async" width="2400" height="1600"></div><div class="listing-card__body"><span class="listing-card__category">Eventos</span><h3>Convenção Adium</h3></div></a>
+          <a class="listing-card listing-card--link" data-reveal data-delay="1" data-case-overlay href="/cases/?case=tuk-tuk-maggi"><div class="listing-card__media"><img src="/assets/images/cases/material/tuk-tuk-maggi/gallery-02.webp" alt="Ativação itinerante Tuk Tuk Maggi" loading="lazy" decoding="async" width="1100" height="900"></div><div class="listing-card__body"><span class="listing-card__category">Trade</span><h3>Tuk Tuk Maggi</h3></div></a>
+          <a class="listing-card listing-card--link" data-reveal data-case-overlay href="/cases/?case=adrenalina-egito"><div class="listing-card__media"><img src="/assets/images/cases/material/egito/cover.webp" alt="Viagem de incentivo Volkswagen pelo Egito" loading="lazy" decoding="async" width="981" height="510"></div><div class="listing-card__body"><span class="listing-card__category">Viagens &amp; logística</span><h3>Adrenalina Egito</h3></div></a>
+          <a class="listing-card listing-card--link" data-reveal data-delay="1" data-case-overlay href="/cases/?case=sis-guanabara"><div class="listing-card__media"><img src="/assets/images/cases/material/sis-guanabara/cover.webp" alt="Espaço premium Nestlé no Guanabara" loading="lazy" decoding="async" width="1490" height="963"></div><div class="listing-card__body"><span class="listing-card__category">Trade</span><h3>SIS Guanabara</h3></div></a>
         </div>
         <div class="button-row service-cases__action" data-reveal><a class="button" href="/cases/">Ver todos os cases ↗</a></div>
       </div>
     </section>
 
-    <section class="site-section cta-band" aria-labelledby="cta-title">
+    <section class="site-section cta-band motif-x motif-x--bottom" aria-labelledby="cta-title">
       <div class="container cta-band__layout">
         <div><p class="section-kicker">Seu próximo projeto</p><h2 id="cta-title">Seu desafio não precisa caber em uma <em>caixinha.</em></h2></div>
         <a class="button button--dark" href="/contato/">Conversar sobre um projeto ↗</a>
