@@ -35,6 +35,14 @@
   background: var(--color-ink);
 }
 
+.cta-band--x {
+  --motif-x-size: min(54vw, 52rem);
+  --motif-x-x: -7%;
+  --motif-x-y: -30%;
+  --motif-x-rotate: -7deg;
+  --motif-x-opacity: 0.09;
+}
+
 .editorial-card--link {
   text-decoration: none;
   transition: transform 420ms var(--ease-out), box-shadow 420ms var(--ease-out);
@@ -402,6 +410,13 @@
 }
 
 @media (max-width: 42rem) {
+  .cta-band--x {
+    --motif-x-size: 112vw;
+    --motif-x-x: -42%;
+    --motif-x-y: 8%;
+    --motif-x-opacity: 0.075;
+  }
+
   .blog-filters {
     flex-wrap: nowrap;
     overflow-x: auto;

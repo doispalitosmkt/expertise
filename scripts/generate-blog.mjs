@@ -137,7 +137,7 @@ posts.forEach((post, index) => {
   <link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/site.css?v=20260922-1">
   <link rel="stylesheet" href="/assets/css/pages/internal.css">
-  <link rel="stylesheet" href="/assets/css/pages/blog.css?v=20260922-1">
+  <link rel="stylesheet" href="/assets/css/pages/blog.css?v=20260922-2">
   <script src="/assets/js/site.js?v=20260922-2" defer></script>
   <script src="/assets/js/blog.js?v=20260922-1" defer></script>
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
@@ -165,7 +165,7 @@ posts.forEach((post, index) => {
         <a href="/blog/${escapeHtml(next.slug)}/"><span>Próximo artigo</span><strong>${escapeHtml(next.title)}</strong></a>
       </nav>
     </article>
-    <section class="site-section cta-band motif-blob" aria-labelledby="cta-title"><div class="container cta-band__layout"><div><p class="section-kicker">Próximo projeto</p><h2 id="cta-title">Vamos criar algo que as pessoas vão <em>lembrar?</em></h2></div><a class="button button--dark" href="mailto:contato@expertisegroup.com.br?subject=Novo%20projeto">Falar com a Expertise ↗</a></div></section>
+    <section class="site-section cta-band cta-band--x motif-x" aria-labelledby="cta-title"><div class="container cta-band__layout"><div><p class="section-kicker">Próximo projeto</p><h2 id="cta-title">Vamos criar algo que as pessoas vão <em>lembrar?</em></h2></div><a class="button button--dark" href="mailto:contato@expertisegroup.com.br?subject=Novo%20projeto">Falar com a Expertise ↗</a></div></section>
   </main>
   ${footer()}
 </body>
