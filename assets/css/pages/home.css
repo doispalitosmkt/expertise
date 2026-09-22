@@ -19,7 +19,16 @@ body[data-page="home"] { --container: 96rem; --gutter: clamp(1.25rem, 3.5vw, 4.5
 .lead { margin:0; font-size:clamp(1rem,1.35vw,1.1875rem); line-height:1.8; }
 
 /* A typographic composition with alternating words. */
-.hero { padding:calc(var(--header-height) + clamp(2.5rem,4vw,5rem)) 0 3rem; color:var(--color-ink); background:var(--color-yellow); }
+.hero {
+  --motif-x-opacity:.095;
+  --motif-x-size:clamp(26rem,52vw,50rem);
+  --motif-x-x:-12%;
+  --motif-x-y:14%;
+  --motif-x-rotate:-7deg;
+  padding:calc(var(--header-height) + clamp(2.5rem,4vw,5rem)) 0 3rem;
+  color:var(--color-ink);
+  background:var(--color-yellow);
+}
 .nav.nav--light:not(.scrolled) { background:var(--color-yellow); border-bottom-color:var(--line-dark); }
 .nav.nav--light:not(.scrolled) .button { color:var(--color-yellow); background:var(--color-ink); border-color:var(--color-ink); }
 .hero-content { text-align:center; }
@@ -75,7 +84,7 @@ body[data-page="home"] { --container: 96rem; --gutter: clamp(1.25rem, 3.5vw, 4.5
 .projects-action { display:flex; justify-content:space-between; align-items:center; gap:2rem; margin-top:4rem; padding-top:2rem; border-top:.0625rem solid var(--line-light); }
 .projects-action > span { color:var(--color-muted); font-size:.875rem; }
 
-.about { --motif-x-opacity:.055; --motif-x-size:min(76vw,66rem); padding:6rem 0; background:var(--color-paper); color:var(--color-ink); }
+.about { --motif-x-opacity:.09; --motif-x-size:min(76vw,66rem); --motif-x-x:-10%; --motif-x-y:-28%; padding:6rem 0; background:var(--color-paper); color:var(--color-ink); }
 .about-lines-wrap { display:none; }
 .about-layout { display:flex; flex-direction:column; gap:3.5rem; }
 .about-head { order:-1; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:clamp(3rem,8vw,10rem); }
@@ -199,7 +208,14 @@ body:not(.home-motion-ready) .logo-carousel-group[aria-hidden] { display:none; }
   .faq-grid { gap:3rem; }
 }
 @media (max-width:48rem) {
-  .hero { padding-top:calc(var(--header-height) + 2rem); padding-bottom:2rem; }
+  .hero {
+    --motif-x-opacity:.08;
+    --motif-x-size:clamp(19rem,90vw,28rem);
+    --motif-x-x:-32%;
+    --motif-x-y:25%;
+    padding-top:calc(var(--header-height) + 2rem);
+    padding-bottom:2rem;
+  }
   .hero-topline { margin-bottom:2.75rem; }
   .hero-discipline { display:none; }
   .hero-title-first { font-size:12.5vw; }
