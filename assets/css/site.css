@@ -435,6 +435,169 @@ a {
 [data-delay="2"] { transition-delay: 160ms; }
 [data-delay="3"] { transition-delay: 240ms; }
 
+/* Kinetic typography: live text with motion-design timing and a restrained echo pass. */
+.kinetic-title {
+  isolation: isolate;
+}
+
+.kinetic-word {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.kinetic-char {
+  display: inline-block;
+  transform: translateZ(0);
+  transform-origin: 50% 82%;
+  backface-visibility: hidden;
+}
+
+body.kinetic-motion-ready .kinetic-title:not(.kinetic-in) .kinetic-char {
+  opacity: 0;
+}
+
+.kinetic-title.kinetic-in:not(.kinetic-settled) .kinetic-char {
+  animation: kinetic-wave-in 920ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--kinetic-delay);
+  will-change: transform, opacity, filter, clip-path;
+}
+
+.kinetic-title[data-kinetic-variant="hero"].kinetic-in:not(.kinetic-settled) .kinetic-char {
+  animation-name: kinetic-hero-in;
+  animation-duration: 1080ms;
+}
+
+.kinetic-title[data-kinetic-variant="impact"].kinetic-in:not(.kinetic-settled) .kinetic-char {
+  animation-name: kinetic-impact-in;
+  animation-duration: 980ms;
+}
+
+.kinetic-title [data-kinetic-accent]::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  color: currentColor;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  content: attr(data-kinetic-word);
+}
+
+.kinetic-title.kinetic-pulse [data-kinetic-accent] .kinetic-char {
+  animation: kinetic-accent-pulse 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--kinetic-pulse-delay);
+  will-change: transform, filter;
+}
+
+.kinetic-title.kinetic-pulse [data-kinetic-accent]::after {
+  animation: kinetic-slice-echo 920ms steps(1, end) both;
+}
+
+@keyframes kinetic-wave-in {
+  0% {
+    opacity: 0;
+    filter: blur(0.09em);
+    transform: translate3d(0, 1.05em, 0) rotate(7deg) scaleY(1.42);
+  }
+  58% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, -0.075em, 0) rotate(-1.2deg) scaleY(0.94);
+  }
+  78% {
+    transform: translate3d(0, 0.022em, 0) rotate(0.25deg) scaleY(1.025);
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+    transform: translateZ(0);
+  }
+}
+
+@keyframes kinetic-hero-in {
+  0% {
+    opacity: 0;
+    filter: blur(0.11em);
+    transform: translate3d(var(--kinetic-x), 1.15em, 0) rotate(9deg) skewX(-11deg) scale(0.78, 1.55);
+  }
+  54% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(-0.035em, -0.07em, 0) rotate(-1deg) skewX(2deg) scale(1.025, 0.93);
+  }
+  76% {
+    transform: translate3d(0.012em, 0.018em, 0) rotate(0.2deg) scale(0.992, 1.018);
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+    transform: translateZ(0);
+  }
+}
+
+@keyframes kinetic-impact-in {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    transform: translate3d(-0.38em, 0.18em, 0) skewX(-14deg) scaleX(0.72);
+  }
+  62% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0.035em, -0.018em, 0) skewX(1.5deg) scaleX(1.035);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translateZ(0);
+  }
+}
+
+@keyframes kinetic-accent-pulse {
+  0%, 100% {
+    filter: none;
+    transform: translateZ(0);
+  }
+  34% {
+    filter: blur(0.015em);
+    transform: translate3d(0, -0.14em, 0) rotate(-2deg) skewX(-5deg) scale(0.94, 1.12);
+  }
+  68% {
+    filter: none;
+    transform: translate3d(0, 0.035em, 0) rotate(0.7deg) skewX(2deg) scale(1.025, 0.97);
+  }
+}
+
+@keyframes kinetic-slice-echo {
+  0%, 18%, 100% {
+    clip-path: inset(47% 0 39% 0);
+    opacity: 0;
+    transform: translateX(0);
+  }
+  19%, 38% {
+    clip-path: inset(47% 0 39% 0);
+    opacity: 0.22;
+    transform: translateX(-0.09em);
+  }
+  39%, 58% {
+    clip-path: inset(18% 0 70% 0);
+    opacity: 0.16;
+    transform: translateX(0.07em);
+  }
+  59%, 78% {
+    clip-path: inset(72% 0 17% 0);
+    opacity: 0.12;
+    transform: translateX(-0.045em);
+  }
+  79% {
+    opacity: 0;
+  }
+}
+
 /* Editorial cards shared by the homepage and Blog archive. */
 .editorial-heading {
   display: grid;
@@ -812,5 +975,17 @@ a {
   [data-reveal] {
     opacity: 1;
     transform: none;
+  }
+
+  .kinetic-title .kinetic-char,
+  .kinetic-title [data-kinetic-accent]::after {
+    opacity: 1;
+    animation: none !important;
+    filter: none;
+    transform: none;
+  }
+
+  .kinetic-title [data-kinetic-accent]::after {
+    content: none;
   }
 }

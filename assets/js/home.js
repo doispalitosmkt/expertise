@@ -143,6 +143,7 @@
       endIntro();
       finishCounters();
     }
+    document.dispatchEvent(new CustomEvent("expertise:motionchange", { detail: { paused } }));
     syncWords();
   };
 

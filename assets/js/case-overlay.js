@@ -237,6 +237,8 @@
       </footer>
     </article>`;
 
+    window.ExpertiseKinetic?.enhance(overlayContent);
+
     const videoButton = overlayContent.querySelector("[data-case-video]");
     videoButton?.addEventListener("click", () => {
       const videoId = videoButton.dataset.caseVideo;
