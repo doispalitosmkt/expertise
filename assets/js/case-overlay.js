@@ -51,7 +51,7 @@
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
-  const caseUrl = (slug) => sitePath(`cases/?case=${encodeURIComponent(slug)}`);
+  const caseUrl = (slug) => sitePath(`?case=${encodeURIComponent(slug)}#cases`);
 
   const caseFromUrl = (value = window.location.href) => {
     const url = value instanceof URL ? value : new URL(value, window.location.href);

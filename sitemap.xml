@@ -4,30 +4,29 @@
     <loc>https://www.expertisegroup.com.br/</loc>
   </url>
   <url>
-    <loc>https://www.expertisegroup.com.br/quem-somos/</loc>
-  </url>
-  <url>
-    <loc>https://www.expertisegroup.com.br/nossas-expertises/</loc>
-  </url>
-  <url>
-    <loc>https://www.expertisegroup.com.br/servicos/</loc>
-  </url>
-  <url>
     <loc>https://www.expertisegroup.com.br/blog/</loc>
   </url>
+  <!-- BLOG_POST_URLS_START -->
   <url>
-    <loc>https://www.expertisegroup.com.br/faca-parte/</loc>
+    <loc>https://www.expertisegroup.com.br/blog/estrategias-de-live-marketing-para-lancamento-de-produtos/</loc>
   </url>
   <url>
-    <loc>https://www.expertisegroup.com.br/cases/</loc>
+    <loc>https://www.expertisegroup.com.br/blog/gamificacao-em-eventos-corporativos-tendencias-para-2025/</loc>
   </url>
   <url>
-    <loc>https://www.expertisegroup.com.br/cases/terra-na-parada-lgbtqia/</loc>
+    <loc>https://www.expertisegroup.com.br/blog/a-influencia-da-realidade-aumentada-em-experiencias-de-marca/</loc>
   </url>
   <url>
-    <loc>https://www.expertisegroup.com.br/contato/</loc>
+    <loc>https://www.expertisegroup.com.br/blog/carnaval-2025-oportunidades-para-marcas-no-live-marketing/</loc>
   </url>
   <url>
-    <loc>https://www.expertisegroup.com.br/politica-de-privacidade/</loc>
+    <loc>https://www.expertisegroup.com.br/blog/case-vencedor-do-premio-caio-nestle-60/</loc>
   </url>
+  <url>
+    <loc>https://www.expertisegroup.com.br/blog/e-ouro-a-expertise-no-premio-caio/</loc>
+  </url>
+  <url>
+    <loc>https://www.expertisegroup.com.br/blog/a-expertise-foi-acompanhar-de-perto-a-expo-dubai-2022/</loc>
+  </url>
+  <!-- BLOG_POST_URLS_END -->
 </urlset>

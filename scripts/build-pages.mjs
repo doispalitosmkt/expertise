@@ -132,13 +132,6 @@ const publicEntries = [
   "sitemap.xml",
   "assets",
   "blog",
-  "cases",
-  "contato",
-  "faca-parte",
-  "nossas-expertises",
-  "politica-de-privacidade",
-  "quem-somos",
-  "servicos",
 ];
 
 mkdirSync(outputDirectory, { recursive: true });

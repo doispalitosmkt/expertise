@@ -19,7 +19,9 @@
   <link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/site.css?v=20260922-1">
   <link rel="stylesheet" href="/assets/css/pages/internal.css">
+  <link rel="stylesheet" href="/assets/css/pages/blog.css?v=20260922-1">
   <script src="/assets/js/site.js?v=20260922-1" defer></script>
+  <script src="/assets/js/blog.js?v=20260922-1" defer></script>
   <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"Organization","name":"Expertise Marketing Promocional","url":"https://www.expertisegroup.com.br/","logo":"https://www.expertisegroup.com.br/assets/logo.svg","email":"contato@expertisegroup.com.br","telephone":"+55 11 3053-5555","address":{"@type":"PostalAddress","streetAddress":"Rua Gomes de Carvalho, 1765, 4º andar","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"},"sameAs":["https://www.instagram.com/expertisegroup/","https://www.facebook.com/aexpertisegroup","https://www.linkedin.com/company/expertise-marketing-promocional"]}
   </script>
@@ -33,14 +35,12 @@
         <img src="/assets/logo.svg" alt="Expertise" class="brand-logo" width="740" height="166">
       </a>
       <nav class="nav-links" data-site-nav aria-label="Navegação principal">
-        <a href="/quem-somos/">Quem somos</a>
-        <a href="/nossas-expertises/">Expertises</a>
-        <a href="/servicos/">Serviços</a>
-        <a href="/cases/">Cases</a>
+        <a href="/#quem-somos">Quem somos</a>
+        <a href="/#expertises">Expertises</a>
+        <a href="/#cases">Cases</a>
         <a href="/blog/">Blog</a>
-        <a href="/faca-parte/">Faça parte</a>
       </nav>
-      <a class="button" href="/contato/">Falar com a gente</a>
+      <a class="button" href="/#contato">Falar com a gente</a>
       <button class="menu-btn" id="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
@@ -56,15 +56,13 @@
     </div>
     <nav class="mobile-nav" data-site-nav aria-label="Navegação mobile">
       <a href="/">Início</a>
-      <a href="/quem-somos/">Quem somos</a>
-      <a href="/nossas-expertises/">Expertises</a>
-        <a href="/servicos/">Serviços</a>
-      <a href="/cases/">Cases</a>
+      <a href="/#quem-somos">Quem somos</a>
+      <a href="/#expertises">Expertises</a>
+      <a href="/#cases">Cases</a>
       <a href="/blog/">Blog</a>
-      <a href="/faca-parte/">Faça parte</a>
-      <a href="/contato/">Contato</a>
+      <a href="/#contato">Contato</a>
     </nav>
-    <a class="button" href="/contato/">Iniciar um projeto</a>
+    <a class="button" href="mailto:contato@expertisegroup.com.br?subject=Novo%20projeto">Iniciar um projeto</a>
   </div>
 
   <main class="page-main" id="conteudo">
@@ -91,98 +89,53 @@
           <p class="editorial-intro" data-reveal data-delay="2">Tendências, bastidores e leituras sobre live marketing, experiência de marca e ativações.</p>
         </div>
 
-        <div class="editorial-grid">
-          <article class="editorial-card" id="estrategias-de-live-marketing-para-lancamento-de-produtos" aria-labelledby="live-marketing-title" data-reveal>
-            <div class="editorial-card__media">
-              <img src="/assets/images/blog/live-marketing.webp" alt="Profissional usando um tablet cercada por &iacute;cones de intera&ccedil;&atilde;o digital" loading="lazy" decoding="async" width="1600" height="1068">
-              <span class="editorial-card__tag">Live Marketing</span>
-            </div>
-            <div class="editorial-card__content">
-              <div class="editorial-card__meta"><time datetime="2025-03-27">27 mar. 2025</time><span aria-hidden="true">·</span><span>6 min de leitura</span></div>
-              <h3 id="live-marketing-title">Estratégias de Live Marketing para lançamento de produtos</h3>
-              <p>Como transformar lançamentos em experiências ao vivo mais próximas, imediatas e relevantes para o público.</p>
-            </div>
-          </article>
-
-          <article class="editorial-card" id="gamificacao-em-eventos-corporativos-tendencias-para-2025" aria-labelledby="gamificacao-title" data-reveal data-delay="1">
-            <div class="editorial-card__media">
-              <img src="/assets/images/blog/gamificacao.webp" alt="Participantes conversando durante um evento corporativo" loading="lazy" decoding="async" width="1600" height="900">
-              <span class="editorial-card__tag">Eventos</span>
-            </div>
-            <div class="editorial-card__content">
-              <div class="editorial-card__meta"><time datetime="2025-03-21">21 mar. 2025</time><span aria-hidden="true">·</span><span>6 min de leitura</span></div>
-              <h3 id="gamificacao-title">Gamificação em eventos corporativos: tendências para 2025</h3>
-              <p>Mecânicas de jogo ajudam a tornar encontros corporativos mais participativos sem perder de vista os objetivos do evento.</p>
-            </div>
-          </article>
-
-          <article class="editorial-card" id="a-influencia-da-realidade-aumentada-em-experiencias-de-marca" aria-labelledby="realidade-aumentada-title" data-reveal>
-            <div class="editorial-card__media">
-              <img src="/assets/images/blog/realidade-aumentada-ar.webp" alt="Pessoa usando realidade aumentada para explorar um produto em uma ativa&ccedil;&atilde;o" loading="lazy" decoding="async" width="1672" height="941">
-              <span class="editorial-card__tag" id="realidade-aumentada">Inovação</span>
-            </div>
-            <div class="editorial-card__content">
-              <div class="editorial-card__meta"><time datetime="2025-03-18">18 mar. 2025</time><span aria-hidden="true">·</span><span>6 min de leitura</span></div>
-              <h3 id="realidade-aumentada-title">A influência da realidade aumentada em experiências de marca</h3>
-              <p>Camadas digitais ampliam a interação entre pessoas, produtos e marcas e abrem novas possibilidades para experiências memoráveis.</p>
-            </div>
-          </article>
-
-          <article class="editorial-card" id="carnaval-2025-oportunidades-para-marcas-no-live-marketing" aria-labelledby="carnaval-title" data-reveal data-delay="1">
-            <div class="editorial-card__media">
-              <img src="/assets/images/blog/carnaval-2025.webp" alt="Pessoa fotografando uma fantasia colorida de Carnaval" loading="lazy" decoding="async" width="1600" height="1067">
-              <span class="editorial-card__tag">Live Marketing</span>
-            </div>
-            <div class="editorial-card__content">
-              <div class="editorial-card__meta"><time datetime="2025-03-13">13 mar. 2025</time><span aria-hidden="true">·</span><span>5 min de leitura</span></div>
-              <h3 id="carnaval-title">Carnaval 2025: oportunidades para marcas no live marketing</h3>
-              <p>Ativações, promoções e lançamentos encontram no Carnaval um território potente para gerar presença e conexão em tempo real.</p>
-            </div>
-          </article>
-
-          <article class="editorial-card" id="case-vencedor-do-premio-caio-nestle-60" aria-labelledby="nestle-title" data-reveal data-delay="2">
-            <div class="editorial-card__media">
-              <img src="/assets/images/blog/nestle-60.webp" alt="Promotora da campanha Nestl&eacute; 60+ em um ponto de venda" loading="lazy" decoding="async" width="600" height="342">
-              <span class="editorial-card__tag">Cases e Prêmios</span>
-            </div>
-            <div class="editorial-card__content">
-              <div class="editorial-card__meta"><time datetime="2024-01-19">19 jan. 2024</time><span aria-hidden="true">·</span><span>3 min de leitura</span></div>
-              <h3 id="nestle-title">Case vencedor do Prêmio Caio: Nestlé 60+</h3>
-              <p>A operação nacional com promotores 60+ uniu inclusão, escala e resultado — e conquistou ouro no Prêmio Caio.</p>
-            </div>
-          </article>
-
-          <article class="editorial-card" id="e-ouro-a-expertise-no-premio-caio" aria-labelledby="premio-caio-title" data-reveal>
-            <div class="editorial-card__media editorial-card__media--awards">
-              <img src="/assets/images/blog/premio-caio.webp" alt="Equipe Expertise reunida com os trof&eacute;us do Pr&ecirc;mio Caio" loading="lazy" decoding="async" width="600" height="526">
-              <span class="editorial-card__tag">Cases e Prêmios</span>
-            </div>
-            <div class="editorial-card__content">
-              <div class="editorial-card__meta"><time datetime="2023-02-09">9 fev. 2023</time><span aria-hidden="true">·</span><span>2 min de leitura</span></div>
-              <h3 id="premio-caio-title">É ouro! A Expertise no Prêmio Caio!</h3>
-              <p>Em 2022, quatro troféus reconheceram projetos da Expertise em sustentabilidade, incentivo, cenografia e evento promocional.</p>
-            </div>
-          </article>
-
-          <article class="editorial-card" id="a-expertise-foi-acompanhar-de-perto-a-expo-dubai-2022" aria-labelledby="expo-dubai-title" data-reveal data-delay="1">
-            <div class="editorial-card__media">
-              <img src="/assets/images/blog/expo-dubai.webp" alt="Entrada da Expo 2020 Dubai" loading="lazy" decoding="async" width="976" height="549">
-              <span class="editorial-card__tag">Tendências</span>
-            </div>
-            <div class="editorial-card__content">
-              <div class="editorial-card__meta"><time datetime="2022-05-10">10 maio 2022</time><span aria-hidden="true">·</span><span>4 min de leitura</span></div>
-              <h3 id="expo-dubai-title">A Expertise foi acompanhar de perto a Expo Dubai 2022</h3>
-              <p>Um olhar da equipe Expertise sobre os pavilhões, a tecnologia e as experiências multissensoriais apresentadas na Expo Dubai.</p>
-            </div>
-          </article>
+        <!-- BLOG_POSTS_START -->
+        <div class="blog-filters" role="group" aria-label="Filtrar artigos por tema" data-blog-filters>
+          <button type="button" class="is-active" data-blog-filter="all" aria-pressed="true">Todos <span>07</span></button>
+          <button type="button" data-blog-filter="live-marketing" aria-pressed="false">Live Marketing <span>02</span></button>
+          <button type="button" data-blog-filter="eventos" aria-pressed="false">Eventos <span>01</span></button>
+          <button type="button" data-blog-filter="inovacao" aria-pressed="false">Inovação <span>01</span></button>
+          <button type="button" data-blog-filter="cases-e-premios" aria-pressed="false">Cases e Prêmios <span>02</span></button>
+          <button type="button" data-blog-filter="tendencias" aria-pressed="false">Tendências <span>01</span></button>
+        </div><p class="sr-only" aria-live="polite" data-blog-filter-status>7 artigos exibidos</p>
+        <div class="editorial-grid" data-blog-grid>
+          <a class="editorial-card editorial-card--link" id="estrategias-de-live-marketing-para-lancamento-de-produtos" href="/blog/estrategias-de-live-marketing-para-lancamento-de-produtos/" data-blog-card data-category="live-marketing" data-reveal aria-label="Ler artigo: Estratégias de Live Marketing para lançamento de produtos">
+            <div class="editorial-card__media"><img src="/assets/images/blog/live-marketing.webp" alt="Profissional usando um tablet cercada por ícones de interação digital" loading="lazy" decoding="async" width="1600" height="900"><span class="editorial-card__tag">Live Marketing</span></div>
+            <div class="editorial-card__content"><div class="editorial-card__meta"><time datetime="2025-03-27">27 mar. 2025</time><span aria-hidden="true">·</span><span>5 min de leitura</span></div><h3>Estratégias de Live Marketing para lançamento de produtos</h3><p>Como transformar lançamentos em experiências ao vivo mais próximas, imediatas e relevantes para o público.</p><span class="editorial-card__link">Ler artigo <span aria-hidden="true">↗</span></span></div>
+          </a>
+          <a class="editorial-card editorial-card--link" id="gamificacao-em-eventos-corporativos-tendencias-para-2025" href="/blog/gamificacao-em-eventos-corporativos-tendencias-para-2025/" data-blog-card data-category="eventos" data-reveal data-delay="1" aria-label="Ler artigo: Gamificação em eventos corporativos: tendências para 2025">
+            <div class="editorial-card__media"><img src="/assets/images/blog/gamificacao.webp" alt="Participantes conversando durante um evento corporativo" loading="lazy" decoding="async" width="1600" height="900"><span class="editorial-card__tag">Eventos</span></div>
+            <div class="editorial-card__content"><div class="editorial-card__meta"><time datetime="2025-03-21">21 mar. 2025</time><span aria-hidden="true">·</span><span>6 min de leitura</span></div><h3>Gamificação em eventos corporativos: tendências para 2025</h3><p>Mecânicas de jogo ajudam a tornar encontros corporativos mais participativos sem perder de vista os objetivos do evento.</p><span class="editorial-card__link">Ler artigo <span aria-hidden="true">↗</span></span></div>
+          </a>
+          <a class="editorial-card editorial-card--link" id="a-influencia-da-realidade-aumentada-em-experiencias-de-marca" href="/blog/a-influencia-da-realidade-aumentada-em-experiencias-de-marca/" data-blog-card data-category="inovacao" data-reveal data-delay="2" aria-label="Ler artigo: A influência da realidade aumentada em experiências de marca">
+            <div class="editorial-card__media"><img src="/assets/images/blog/realidade-aumentada-ar.webp" alt="Pessoa usando realidade aumentada para explorar um produto em uma ativação" loading="lazy" decoding="async" width="1600" height="900"><span class="editorial-card__tag">Inovação</span></div>
+            <div class="editorial-card__content"><div class="editorial-card__meta"><time datetime="2025-03-18">18 mar. 2025</time><span aria-hidden="true">·</span><span>5 min de leitura</span></div><h3>A influência da realidade aumentada em experiências de marca</h3><p>Camadas digitais ampliam a interação entre pessoas, produtos e marcas e abrem novas possibilidades para experiências memoráveis.</p><span class="editorial-card__link">Ler artigo <span aria-hidden="true">↗</span></span></div>
+          </a>
+          <a class="editorial-card editorial-card--link" id="carnaval-2025-oportunidades-para-marcas-no-live-marketing" href="/blog/carnaval-2025-oportunidades-para-marcas-no-live-marketing/" data-blog-card data-category="live-marketing" data-reveal aria-label="Ler artigo: Carnaval 2025: oportunidades para marcas no live marketing">
+            <div class="editorial-card__media"><img src="/assets/images/blog/carnaval-2025.webp" alt="Pessoa fotografando uma fantasia colorida de Carnaval" loading="lazy" decoding="async" width="1600" height="900"><span class="editorial-card__tag">Live Marketing</span></div>
+            <div class="editorial-card__content"><div class="editorial-card__meta"><time datetime="2025-03-13">13 mar. 2025</time><span aria-hidden="true">·</span><span>5 min de leitura</span></div><h3>Carnaval 2025: oportunidades para marcas no live marketing</h3><p>Ativações, promoções e lançamentos encontram no Carnaval um território potente para gerar presença e conexão em tempo real.</p><span class="editorial-card__link">Ler artigo <span aria-hidden="true">↗</span></span></div>
+          </a>
+          <a class="editorial-card editorial-card--link" id="case-vencedor-do-premio-caio-nestle-60" href="/blog/case-vencedor-do-premio-caio-nestle-60/" data-blog-card data-category="cases-e-premios" data-reveal data-delay="1" aria-label="Ler artigo: Case vencedor do Prêmio Caio: Nestlé 60+">
+            <div class="editorial-card__media"><img src="/assets/images/blog/nestle-60.webp" alt="Promotora da campanha Nestlé 60+ em um ponto de venda" loading="lazy" decoding="async" width="1600" height="900"><span class="editorial-card__tag">Cases e Prêmios</span></div>
+            <div class="editorial-card__content"><div class="editorial-card__meta"><time datetime="2024-01-19">19 jan. 2024</time><span aria-hidden="true">·</span><span>2 min de leitura</span></div><h3>Case vencedor do Prêmio Caio: Nestlé 60+</h3><p>A operação nacional com promotores 60+ uniu inclusão, escala e resultado — e conquistou ouro no Prêmio Caio.</p><span class="editorial-card__link">Ler artigo <span aria-hidden="true">↗</span></span></div>
+          </a>
+          <a class="editorial-card editorial-card--link" id="e-ouro-a-expertise-no-premio-caio" href="/blog/e-ouro-a-expertise-no-premio-caio/" data-blog-card data-category="cases-e-premios" data-reveal data-delay="2" aria-label="Ler artigo: É ouro! A Expertise no Prêmio Caio!">
+            <div class="editorial-card__media editorial-card__media--awards"><img src="/assets/images/blog/premio-caio.webp" alt="Equipe Expertise reunida com os troféus do Prêmio Caio" loading="lazy" decoding="async" width="1600" height="900"><span class="editorial-card__tag">Cases e Prêmios</span></div>
+            <div class="editorial-card__content"><div class="editorial-card__meta"><time datetime="2023-02-09">9 fev. 2023</time><span aria-hidden="true">·</span><span>2 min de leitura</span></div><h3>É ouro! A Expertise no Prêmio Caio!</h3><p>Em 2022, quatro troféus reconheceram projetos da Expertise em sustentabilidade, incentivo, cenografia e evento promocional.</p><span class="editorial-card__link">Ler artigo <span aria-hidden="true">↗</span></span></div>
+          </a>
+          <a class="editorial-card editorial-card--link" id="a-expertise-foi-acompanhar-de-perto-a-expo-dubai-2022" href="/blog/a-expertise-foi-acompanhar-de-perto-a-expo-dubai-2022/" data-blog-card data-category="tendencias" data-reveal aria-label="Ler artigo: A Expertise foi acompanhar de perto a Expo Dubai 2022">
+            <div class="editorial-card__media"><img src="/assets/images/blog/expo-dubai.webp" alt="Entrada da Expo 2020 Dubai" loading="lazy" decoding="async" width="1600" height="900"><span class="editorial-card__tag">Tendências</span></div>
+            <div class="editorial-card__content"><div class="editorial-card__meta"><time datetime="2022-05-10">10 mai. 2022</time><span aria-hidden="true">·</span><span>4 min de leitura</span></div><h3>A Expertise foi acompanhar de perto a Expo Dubai 2022</h3><p>Um olhar da equipe Expertise sobre os pavilhões, a tecnologia e as experiências multissensoriais apresentadas na Expo Dubai.</p><span class="editorial-card__link">Ler artigo <span aria-hidden="true">↗</span></span></div>
+          </a>
         </div>
+        <!-- BLOG_POSTS_END -->
       </div>
     </section>
 
     <section class="site-section cta-band motif-blob" aria-labelledby="cta-title">
       <div class="container cta-band__layout">
         <div><p class="section-kicker">Próximo projeto</p><h2 id="cta-title">Vamos criar algo que as pessoas vão <em>lembrar?</em></h2></div>
-        <a class="button button--dark" href="/contato/">Falar com a Expertise ↗</a>
+        <a class="button button--dark" href="mailto:contato@expertisegroup.com.br?subject=Novo%20projeto">Falar com a Expertise ↗</a>
       </div>
     </section>
   </main>
@@ -195,9 +148,9 @@
           <p>Rua Gomes de Carvalho, 1765, 4º andar<br>Vila Olímpia — São Paulo, SP<br><a href="mailto:contato@expertisegroup.com.br">contato@expertisegroup.com.br</a></p>
           <div class="footer-social"><a href="https://www.instagram.com/expertisegroup/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.linkedin.com/company/expertise-marketing-promocional" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.facebook.com/aexpertisegroup" target="_blank" rel="noopener noreferrer">Facebook</a></div>
         </div>
-        <div><h2 class="footer-heading">Agência</h2><ul><li><a href="/quem-somos/">Quem somos</a></li><li><a href="/nossas-expertises/">Expertises</a></li><li><a href="/cases/">Cases</a></li><li><a href="/blog/">Blog</a></li></ul></div>
-        <div><h2 class="footer-heading">Serviços</h2><ul><li><a href="/servicos/">Todos os serviços</a></li><li><a href="/servicos/#eventos">Eventos</a></li><li><a href="/servicos/#trade">Trade</a></li><li><a href="/servicos/#viagens-e-logistica">Viagens &amp; Logística</a></li><li><a href="/servicos/#incentivo">Incentivo</a></li></ul></div>
-        <div><h2 class="footer-heading">Contato</h2><ul><li><a href="tel:+551130535555">+55&nbsp;11&nbsp;3053&#8209;5555</a></li><li><a href="/contato/">Iniciar um projeto</a></li><li><a href="/faca-parte/">Faça parte</a></li><li><a href="/politica-de-privacidade/">Privacidade</a></li></ul></div>
+        <div><h2 class="footer-heading">Agência</h2><ul><li><a href="/#quem-somos">Quem somos</a></li><li><a href="/#expertises">Expertises</a></li><li><a href="/#cases">Cases</a></li><li><a href="/blog/">Blog</a></li></ul></div>
+        <div><h2 class="footer-heading">Serviços</h2><ul><li><a href="/#expertises">Todos os serviços</a></li><li><a href="/#expertises">Eventos</a></li><li><a href="/#expertises">Trade</a></li><li><a href="/#expertises">Viagens &amp; Logística</a></li><li><a href="/#expertises">Incentivo</a></li></ul></div>
+        <div><h2 class="footer-heading">Contato</h2><ul><li><a href="tel:+551130535555">+55&nbsp;11&nbsp;3053&#8209;5555</a></li><li><a href="mailto:contato@expertisegroup.com.br?subject=Novo%20projeto">Iniciar um projeto</a></li><li><a href="mailto:contato@expertisegroup.com.br?subject=Quero%20fazer%20parte%20da%20Expertise">Faça parte</a></li></ul></div>
       </div>
       <div class="legal"><span>© <span data-current-year>2026</span> Expertise Marketing Promocional Ltda.</span><a class="legal-credit" href="https://doispalitosmkt.com.br/" target="_blank" rel="noopener noreferrer">Desenvolvido por <span class="legal-credit__brand">2P Growth Lab</span></a></div>
       <div class="footer-bigmark"><img src="/assets/logo.svg" alt="" class="footer-bigmark-logo" aria-hidden="true" width="740" height="166"></div>
