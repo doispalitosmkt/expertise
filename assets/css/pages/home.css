@@ -101,7 +101,7 @@ body[data-page="home"] { --container: 96rem; --gutter: clamp(1.25rem, 3.5vw, 4.5
 .video-play:hover { scale:1.07; }
 
 .business { --motif-x-opacity:.045; --motif-x-size:min(68vw,58rem); --motif-x-x:-18%; padding:6rem 0; color:var(--color-ink); background:var(--color-paper); }
-.business-intro > .container { display:grid; grid-template-columns:1.75fr 1fr; gap:clamp(2rem,6vw,7rem); align-items:end; }
+.business-intro > .container { display:grid; grid-template-columns:1.75fr 1fr; gap:clamp(2rem,6vw,7rem); align-items:center; }
 .business .section-title { max-width:58rem; font-size:clamp(2.8rem,5vw,6rem); line-height:1.08; }
 .business-four { display:inline-block; vertical-align:middle; margin-right:.04em; font-size:1.55em; line-height:.8; }
 .business-intro .lead { margin-top:2rem; max-width:43rem; font-size:1rem; }
