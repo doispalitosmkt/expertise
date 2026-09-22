@@ -43,6 +43,9 @@
   let lastFocused = null;
   let activeCase = null;
   let motionWasPaused = false;
+  let overlayView = null;
+  let returnToCatalog = false;
+  let catalogFilter = "all";
 
   const escapeHtml = (value = "") => String(value)
     .replaceAll("&", "&amp;")
@@ -56,6 +59,13 @@
   const caseFromUrl = (value = window.location.href) => {
     const url = value instanceof URL ? value : new URL(value, window.location.href);
     return caseBySlug.get(url.searchParams.get("case")) || null;
+  };
+
+  const setCloseAction = ({ label = "Fechar", ariaLabel = "Fechar case" } = {}) => {
+    if (!closeButton) return;
+    const labelElement = closeButton.querySelector("span");
+    if (labelElement) labelElement.textContent = label;
+    closeButton.setAttribute("aria-label", ariaLabel);
   };
 
   const createOverlay = () => {
@@ -192,6 +202,13 @@
       item.location ? `<div><dt>Local</dt><dd>${escapeHtml(item.location)}</dd></div>` : ""
     ].filter(Boolean).join("");
 
+    overlayView = "case";
+    overlay.classList.remove("is-catalog-view");
+    overlay.setAttribute("aria-labelledby", "case-overlay-title");
+    setCloseAction(returnToCatalog
+      ? { label: "Voltar", ariaLabel: "Voltar ao catálogo de cases" }
+      : { label: "Fechar", ariaLabel: "Fechar case" });
+
     overlayContent.className = "";
     overlayContent.innerHTML = `<article class="case-story case-story--${presentation.mode}" data-case-story="${escapeHtml(item.slug)}">
       <header class="case-story__masthead">
@@ -265,8 +282,12 @@
       return;
     }
 
+    const openedFromCatalog = overlay?.open && overlayView === "catalog";
+    if (openedFromCatalog) returnToCatalog = true;
+
     const wasClosed = !overlay.open;
     if (wasClosed) {
+      returnToCatalog = false;
       lastFocused = source instanceof HTMLElement ? source : document.activeElement;
       motionWasPaused = document.body.classList.contains("motion-paused");
       document.body.classList.add("case-overlay-open", "motion-paused");
@@ -293,6 +314,9 @@
     overlay.close();
     overlayContent.replaceChildren();
     activeCase = null;
+    overlayView = null;
+    returnToCatalog = false;
+    overlay.classList.remove("is-catalog-view");
     document.title = baseTitle;
     document.body.classList.remove("case-overlay-open");
     if (!motionWasPaused) document.body.classList.remove("motion-paused");
@@ -303,8 +327,13 @@
   };
 
   function requestClose() {
-    if (history.state?.closeWithBack) {
+    if (overlayView === "case" && history.state?.closeWithBack) {
       history.back();
+      return;
+    }
+
+    if (overlayView === "case" && returnToCatalog) {
+      showCatalog();
       return;
     }
 
@@ -332,30 +361,102 @@
     }
   }
 
-  const renderCatalog = () => {
-    const root = document.querySelector("[data-case-catalog]");
-    if (!root) return;
-
-    root.innerHTML = Object.entries(groupCopy).map(([key, group]) => {
-      const groupCases = cases.filter((item) => item.nucleus === key);
-      return `<section class="case-catalog-group" id="cases-${key}" aria-labelledby="cases-${key}-title">
-        <div class="case-catalog-group__head">
-          <span class="case-catalog-group__number">${group.number}</span>
-          <h3 class="case-catalog-group__title" id="cases-${key}-title">${escapeHtml(group.title)}</h3>
-          <p class="case-catalog-group__intro">${escapeHtml(group.intro)}</p>
-        </div>
-        <div class="case-catalog-grid">
-          ${groupCases.map((item) => `<a class="case-catalog-card" href="${caseUrl(item.slug)}" data-case-overlay aria-label="Abrir case ${escapeHtml(item.title)}">
-            <div class="case-catalog-card__media"><img src="${escapeHtml(sitePath(item.images[0]))}" alt="${escapeHtml(item.title)}" loading="lazy" decoding="async" width="1600" height="1200"></div>
-            <div class="case-catalog-card__meta"><h4>${escapeHtml(item.title)}</h4><span>${escapeHtml(item.client || item.type)}</span></div>
-          </a>`).join("")}
-        </div>
-      </section>`;
+  const catalogMarkup = () => {
+    const filters = Object.entries(groupCopy).map(([key, group]) => {
+      const count = cases.filter((item) => item.nucleus === key).length;
+      return `<button type="button" data-case-catalog-filter="${escapeHtml(key)}" aria-pressed="false">${escapeHtml(group.title)} <span>${String(count).padStart(2, "0")}</span></button>`;
     }).join("");
+
+    const cards = cases.map((item, index) => {
+      const presentation = safePresentation(item);
+      const media = presentation.hero[0];
+      return `<a class="case-catalog-card" href="${caseUrl(item.slug)}" data-case-overlay data-case-catalog-card data-nucleus="${escapeHtml(item.nucleus)}" aria-label="Abrir case ${escapeHtml(item.title)}">
+        <div class="case-catalog-card__media" style="${mediaStyle(media)}">
+          <img src="${escapeHtml(sitePath(item.images[media.index]))}" alt="${escapeHtml(item.title)}" loading="lazy" decoding="async" width="1600" height="1200">
+          <span class="case-catalog-card__index">${String(index + 1).padStart(2, "0")}</span>
+        </div>
+        <div class="case-catalog-card__meta"><h3>${escapeHtml(item.title)}</h3><span>${escapeHtml(item.nucleusLabel || item.client || item.type)}</span></div>
+      </a>`;
+    }).join("");
+
+    return `<section class="case-catalog-view" aria-labelledby="case-catalog-title">
+      <header class="case-catalog-view__hero">
+        <img class="case-catalog-view__logo" src="${sitePath("assets/logo.svg")}" alt="Expertise" width="740" height="166">
+        <div class="case-catalog-view__heading">
+          <p>Portfólio completo · ${String(cases.length).padStart(2, "0")} projetos</p>
+          <h2 class="case-catalog-view__title" id="case-catalog-title">Experiências para <em>explorar.</em></h2>
+          <span>Eventos, ativações, trade, incentivo e jornadas produzidas de ponta a ponta.</span>
+        </div>
+      </header>
+      <div class="case-catalog-toolbar">
+        <div class="case-catalog-filters" role="group" aria-label="Filtrar cases por núcleo">
+          <button class="is-active" type="button" data-case-catalog-filter="all" aria-pressed="true">Todos <span>${String(cases.length).padStart(2, "0")}</span></button>
+          ${filters}
+        </div>
+        <p class="sr-only" aria-live="polite" data-case-catalog-status>${cases.length} cases exibidos</p>
+      </div>
+      <div class="case-catalog-view__body"><div class="case-catalog-grid" data-case-catalog-grid>${cards}</div></div>
+    </section>`;
+  };
+
+  const renderCatalog = () => {
+    overlayView = "catalog";
+    overlay.classList.add("is-catalog-view");
+    returnToCatalog = false;
+    activeCase = null;
+    document.title = `Cases | ${baseTitle.replace(/\s*\|.*$/, "")}`;
+    overlay.setAttribute("aria-labelledby", "case-catalog-title");
+    setCloseAction({ label: "Fechar", ariaLabel: "Fechar catálogo de cases" });
+    overlayContent.className = "case-catalog-content";
+    overlayContent.innerHTML = catalogMarkup();
+    overlaySurface.scrollTop = 0;
+    window.ExpertiseKinetic?.enhance(overlayContent);
+
+    const buttons = [...overlayContent.querySelectorAll("[data-case-catalog-filter]")];
+    const cards = [...overlayContent.querySelectorAll("[data-case-catalog-card]")];
+    const status = overlayContent.querySelector("[data-case-catalog-status]");
+    const applyCatalogFilter = (value) => {
+      let visible = 0;
+      cards.forEach((card) => {
+        const show = value === "all" || card.dataset.nucleus === value;
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      buttons.forEach((candidate) => {
+        const selected = candidate.dataset.caseCatalogFilter === value;
+        candidate.classList.toggle("is-active", selected);
+        candidate.setAttribute("aria-pressed", String(selected));
+      });
+      if (status) status.textContent = `${visible} ${visible === 1 ? "case exibido" : "cases exibidos"}`;
+    };
+    buttons.forEach((button) => button.addEventListener("click", () => {
+      catalogFilter = button.dataset.caseCatalogFilter || "all";
+      applyCatalogFilter(catalogFilter);
+    }));
+    applyCatalogFilter(catalogFilter);
+  };
+
+  const showCatalog = ({ source = null } = {}) => {
+    if (!overlay && !createOverlay()) return;
+    const wasClosed = !overlay.open;
+    if (wasClosed) {
+      lastFocused = source instanceof HTMLElement ? source : document.activeElement;
+      motionWasPaused = document.body.classList.contains("motion-paused");
+      document.body.classList.add("case-overlay-open", "motion-paused");
+    }
+    renderCatalog();
+    if (wasClosed) overlay.showModal();
+    window.requestAnimationFrame(() => closeButton?.focus());
   };
 
   document.addEventListener("click", (event) => {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const catalogTrigger = event.target.closest("[data-case-catalog-open]");
+    if (catalogTrigger) {
+      event.preventDefault();
+      showCatalog({ source: catalogTrigger });
+      return;
+    }
     const link = event.target.closest("a[data-case-overlay]");
     if (!link || link.target === "_blank" || link.hasAttribute("download")) return;
     const url = new URL(link.href, window.location.href);
@@ -364,7 +465,7 @@
     const item = caseFromUrl(url);
     if (!item) return;
     event.preventDefault();
-    const historyMode = overlay?.contains(link) ? "replace" : "push";
+    const historyMode = overlay?.contains(link) && overlayView === "case" ? "replace" : "push";
     showCase(item, { historyMode, source: link });
   });
 
@@ -372,12 +473,12 @@
     const item = caseFromUrl();
     if (item) {
       showCase(item, { historyMode: "none" });
+    } else if (returnToCatalog && overlay?.open) {
+      showCatalog();
     } else {
       hideCase();
     }
   });
-
-  renderCatalog();
 
   const initialCase = caseFromUrl();
   if (initialCase) showCase(initialCase, { historyMode: "none" });

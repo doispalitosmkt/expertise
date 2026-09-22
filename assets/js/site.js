@@ -107,7 +107,8 @@
     ".cta-band h2",
     ".case-hero__title",
     ".case-story__title",
-    ".case-story__gallery-head h3"
+    ".case-story__gallery-head h3",
+    ".case-catalog-view__title"
   ].join(",");
   const kineticTitles = new Set();
   const kineticTimers = new WeakMap();
