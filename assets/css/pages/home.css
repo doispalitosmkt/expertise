@@ -109,7 +109,14 @@ body[data-page="home"] { --container: 96rem; --gutter: clamp(1.25rem, 3.5vw, 4.5
 .business-four { display:inline-block; vertical-align:middle; margin-right:.04em; font-size:1.55em; line-height:.8; }
 .business-intro .lead { margin-top:2rem; max-width:43rem; font-size:1rem; }
 .business-callout { border-top:.0625rem solid var(--line-dark); padding-top:1.5rem; }
-.business-callout img { width:4.5rem; height:4.5rem; object-fit:contain; margin-bottom:2.5rem; }
+.business-diagram { position:relative; width:min(100%,26rem); margin:0 auto 1.75rem; color:#000; }
+.business-diagram > img { display:block; width:100%; height:auto; }
+.business-diagram__label { position:absolute; z-index:1; font-size:clamp(.65rem,1vw,.8rem); font-weight:700; line-height:1.25; white-space:nowrap; }
+.business-diagram__label--trade { top:13%; left:50%; transform:translateX(-50%); }
+.business-diagram__label--eventos { top:47%; left:7%; transform:translateY(-50%); }
+.business-diagram__label--incentivo { top:47%; right:5%; transform:translateY(-50%); }
+.business-diagram__label--viagem { bottom:8%; left:50%; transform:translateX(-50%); text-align:center; }
+.business-callout__copy { width:88%; margin-left:auto; padding-left:1rem; border-left:.0625rem solid #000; }
 .business-callout strong { display:block; margin-bottom:.6rem; font-size:.6875rem; letter-spacing:.1em; text-transform:uppercase; }
 .business-callout p { margin:0; font-size:.875rem; line-height:1.8; }
 .unit-list { margin-top:4rem; border-top:.0625rem solid var(--line-dark); }
@@ -252,8 +259,9 @@ body:not(.home-motion-ready) .logo-carousel-group[aria-hidden] { display:none; }
   .video-play { width:5.5rem; height:5.5rem; font-size:.625rem; gap:.15rem; }
   .video-play > span { font-size:1.2rem; }
   .business .section-title { font-size:clamp(2.5rem,9vw,4.5rem); }
-  .business-callout { display:flex; align-items:start; gap:1.5rem; }
-  .business-callout img { flex:0 0 3rem; width:3rem; height:3rem; margin:0; }
+  .business-diagram { width:min(100%,29rem); margin-bottom:1.5rem; }
+  .business-diagram__label { font-size:clamp(.72rem,3.1vw,.82rem); }
+  .business-callout__copy { width:min(90%,25rem); }
   .unit-list { margin-top:2.5rem; }
   .unit-card { grid-template-columns:1.5rem 1fr; gap:1rem; padding:2.25rem 0; }
   .unit-heading { display:flex; flex-direction:row-reverse; align-items:start; justify-content:space-between; gap:1rem; }
