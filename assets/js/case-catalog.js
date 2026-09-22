@@ -17,7 +17,7 @@
         "Loja OVVI, lounge de carregamento, jogos, brindes e encontros com Ítalo Ferreira e Gabriel Medina transformaram o espaço em ponto de convivência para os fãs. O projeto recebeu Ouro no Prêmio Caio 2023 na categoria Estandes e Ambientes Cenográficos de médio porte."
       ],
       facts: [
-        { value: "115+ m²", label: "de espaço proprietário" },
+        { value: "115+ m²", label: "espaço exclusivo da marca" },
         { value: "Ouro", label: "Prêmio Caio 2023" }
       ],
       images: [
@@ -118,7 +118,7 @@
         "A agência conduziu a operação completa, da logística à produção, para entregar uma experiência integrada e coerente com o posicionamento premium da marca."
       ],
       facts: [
-        { value: "≈260", label: "líderes e profissionais" }
+        { value: "≈260", label: "participantes da América Latina" }
       ],
       images: [
         "/assets/images/cases/material/stryker/gallery-02.webp",
@@ -207,7 +207,7 @@
       ],
       facts: [
         { value: "1.000+", label: "brindes personalizados" },
-        { value: "28ª", label: "edição da Parada" }
+        { value: "28ª", label: "edição da Parada de São Paulo" }
       ],
       images: [
         "/assets/images/cases/material/trio-vivo/gallery-02.webp",
@@ -330,7 +330,7 @@
       ],
       facts: [
         { value: "600", label: "lojas ativadas" },
-        { value: "360°", label: "de visibilidade" }
+        { value: "360°", label: "de visibilidade do portal no PDV" }
       ],
       images: [
         "/assets/images/cases/material/portal-leve-mais/gallery-02.webp",
@@ -393,7 +393,7 @@
         "O espaço recebeu um painel aéreo de LED com mais de 200 kg e 105 módulos, além de uma estação funcional com pia e torneira gourmet para demonstrações e degustações."
       ],
       facts: [
-        { value: "200+ kg", label: "no painel aéreo de LED" },
+        { value: "200+ kg", label: "de peso no painel aéreo de LED" },
         { value: "105", label: "módulos de LED" }
       ],
       images: [
@@ -462,7 +462,7 @@
         "Na mecânica promocional, compras a partir de R$ 15 em produtos Maggi, incluindo uma unidade de Meu Segredo, davam direito a um Pote da Galinha ou a um porta-tempero."
       ],
       facts: [
-        { value: "R$ 15", label: "em compras para participar" }
+        { value: "R$ 15", label: "de compra mínima para participar" }
       ],
       images: [
         "/assets/images/cases/material/maggi-pdv/cover.webp",
@@ -524,7 +524,7 @@
       ],
       facts: [
         { value: "6", label: "pratos em cada jogo exclusivo" },
-        { value: "1", label: "reforma completa de cozinha" }
+        { value: "1", label: "reforma completa de cozinha sorteada" }
       ],
       images: [
         "/assets/images/cases/material/barilla/cover.webp"
@@ -552,7 +552,7 @@
       ],
       facts: [
         { value: "2", label: "campanhas nacionais" },
-        { value: "100%", label: "da mecânica pelo WhatsApp" }
+        { value: "100%", label: "da jornada promocional pelo WhatsApp" }
       ],
       images: [
         "/assets/images/cases/material/promocao-cbf/cover.webp",
@@ -837,7 +837,7 @@
       ],
       facts: [
         { value: "25", label: "ações realizadas" },
-        { value: "−7%", label: "de turnover" }
+        { value: "−7%", label: "no turnover da campanha" }
       ],
       images: [
         "/assets/images/cases/material/festival-de-conquistas/cover.webp"
@@ -869,7 +869,7 @@
         { value: "44", label: "assessorias" },
         { value: "25+", label: "ações de engajamento" },
         { value: "2 mil+", label: "prêmios distribuídos" },
-        { value: "+12%", label: "em acordos realizados" },
+        { value: "+12%", label: "nos acordos realizados" },
         { value: "+7%", label: "acima da meta" }
       ],
       images: [

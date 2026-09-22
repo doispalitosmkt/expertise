@@ -138,7 +138,7 @@ posts.forEach((post, index) => {
   <link rel="stylesheet" href="/assets/css/site.css?v=20260922-1">
   <link rel="stylesheet" href="/assets/css/pages/internal.css">
   <link rel="stylesheet" href="/assets/css/pages/blog.css?v=20260922-1">
-  <script src="/assets/js/site.js?v=20260922-1" defer></script>
+  <script src="/assets/js/site.js?v=20260922-2" defer></script>
   <script src="/assets/js/blog.js?v=20260922-1" defer></script>
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
