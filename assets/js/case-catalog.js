@@ -813,7 +813,7 @@
       ],
       facts: [],
       images: [
-        "/assets/images/cases/material/mohawk-paris/cover.webp"
+        "/assets/images/cases/material/mohawk-paris/cover.webp?v=20260922-2"
       ],
       presentation: {
         mode: "contained",

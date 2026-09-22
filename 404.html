@@ -10,12 +10,12 @@
   <link rel="icon" href="/assets/x-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/site.css?v=20260922-1">
-  <link rel="stylesheet" href="/assets/css/pages/internal.css">
+  <link rel="stylesheet" href="/assets/css/pages/internal.css?v=20260922-2">
   <script src="/assets/js/site.js?v=20260922-2" defer></script>
 </head>
 <body data-page="404">
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-  <header class="nav" id="nav">
+  <header class="nav nav--light" id="nav">
     <div class="nav-inner">
       <a class="brand" href="/" aria-label="Expertise — página inicial"><img src="/assets/logo.svg" alt="Expertise" class="brand-logo" width="740" height="166"></a>
       <nav class="nav-links" data-site-nav aria-label="Navegação principal"><a href="/#quem-somos">Quem somos</a><a href="/#expertises">Expertises</a><a href="/#cases">Cases</a><a href="/blog/">Blog</a></nav>
@@ -28,12 +28,16 @@
     <nav class="mobile-nav" data-site-nav aria-label="Navegação mobile"><a href="/">Início</a><a href="/#quem-somos">Quem somos</a><a href="/#expertises">Expertises</a><a href="/#cases">Cases</a><a href="/blog/">Blog</a><a href="/#contato">Contato</a></nav>
     <a class="button" href="mailto:contato@expertisegroup.com.br?subject=Novo%20projeto">Iniciar um projeto</a>
   </div>
-  <main class="not-found motif-lines motif-lines--404" id="conteudo">
-    <div>
-      <p class="not-found__code" aria-hidden="true">404</p>
-      <h1>Essa experiência não está por aqui.</h1>
-      <p>O endereço pode ter mudado ou a página pode não existir mais. Você pode voltar ao início ou conhecer nossas áreas de atuação.</p>
-      <div class="button-row button-row--center"><a class="button" href="/">Voltar ao início</a><a class="button button--secondary" href="/#expertises">Ver expertises</a><a class="button button--secondary" href="mailto:contato@expertisegroup.com.br?subject=Novo%20projeto">Falar com a gente</a></div>
+  <main class="not-found" id="conteudo">
+    <div class="container not-found__layout">
+      <div class="not-found__content">
+        <span class="not-found__eyebrow">Página não encontrada</span>
+        <p class="not-found__code" aria-hidden="true">404</p>
+        <h1>Essa experiência <em>não está por aqui.</em></h1>
+        <p class="not-found__description">O endereço pode ter mudado ou a página pode não existir mais. Você pode voltar ao início ou conhecer nossas áreas de atuação.</p>
+        <div class="button-row"><a class="button" href="/">Voltar ao início</a><a class="button button--secondary" href="/#expertises">Ver expertises</a><a class="button button--secondary" href="mailto:contato@expertisegroup.com.br?subject=Novo%20projeto">Falar com a gente</a></div>
+      </div>
+      <div class="not-found__visual" aria-hidden="true"><span class="not-found__brand-x"></span></div>
     </div>
   </main>
 </body>
